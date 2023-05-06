@@ -1,0 +1,4757 @@
+[
+    {
+        "name": null,
+        "packet_id": 103812952,
+        "model_id": 0,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": -739684591,
+        "model_id": 0,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.BooleanCodec"
+        ],
+        "fields": [
+            "login",
+            "password",
+            "remember"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1923286328,
+        "model_id": 0,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "S2CAccountLoginHashUpdate",
+        "packet_id": 932564569,
+        "model_id": 1,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "hash"
+        ]
+    },
+    {
+        "name": "S2CAccountLoginHashLoginFailed",
+        "packet_id": 655372891,
+        "model_id": 1,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "C2SAccountLoginHashLogin",
+        "packet_id": -845588810,
+        "model_id": 1,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "hash"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1317889894,
+        "model_id": 2,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": -1179390022,
+        "model_id": 3,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": -570114058,
+        "model_id": 3,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": -1967950183,
+        "model_id": 3,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.BooleanCodec"
+        ],
+        "fields": [
+            "rememberMe"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -87665118,
+        "model_id": 3,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "login",
+            "password"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1715719586,
+        "model_id": 3,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "snId",
+            "authorizationUrl"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1243673979,
+        "model_id": 3,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": -1807685988,
+        "model_id": 4,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "json"
+        ]
+    },
+    {
+        "name": "S2CResourceLoaderInitializeEncryption",
+        "packet_id": 2001736388,
+        "model_id": 4,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.VectorCodecByte"
+        ],
+        "fields": [
+            "protectionData"
+        ]
+    },
+    {
+        "name": "C2SResourceLoaderDependenciesLoaded",
+        "packet_id": -82304134,
+        "model_id": 4,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "callbackId"
+        ]
+    },
+    {
+        "name": "C2SResourceLoaderEncryptionInitialized",
+        "packet_id": -1864333717,
+        "model_id": 4,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "lang"
+        ]
+    },
+    {
+        "name": "S2CResourceLoaderLoadDependencies",
+        "packet_id": -1797047325,
+        "model_id": 4,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "json",
+            "callbackId"
+        ]
+    },
+    {
+        "name": "S2CResourceLoaderResourcesLoaded",
+        "packet_id": -1282173466,
+        "model_id": 4,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 444933603,
+        "model_id": 5,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.BooleanCodec"
+        ],
+        "fields": [
+            "inviteEnabled"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 184934482,
+        "model_id": 5,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 714838911,
+        "model_id": 5,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "nickname"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 509394385,
+        "model_id": 5,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "code"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 312571157,
+        "model_id": 5,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "C2SCaptchaCaptchaValidated",
+        "packet_id": -819536476,
+        "model_id": 6,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CaptchaLocationCodec"
+        ],
+        "fields": [
+            "captchaLocation"
+        ]
+    },
+    {
+        "name": "S2CCaptchaShow",
+        "packet_id": -1670408519,
+        "model_id": 6,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CaptchaLocationCodec",
+            "scpacker.networking.protocol.codec.custom.VectorCodecByte"
+        ],
+        "fields": [
+            "captchaLocation",
+            "captchaData"
+        ]
+    },
+    {
+        "name": "S2CCaptchaCaptchaFailed",
+        "packet_id": -373510957,
+        "model_id": 6,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CaptchaLocationCodec",
+            "scpacker.networking.protocol.codec.custom.VectorCodecByte"
+        ],
+        "fields": [
+            "captchaLocation",
+            "newCaptcha"
+        ]
+    },
+    {
+        "name": "C2SCaptchaValidateCaptcha",
+        "packet_id": 1271163230,
+        "model_id": 6,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CaptchaLocationCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "captchaLocation",
+            "var_1950"
+        ]
+    },
+    {
+        "name": "S2CCaptchaParameters",
+        "packet_id": 321971701,
+        "model_id": 6,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.VectorCodecCaptchaLocation"
+        ],
+        "fields": [
+            "initParams"
+        ]
+    },
+    {
+        "name": "C2SCaptchaRequestLocation",
+        "packet_id": -349828108,
+        "model_id": 6,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CaptchaLocationCodec"
+        ],
+        "fields": [
+            "location"
+        ]
+    },
+    {
+        "name": "S2CBanTemporary",
+        "packet_id": 1200280053,
+        "model_id": 7,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "reasonForUser",
+            "minutes",
+            "hours",
+            "days"
+        ]
+    },
+    {
+        "name": "S2CBanPermanent",
+        "packet_id": -600078553,
+        "model_id": 7,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "reasonForUser"
+        ]
+    },
+    {
+        "name": "S2CAccountRegisterUidIncorrect",
+        "packet_id": 1480924803,
+        "model_id": 8,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "S2CAccountRegisterUidFree",
+        "packet_id": -706679202,
+        "model_id": 8,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 1003297349,
+        "model_id": 8,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": -653665247,
+        "model_id": 8,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "uid"
+        ]
+    },
+    {
+        "name": "C2SAccountRegisterValidateUid",
+        "packet_id": 1083705823,
+        "model_id": 8,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "uid"
+        ]
+    },
+    {
+        "name": "S2CAccountRegisterParameters",
+        "packet_id": -1277343167,
+        "model_id": 8,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.ResourceGetterCodec",
+            "scpacker.networking.protocol.codec.primitive.BooleanCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "bgResource",
+            "enableRequiredEmail",
+            "maxPasswordLength",
+            "minPasswordLength"
+        ]
+    },
+    {
+        "name": "C2SAccountRegisterSubmit",
+        "packet_id": 427083290,
+        "model_id": 8,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.BooleanCodec"
+        ],
+        "fields": [
+            "uid",
+            "password",
+            "rememberMe"
+        ]
+    },
+    {
+        "name": "S2CAccountRegisterUidBusy",
+        "packet_id": 442888643,
+        "model_id": 8,
+        "codecs": [
+            "scpacker.networking.protocol.codec.complex.VectorCodecString"
+        ],
+        "fields": [
+            "advicedUids"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -262455387,
+        "model_id": 9,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": -16447159,
+        "model_id": 9,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 762959326,
+        "model_id": 9,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "var_2570",
+            "var_2699"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1570555748,
+        "model_id": 9,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.BooleanCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "success",
+            "error"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1744584433,
+        "model_id": 9,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "email"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1607756600,
+        "model_id": 9,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": -2118900410,
+        "model_id": 9,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "currentEmail"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 903498755,
+        "model_id": 9,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "var_281"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 907073245,
+        "model_id": 10,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecUserPropertyCC"
+        ],
+        "fields": [
+            "userPropertyCC"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 150222118,
+        "model_id": 10,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.BooleanCodec"
+        ],
+        "fields": [
+            "enabled"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1391146385,
+        "model_id": 11,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "leftTimeInSeconds"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1405859779,
+        "model_id": 11,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecPremiumAccountAlertCC",
+            "scpacker.networking.protocol.codec.custom.CodecPremiumNotifierCC"
+        ],
+        "fields": [
+            "premiumAccountAlertCC",
+            "premiumNotifierCC"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -478572181,
+        "model_id": 11,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.BooleanCodec"
+        ],
+        "fields": [
+            "wasShowAlertForFirstPurchasePremium"
+        ]
+    },
+    {
+        "name": "S2CLobbyLayoutSwitchEnd",
+        "packet_id": -593368100,
+        "model_id": 12,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecLayoutState",
+            "scpacker.networking.protocol.codec.custom.CodecLayoutState"
+        ],
+        "fields": [
+            "origin",
+            "state"
+        ]
+    },
+    {
+        "name": "S2CLobbyLayoutSwitchStart",
+        "packet_id": 1118835050,
+        "model_id": 12,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecLayoutState"
+        ],
+        "fields": [
+            "state"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1241704092,
+        "model_id": 13,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "user"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 837875576,
+        "model_id": 13,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "userId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1441234714,
+        "model_id": 13,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": -1926185291,
+        "model_id": 13,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "userId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1258754138,
+        "model_id": 13,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "userId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1588006900,
+        "model_id": 13,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "userId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 614714702,
+        "model_id": 13,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "user"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 84050355,
+        "model_id": 13,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "userId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 2064692768,
+        "model_id": 13,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "userId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 126880779,
+        "model_id": 13,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "userId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1041660861,
+        "model_id": 13,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "userId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -139645601,
+        "model_id": 13,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "user"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1457773660,
+        "model_id": 13,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "userId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 553380510,
+        "model_id": 13,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "user"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1490761936,
+        "model_id": 13,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": -2089008699,
+        "model_id": 13,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "userId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -707501253,
+        "model_id": 13,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": -1590185083,
+        "model_id": 13,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 1422563374,
+        "model_id": 13,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecUserContainerCC",
+            "scpacker.networking.protocol.codec.custom.CodecUserContainerCC",
+            "scpacker.networking.protocol.codec.custom.CodecUserContainerCC",
+            "scpacker.networking.protocol.codec.custom.CodecUserContainerCC",
+            "scpacker.networking.protocol.codec.custom.CodecUserContainerCC"
+        ],
+        "fields": [
+            "friendsAccepted",
+            "friendsAcceptedNew",
+            "friendsIncoming",
+            "friendsIncomingNew",
+            "friendsOutgoing"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -437587751,
+        "model_id": 13,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": -221757454,
+        "model_id": 13,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "userId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 641950429,
+        "model_id": 13,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "userId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1716773193,
+        "model_id": 13,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "user"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1286861380,
+        "model_id": 13,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "userId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 650923390,
+        "model_id": 13,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "userId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1885167992,
+        "model_id": 13,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "user"
+        ]
+    },
+    {
+        "name": "C2SLinkActivateLink",
+        "packet_id": -604091695,
+        "model_id": 14,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "link"
+        ]
+    },
+    {
+        "name": "C2SLinkResultAlive",
+        "packet_id": 1152930968,
+        "model_id": 14,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "battleId"
+        ]
+    },
+    {
+        "name": "C2SLinkResultDead",
+        "packet_id": 1132011721,
+        "model_id": 14,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "battleId"
+        ]
+    },
+    {
+        "name": "C2SLinkQuery",
+        "packet_id": -983139626,
+        "model_id": 14,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "battleId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 810713262,
+        "model_id": 15,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecBattleInviteMessage"
+        ],
+        "fields": [
+            "user",
+            "data"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1152865919,
+        "model_id": 15,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "senderId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1015650019,
+        "model_id": 15,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "senderId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 814687528,
+        "model_id": 15,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "senderId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 415207851,
+        "model_id": 15,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "user"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1851236532,
+        "model_id": 15,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "senderId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1383159023,
+        "model_id": 15,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "user"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -864265623,
+        "model_id": 15,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "var_2558",
+            "battleId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 834877801,
+        "model_id": 15,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecBattleInviteCC"
+        ],
+        "fields": [
+            "initParams"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1859441081,
+        "model_id": 16,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 880756819,
+        "model_id": 16,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "itemId",
+            "var_1471"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1863710730,
+        "model_id": 16,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "data"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1455955413,
+        "model_id": 16,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "url"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1850050333,
+        "model_id": 16,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": -511004908,
+        "model_id": 16,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "var_544"
+        ]
+    },
+    {
+        "name": "C2SLayoutSwitchPayment",
+        "packet_id": 1153801756,
+        "model_id": 17,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "C2SLayoutSwitchGarage",
+        "packet_id": -479046431,
+        "model_id": 17,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "C2SLayoutSwitchExitBattle",
+        "packet_id": 377959142,
+        "model_id": 17,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecLayoutState"
+        ],
+        "fields": [
+            "var_727"
+        ]
+    },
+    {
+        "name": "C2SLayoutSwitchServerSelect",
+        "packet_id": 1452181070,
+        "model_id": 17,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "S2CUserNotifyNotifyUserInBattle",
+        "packet_id": -1895446889,
+        "model_id": 18,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecBattleNotifierData"
+        ],
+        "fields": [
+            "user"
+        ]
+    },
+    {
+        "name": "S2CUserNotifyNotifyUpdateUserRank",
+        "packet_id": -962759489,
+        "model_id": 18,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecRankNotifierData"
+        ],
+        "fields": [
+            "user"
+        ]
+    },
+    {
+        "name": "C2SUserNotifySubscribeUser",
+        "packet_id": 1774907609,
+        "model_id": 18,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "userId"
+        ]
+    },
+    {
+        "name": "S2CUserNotifyNotifyUserBattleLeave",
+        "packet_id": 1941694508,
+        "model_id": 18,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "userId"
+        ]
+    },
+    {
+        "name": "S2CUserNotifyUpdateUserOnlineStatus",
+        "packet_id": 2041598093,
+        "model_id": 18,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecOnlineNotifierData"
+        ],
+        "fields": [
+            "user"
+        ]
+    },
+    {
+        "name": "S2CUserNotifySetUserId",
+        "packet_id": -1353047954,
+        "model_id": 18,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "user"
+        ]
+    },
+    {
+        "name": "S2CUserNotifyPremiumTimeLeft",
+        "packet_id": -2069508071,
+        "model_id": 18,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecPremiumNotifierData"
+        ],
+        "fields": [
+            "user"
+        ]
+    },
+    {
+        "name": "C2SUserNotifyUnsubscribeUsers",
+        "packet_id": -2040152224,
+        "model_id": 18,
+        "codecs": [
+            "scpacker.networking.protocol.codec.complex.VectorCodecString"
+        ],
+        "fields": [
+            "var_1832"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1227293080,
+        "model_id": 19,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 885055495,
+        "model_id": 19,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecWeeklyQuestDescription"
+        ],
+        "fields": [
+            "weeklyQuestDescription"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 326032325,
+        "model_id": 19,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "questId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1768449810,
+        "model_id": 19,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "questId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1642608662,
+        "model_id": 19,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "questId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1266665816,
+        "model_id": 19,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.custom.CodecDailyQuestInfo"
+        ],
+        "fields": [
+            "questId",
+            "newQuest"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1579425801,
+        "model_id": 19,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 809822533,
+        "model_id": 19,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.VectorCodecDailyQuestInfo",
+            "scpacker.networking.protocol.codec.custom.CodecWeeklyQuestDescription"
+        ],
+        "fields": [
+            "quests",
+            "weeklyQuestDescription"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -867767128,
+        "model_id": 19,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "questId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1417347634,
+        "model_id": 19,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 956252237,
+        "model_id": 19,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 1711371907,
+        "model_id": 20,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.VectorCodecWeeklyQuestRewardItem"
+        ],
+        "fields": [
+            "weeklyQuestReward"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 855420488,
+        "model_id": 21,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecBonusInfoCC"
+        ],
+        "fields": [
+            "json",
+            "bonusInfo"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -875418096,
+        "model_id": 21,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.ResourceGetterCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "image",
+            "bottomText",
+            "topText"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -541741971,
+        "model_id": 22,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": -20513325,
+        "model_id": 22,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "socialNetworkId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 2098576423,
+        "model_id": 22,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "socialNetworkId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -583564465,
+        "model_id": 22,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecSocialNetworkPanelCC"
+        ],
+        "fields": [
+            "initParams"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1897104567,
+        "model_id": 22,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "socialNetworkId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -324894035,
+        "model_id": 22,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "socialNetworkId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -731115522,
+        "model_id": 23,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.BooleanCodec"
+        ],
+        "fields": [
+            "name_76"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1302674105,
+        "model_id": 23,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 850220815,
+        "model_id": 23,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 1447082276,
+        "model_id": 23,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.BooleanCodec"
+        ],
+        "fields": [
+            "notificationEnabled"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 600420685,
+        "model_id": 24,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 1312986424,
+        "model_id": 24,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.BooleanCodec"
+        ],
+        "fields": [
+            "var_113"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 652872053,
+        "model_id": 24,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 147737736,
+        "model_id": 24,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "password",
+            "email"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -20486732,
+        "model_id": 24,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "email"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 2145091885,
+        "model_id": 24,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "message"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1533422832,
+        "model_id": 24,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": -1507635228,
+        "model_id": 24,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 1928355480,
+        "model_id": 24,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "email"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -822403331,
+        "model_id": 24,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 1544223090,
+        "model_id": 24,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 1771456254,
+        "model_id": 24,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "password"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1515366171,
+        "model_id": 24,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "password"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 613462801,
+        "model_id": 24,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.BooleanCodec"
+        ],
+        "fields": [
+            "email",
+            "emailConfirmed"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 2029312880,
+        "model_id": 24,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 133238100,
+        "model_id": 24,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 668890771,
+        "model_id": 24,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "var_501",
+            "password"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -714487273,
+        "model_id": 24,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "S2CAlertShow",
+        "packet_id": -322235316,
+        "model_id": 25,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "text"
+        ]
+    },
+    {
+        "name": "S2CAlertServerHaltScheduled",
+        "packet_id": -1712113407,
+        "model_id": 26,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "timeLeftInSec"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1176568376,
+        "model_id": 27,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "itemId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -47424608,
+        "model_id": 27,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.VectorCodecGarageItemInfo"
+        ],
+        "fields": [
+            "items"
+        ]
+    },
+    {
+        "name": "S2CGlobalChatChatInitParameters",
+        "packet_id": 178154988,
+        "model_id": 28,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecChatCC"
+        ],
+        "fields": [
+            "initParams"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -920985123,
+        "model_id": 28,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "S2CGlobalChatChatAntifloodParameters",
+        "packet_id": 744948472,
+        "model_id": 28,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "symbolCost",
+            "enterCost"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1062190024,
+        "model_id": 28,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "S2CGlobalChatCleanUserMessage",
+        "packet_id": 1993050216,
+        "model_id": 28,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "uid"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 705454610,
+        "model_id": 28,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "var_396",
+            "text"
+        ]
+    },
+    {
+        "name": "S2CGlobalChatShowMessages",
+        "packet_id": -1263520410,
+        "model_id": 28,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.VectorCodecChatMessage"
+        ],
+        "fields": [
+            "messages"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1128606444,
+        "model_id": 29,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.FloatCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "rating",
+            "place"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1989173907,
+        "model_id": 29,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "rank",
+            "score",
+            "currentRankScore",
+            "nextRankScore",
+            "bonusCrystals"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -593513288,
+        "model_id": 29,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "changeBy"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 2116086491,
+        "model_id": 29,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "score"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 566338297,
+        "model_id": 30,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 947161947,
+        "model_id": 30,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 120401338,
+        "model_id": 30,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "name"
+        ]
+    },
+    {
+        "name": "S2CBattleCreateParameters",
+        "packet_id": -838186985,
+        "model_id": 30,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "json"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -614313838,
+        "model_id": 30,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 566652736,
+        "model_id": 30,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "battleName"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -2135234426,
+        "model_id": 30,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecBattleCreateParameters"
+        ],
+        "fields": [
+            "params"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1491503394,
+        "model_id": 30,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "S2CBattleListBattleCreate",
+        "packet_id": 802300608,
+        "model_id": 31,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "json"
+        ]
+    },
+    {
+        "name": "S2CBattleListListDestroy",
+        "packet_id": -324155151,
+        "model_id": 31,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "C2SBattleListBattleSelect",
+        "packet_id": 2092412133,
+        "model_id": 31,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "item"
+        ]
+    },
+    {
+        "name": "S2CBattleListBattleRemove",
+        "packet_id": -1848001147,
+        "model_id": 31,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "battleId"
+        ]
+    },
+    {
+        "name": "S2CBattleListListCreate",
+        "packet_id": 552006706,
+        "model_id": 31,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "json"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1149131596,
+        "model_id": 32,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "battleId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -2133657895,
+        "model_id": 32,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "battleId",
+            "userId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 2011860838,
+        "model_id": 32,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "battleId",
+            "newName"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -994817471,
+        "model_id": 32,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "battleId"
+        ]
+    },
+    {
+        "name": "S2CBattleUserListUserJoinBattle",
+        "packet_id": -169305322,
+        "model_id": 32,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecBattleTeam"
+        ],
+        "fields": [
+            "battleId",
+            "userId",
+            "team"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -751613832,
+        "model_id": 32,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecBattleSuspicionLevel"
+        ],
+        "fields": [
+            "battleId",
+            "suspicionLevel"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 504016996,
+        "model_id": 32,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "battleId",
+            "userId"
+        ]
+    },
+    {
+        "name": "S2CBattleUserListUserJoinBattleWithTeam",
+        "packet_id": 1447204641,
+        "model_id": 32,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "battleId",
+            "userId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1229594925,
+        "model_id": 33,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "battleId"
+        ]
+    },
+    {
+        "name": "S2CBattleInfoAddUserToTeam",
+        "packet_id": 118447426,
+        "model_id": 33,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecBattleInfoUser",
+            "scpacker.networking.protocol.codec.custom.CodecBattleTeam"
+        ],
+        "fields": [
+            "battleId",
+            "user",
+            "team"
+        ]
+    },
+    {
+        "name": "S2CBattleInfoUpdateSuspiciousState",
+        "packet_id": -698399183,
+        "model_id": 33,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.BooleanCodec"
+        ],
+        "fields": [
+            "battleId",
+            "userId",
+            "suspicious"
+        ]
+    },
+    {
+        "name": "S2CBattleInfoUpdateTeamScore",
+        "packet_id": 1428217189,
+        "model_id": 33,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecBattleTeam",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "battleId",
+            "teamType",
+            "score"
+        ]
+    },
+    {
+        "name": "S2CBattleInfoUpdateUserKills",
+        "packet_id": -1263036614,
+        "model_id": 33,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "battleId",
+            "userId",
+            "kills"
+        ]
+    },
+    {
+        "name": "S2CBattleInfoBattleStop",
+        "packet_id": -879771375,
+        "model_id": 33,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "battleId"
+        ]
+    },
+    {
+        "name": "S2CBattleInfoSwapTeams",
+        "packet_id": -1702097572,
+        "model_id": 33,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "battleId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -10847382,
+        "model_id": 33,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "battleId"
+        ]
+    },
+    {
+        "name": "S2CBattleInfoUpdateName",
+        "packet_id": 1561014187,
+        "model_id": 33,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "battleId",
+            "name"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1315002220,
+        "model_id": 33,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "S2CBattleInfoRoundStart",
+        "packet_id": -344514517,
+        "model_id": 33,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "battleId"
+        ]
+    },
+    {
+        "name": "S2CBattleInfoInfoDestroy",
+        "packet_id": -602527073,
+        "model_id": 33,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "battleId"
+        ]
+    },
+    {
+        "name": "S2CBattleInfoRoundFinish",
+        "packet_id": 546722394,
+        "model_id": 33,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "json"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1534651002,
+        "model_id": 33,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "battleId"
+        ]
+    },
+    {
+        "name": "S2CBattleInfoUpdateUserScore",
+        "packet_id": -375282889,
+        "model_id": 33,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "battleId",
+            "userId",
+            "score"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -831998018,
+        "model_id": 33,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "battleId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1284211503,
+        "model_id": 33,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecBattleTeam"
+        ],
+        "fields": [
+            "var_625"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -911626491,
+        "model_id": 33,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecBattleInfoUser"
+        ],
+        "fields": [
+            "battleId",
+            "user"
+        ]
+    },
+    {
+        "name": "S2CBattleInfoRemoveUser",
+        "packet_id": 1924874982,
+        "model_id": 33,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "battleId",
+            "userId"
+        ]
+    },
+    {
+        "name": "C2SGarageBuyItem",
+        "packet_id": -1961983005,
+        "model_id": 34,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "item",
+            "count",
+            "var_204"
+        ]
+    },
+    {
+        "name": "C2SGarageMountItem",
+        "packet_id": -1505530736,
+        "model_id": 34,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "item"
+        ]
+    },
+    {
+        "name": "S2CGarageInitDepot",
+        "packet_id": -255516505,
+        "model_id": 34,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "json"
+        ]
+    },
+    {
+        "name": "C2SGaragePresentsConfirmPurchase",
+        "packet_id": -1518850075,
+        "model_id": 34,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "var_814",
+            "var_1790",
+            "text",
+            "var_204"
+        ]
+    },
+    {
+        "name": "C2SGarageSelectItem",
+        "packet_id": -803365239,
+        "model_id": 34,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "itemId"
+        ]
+    },
+    {
+        "name": "S2CGarageRenameFailed",
+        "packet_id": -471022967,
+        "model_id": 34,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "C2SGarageBuyKit",
+        "packet_id": -523392052,
+        "model_id": 34,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "item",
+            "var_204"
+        ]
+    },
+    {
+        "name": "S2CGarageInitMarket",
+        "packet_id": -300370823,
+        "model_id": 34,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "json"
+        ]
+    },
+    {
+        "name": "S2CGaragePresentsRemove",
+        "packet_id": -2001666558,
+        "model_id": 34,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "var_1790"
+        ]
+    },
+    {
+        "name": "S2CGarageSelectFirstItem",
+        "packet_id": -1763914667,
+        "model_id": 34,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 1211186637,
+        "model_id": 34,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "S2CGarageShowAlert",
+        "packet_id": -1638767166,
+        "model_id": 34,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "S2CGarageFit",
+        "packet_id": 1091756732,
+        "model_id": 34,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "item"
+        ]
+    },
+    {
+        "name": "S2CGarageShowCategory",
+        "packet_id": 1318061480,
+        "model_id": 34,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "category"
+        ]
+    },
+    {
+        "name": "C2SGaragePresentsAccept",
+        "packet_id": -1154479430,
+        "model_id": 34,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "S2CGarageRenameSuccess",
+        "packet_id": -1968445033,
+        "model_id": 34,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "oldName",
+            "newName"
+        ]
+    },
+    {
+        "name": "C2SGarageRename",
+        "packet_id": -161726525,
+        "model_id": 34,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "var_1736"
+        ]
+    },
+    {
+        "name": "S2CGarageInitMounted",
+        "packet_id": 2062201643,
+        "model_id": 34,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.BooleanCodec"
+        ],
+        "fields": [
+            "itemId",
+            "mounted"
+        ]
+    },
+    {
+        "name": "C2SUidCheckRequest",
+        "packet_id": -635715470,
+        "model_id": 35,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "uid"
+        ]
+    },
+    {
+        "name": "C2SUidCheckResponse",
+        "packet_id": -1565553333,
+        "model_id": 35,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecValidationStatus"
+        ],
+        "fields": [
+            "status"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 201628290,
+        "model_id": 36,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.ByteCodec"
+        ],
+        "fields": [
+            "errorType"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1643824092,
+        "model_id": 36,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "json"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 417965410,
+        "model_id": 36,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "json"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -745598420,
+        "model_id": 36,
+        "codecs": [
+            "scpacker.networking.protocol.codec.complex.VectorCodecInt"
+        ],
+        "fields": [
+            "var_304"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -152638117,
+        "model_id": 36,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "json"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 228171466,
+        "model_id": 36,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "json"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1047185003,
+        "model_id": 36,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "bonusId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -2026749922,
+        "model_id": 36,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "bonusId"
+        ]
+    },
+    {
+        "name": "S2CBattleBonusSpawnBonus",
+        "packet_id": 1831462385,
+        "model_id": 36,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "bonusId",
+            "position",
+            "var_2317"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1291499147,
+        "model_id": 36,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "bonusId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -985579124,
+        "model_id": 36,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 870278784,
+        "model_id": 36,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "json"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1262947513,
+        "model_id": 37,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "userId",
+            "newRank"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1249639251,
+        "model_id": 37,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 522993449,
+        "model_id": 37,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecStatisticsModelCC"
+        ],
+        "fields": [
+            "initParams"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1149211509,
+        "model_id": 37,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "fund"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 446781737,
+        "model_id": 37,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.BooleanCodec"
+        ],
+        "fields": [
+            "userId",
+            "suspicious"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 732434644,
+        "model_id": 37,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "timeLimitInSec"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 560336625,
+        "model_id": 37,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.VectorCodecUserReward",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "reward",
+            "timeToRestart"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1953272681,
+        "model_id": 37,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 1156768699,
+        "model_id": 38,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "S2CTankMoveCommand",
+        "packet_id": -64696933,
+        "model_id": 39,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecMoveCommand"
+        ],
+        "fields": [
+            "tankId",
+            "moveCommand"
+        ]
+    },
+    {
+        "name": "S2CTankKill",
+        "packet_id": -42520728,
+        "model_id": 39,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "tankId",
+            "killerTankId",
+            "respawnDelay"
+        ]
+    },
+    {
+        "name": "S2CTankMoveControlFlags",
+        "packet_id": -301298508,
+        "model_id": 39,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.ByteCodec"
+        ],
+        "fields": [
+            "tankId",
+            "control"
+        ]
+    },
+    {
+        "name": "C2STankTurretCommand",
+        "packet_id": -114968993,
+        "model_id": 39,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.custom.CodecRotateTurretCommand",
+            "scpacker.networking.protocol.codec.primitive.ShortCodec"
+        ],
+        "fields": [
+            "name_43",
+            "rotateTurretCommand",
+            "incarnationId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 268832557,
+        "model_id": 39,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "C2STankMoveCommand",
+        "packet_id": 329279865,
+        "model_id": 39,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.ShortCodec",
+            "scpacker.networking.protocol.codec.custom.CodecMoveCommand"
+        ],
+        "fields": [
+            "name_43",
+            "specificationId",
+            "moveCommand"
+        ]
+    },
+    {
+        "name": "S2CTankMoveTurretCommand",
+        "packet_id": 1516578027,
+        "model_id": 39,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecMoveCommand",
+            "scpacker.networking.protocol.codec.primitive.FloatCodec"
+        ],
+        "fields": [
+            "tankId",
+            "moveCommand",
+            "turretDirection"
+        ]
+    },
+    {
+        "name": "S2CTankTurretCommand",
+        "packet_id": 1927704181,
+        "model_id": 39,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecRotateTurretCommand"
+        ],
+        "fields": [
+            "tankId",
+            "rotateTurretCommand"
+        ]
+    },
+    {
+        "name": "C2STankReady2Place",
+        "packet_id": -1378839846,
+        "model_id": 39,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "C2STankReady2Activate",
+        "packet_id": 1178028365,
+        "model_id": 39,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "S2CTankDead",
+        "packet_id": 1868573511,
+        "model_id": 39,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "tankId"
+        ]
+    },
+    {
+        "name": "S2CTankHealth",
+        "packet_id": -611961116,
+        "model_id": 39,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.FloatCodec"
+        ],
+        "fields": [
+            "tankId",
+            "health"
+        ]
+    },
+    {
+        "name": "S2CTankSpawn",
+        "packet_id": 875259457,
+        "model_id": 39,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecBattleTeam",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d",
+            "scpacker.networking.protocol.codec.primitive.ShortCodec",
+            "scpacker.networking.protocol.codec.primitive.ShortCodec"
+        ],
+        "fields": [
+            "tankId",
+            "team",
+            "position",
+            "orientation",
+            "health",
+            "incarnationId"
+        ]
+    },
+    {
+        "name": "S2CTankUpdateOrientation",
+        "packet_id": -157204477,
+        "model_id": 39,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecVector3d",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d"
+        ],
+        "fields": [
+            "position",
+            "orientation"
+        ]
+    },
+    {
+        "name": "C2STankMoveControlFlags",
+        "packet_id": -1749108178,
+        "model_id": 39,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.ShortCodec",
+            "scpacker.networking.protocol.codec.primitive.ByteCodec"
+        ],
+        "fields": [
+            "name_43",
+            "specificationId",
+            "control"
+        ]
+    },
+    {
+        "name": "C2STankMoveTurretCommand",
+        "packet_id": -1683279062,
+        "model_id": 39,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.ShortCodec",
+            "scpacker.networking.protocol.codec.custom.CodecMoveCommand",
+            "scpacker.networking.protocol.codec.primitive.FloatCodec"
+        ],
+        "fields": [
+            "name_43",
+            "specificationId",
+            "moveCommand",
+            "turretDirection"
+        ]
+    },
+    {
+        "name": "S2CTankUpdateSpeed",
+        "packet_id": -1672577397,
+        "model_id": 39,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.FloatCodec",
+            "scpacker.networking.protocol.codec.primitive.FloatCodec",
+            "scpacker.networking.protocol.codec.primitive.FloatCodec",
+            "scpacker.networking.protocol.codec.primitive.FloatCodec",
+            "scpacker.networking.protocol.codec.primitive.ShortCodec"
+        ],
+        "fields": [
+            "tankId",
+            "maxSpeed",
+            "maxTurnSpeed",
+            "maxTurretRotationSpeed",
+            "acceleration",
+            "specificationId"
+        ]
+    },
+    {
+        "name": "S2CTankEffectApply",
+        "packet_id": -1639713644,
+        "model_id": 39,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.BooleanCodec",
+            "scpacker.networking.protocol.codec.primitive.ByteCodec"
+        ],
+        "fields": [
+            "tankId",
+            "effectId",
+            "duration",
+            "activeAfterDeath",
+            "effectLevel"
+        ]
+    },
+    {
+        "name": "S2CTankUpdateTemperature",
+        "packet_id": 581377054,
+        "model_id": 39,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.FloatCodec"
+        ],
+        "fields": [
+            "tankId",
+            "temperature"
+        ]
+    },
+    {
+        "name": "S2CTankEffectRemove",
+        "packet_id": -1994318624,
+        "model_id": 39,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "tankId",
+            "effectId"
+        ]
+    },
+    {
+        "name": "S2CTankDestroy",
+        "packet_id": 1719707347,
+        "model_id": 39,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "tank"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 988664577,
+        "model_id": 40,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 162656882,
+        "model_id": 40,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "tankId",
+            "respawnDelay"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1205151619,
+        "model_id": 41,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.VectorCodecBonusSpawnData"
+        ],
+        "fields": [
+            "var_1018"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1044854075,
+        "model_id": 41,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "bonusId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1433937811,
+        "model_id": 41,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "bonusId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1832611824,
+        "model_id": 42,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": -1026428589,
+        "model_id": 42,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecBattleTeam",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "flagTeam",
+            "tank"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1870108387,
+        "model_id": 42,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecBattleTeam",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "winnerTeam",
+            "delivererTankId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 789790814,
+        "model_id": 42,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecCaptureTheFlagCC"
+        ],
+        "fields": [
+            "initParams"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1282406496,
+        "model_id": 42,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecBattleTeam"
+        ],
+        "fields": [
+            "tankId",
+            "flagTeam"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1142938284,
+        "model_id": 42,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecBattleTeam"
+        ],
+        "fields": [
+            "team"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1925237062,
+        "model_id": 42,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecVector3d",
+            "scpacker.networking.protocol.codec.custom.CodecBattleTeam"
+        ],
+        "fields": [
+            "position",
+            "flagTeam"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -2102525054,
+        "model_id": 43,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "itemId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -137249251,
+        "model_id": 43,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "json"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 2032104949,
+        "model_id": 43,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.BooleanCodec"
+        ],
+        "fields": [
+            "itemId",
+            "time",
+            "decrease"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1981777467,
+        "model_id": 43,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "mineId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -502907094,
+        "model_id": 43,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "itemId",
+            "count"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1668779175,
+        "model_id": 44,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.VectorCodecUserStat",
+            "scpacker.networking.protocol.codec.custom.VectorCodecUserStat"
+        ],
+        "fields": [
+            "redUsers",
+            "blueUsers"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -497293992,
+        "model_id": 44,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecUserStat",
+            "scpacker.networking.protocol.codec.custom.CodecBattleTeam"
+        ],
+        "fields": [
+            "usersStat",
+            "team"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 561771020,
+        "model_id": 44,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecBattleTeam",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "team",
+            "score"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1411656080,
+        "model_id": 44,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "userId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1233891872,
+        "model_id": 44,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecStatisticsTeamCC"
+        ],
+        "fields": [
+            "initParams"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 2040021062,
+        "model_id": 44,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.VectorCodecUserInfo",
+            "scpacker.networking.protocol.codec.custom.CodecBattleTeam"
+        ],
+        "fields": [
+            "userId",
+            "usersInfo",
+            "team"
+        ]
+    },
+    {
+        "name": "S2CPingMeasurePing",
+        "packet_id": -555602629,
+        "model_id": 45,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "C2SPingMeasurePong",
+        "packet_id": 1484572481,
+        "model_id": 45,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": "C2SServerSessionSyncResponse",
+        "packet_id": 2074243318,
+        "model_id": 46,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "name_43",
+            "serverSessionTime"
+        ]
+    },
+    {
+        "name": "S2CServerSessionSync",
+        "packet_id": 34068208,
+        "model_id": 46,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "serverSessionTime",
+            "clientPing"
+        ]
+    },
+    {
+        "name": "S2CBattleDamageIndicator",
+        "packet_id": -1165230470,
+        "model_id": 47,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.VectorCodecTargetTankDamage"
+        ],
+        "fields": [
+            "damages"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1959138292,
+        "model_id": 48,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecStatisticsDMCC"
+        ],
+        "fields": [
+            "initParams"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1689876764,
+        "model_id": 48,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "userId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1061006142,
+        "model_id": 48,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.VectorCodecUserStat"
+        ],
+        "fields": [
+            "usersStat"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 696140460,
+        "model_id": 48,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecUserStat"
+        ],
+        "fields": [
+            "usersStat"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 862913394,
+        "model_id": 48,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.VectorCodecUserInfo"
+        ],
+        "fields": [
+            "userId",
+            "usersInfo"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 546849203,
+        "model_id": 49,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d"
+        ],
+        "fields": [
+            "shooter",
+            "hitPoint"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1032328347,
+        "model_id": 49,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "shooter"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -671618989,
+        "model_id": 49,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "target"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1334002026,
+        "model_id": 49,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d",
+            "scpacker.networking.protocol.codec.primitive.FloatCodec",
+            "scpacker.networking.protocol.codec.primitive.BooleanCodec"
+        ],
+        "fields": [
+            "shooter",
+            "target",
+            "hitPoint",
+            "weakeningCoeff",
+            "isCritical"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1470597926,
+        "model_id": 49,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d"
+        ],
+        "fields": [
+            "name_43",
+            "hitPoint"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 229267683,
+        "model_id": 49,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.ShortCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d"
+        ],
+        "fields": [
+            "name_43",
+            "target",
+            "var_356",
+            "var_253",
+            "hitPoint",
+            "var_2967"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1478921140,
+        "model_id": 49,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "name_43"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -2030760866,
+        "model_id": 50,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d",
+            "scpacker.networking.protocol.codec.complex.VectorCodecString",
+            "scpacker.networking.protocol.codec.custom.VectorCodecVector3d",
+            "scpacker.networking.protocol.codec.custom.VectorCodecShort",
+            "scpacker.networking.protocol.codec.custom.VectorCodecVector3d",
+            "scpacker.networking.protocol.codec.custom.VectorCodecVector3d"
+        ],
+        "fields": [
+            "time",
+            "staticHitPoint",
+            "targets",
+            "targetHitPoints",
+            "name_48",
+            "var_2638",
+            "var_782"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1184835319,
+        "model_id": 50,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d",
+            "scpacker.networking.protocol.codec.complex.VectorCodecString",
+            "scpacker.networking.protocol.codec.custom.VectorCodecVector3d",
+            "scpacker.networking.protocol.codec.primitive.FloatCodec"
+        ],
+        "fields": [
+            "shooter",
+            "staticHitPoint",
+            "targets",
+            "targetHitPoints",
+            "impactForce"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 843751647,
+        "model_id": 50,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": -1527013252,
+        "model_id": 50,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": -367760678,
+        "model_id": 50,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "time"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -380595194,
+        "model_id": 50,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "shooterId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1487306515,
+        "model_id": 50,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 11992250,
+        "model_id": 50,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d"
+        ],
+        "fields": [
+            "shooterId",
+            "targetTank",
+            "localSpotPosition"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1517837003,
+        "model_id": 50,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d"
+        ],
+        "fields": [
+            "targetTank",
+            "localSpotPosition"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1224288585,
+        "model_id": 50,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.FloatCodec"
+        ],
+        "fields": [
+            "projectionOnVerticalAxis"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1380283560,
+        "model_id": 50,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "shooter"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1222085753,
+        "model_id": 50,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "shooter"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1632423559,
+        "model_id": 50,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d",
+            "scpacker.networking.protocol.codec.complex.VectorCodecString",
+            "scpacker.networking.protocol.codec.custom.VectorCodecVector3d",
+            "scpacker.networking.protocol.codec.custom.VectorCodecShort",
+            "scpacker.networking.protocol.codec.custom.VectorCodecVector3d",
+            "scpacker.networking.protocol.codec.custom.VectorCodecVector3d"
+        ],
+        "fields": [
+            "time",
+            "staticHitPoint",
+            "targets",
+            "targetHitPoints",
+            "name_48",
+            "var_2638",
+            "var_782"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -534192254,
+        "model_id": 50,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.FloatCodec"
+        ],
+        "fields": [
+            "shooterId",
+            "projectionOnVerticalAxis"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -159686980,
+        "model_id": 51,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.ByteCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d"
+        ],
+        "fields": [
+            "name_43",
+            "barrel",
+            "shotId",
+            "shotDirection"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -482023661,
+        "model_id": 51,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d"
+        ],
+        "fields": [
+            "name_43",
+            "shotId",
+            "var_2967"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1805942142,
+        "model_id": 51,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.ByteCodec"
+        ],
+        "fields": [
+            "name_43",
+            "barrel"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -44282936,
+        "model_id": 51,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.ByteCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d"
+        ],
+        "fields": [
+            "shooter",
+            "barrel",
+            "shotId",
+            "shotDirection"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1723353904,
+        "model_id": 51,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d"
+        ],
+        "fields": [
+            "name_43",
+            "shotId",
+            "target",
+            "var_253",
+            "var_2967"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -328554480,
+        "model_id": 51,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.ByteCodec"
+        ],
+        "fields": [
+            "shooter",
+            "barrel"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -136344740,
+        "model_id": 52,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "var_2072"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1501310158,
+        "model_id": 52,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d"
+        ],
+        "fields": [
+            "var_2072",
+            "hitPoint"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1690491826,
+        "model_id": 52,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d"
+        ],
+        "fields": [
+            "shooter",
+            "hitPoint"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 259979915,
+        "model_id": 52,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d",
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.ShortCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d"
+        ],
+        "fields": [
+            "var_2072",
+            "relativeHitPoint",
+            "target",
+            "var_356",
+            "var_253",
+            "var_2967"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 958509220,
+        "model_id": 52,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "shooter"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -190359403,
+        "model_id": 52,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d"
+        ],
+        "fields": [
+            "shooter",
+            "target",
+            "relativeHitPoint"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1229701582,
+        "model_id": 53,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d",
+            "scpacker.networking.protocol.codec.custom.VectorCodecVector3d"
+        ],
+        "fields": [
+            "name_43",
+            "target",
+            "shotId",
+            "var_253",
+            "var_252"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1670466290,
+        "model_id": 53,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "shooter"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1907971330,
+        "model_id": 53,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.ShortCodec",
+            "scpacker.networking.protocol.codec.primitive.ShortCodec",
+            "scpacker.networking.protocol.codec.primitive.ShortCodec"
+        ],
+        "fields": [
+            "name_43",
+            "shotId",
+            "shotDirectionX",
+            "shotDirectionY",
+            "shotDirectionZ"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -118119523,
+        "model_id": 53,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.ShortCodec",
+            "scpacker.networking.protocol.codec.primitive.ShortCodec",
+            "scpacker.networking.protocol.codec.primitive.ShortCodec"
+        ],
+        "fields": [
+            "shooter",
+            "shotDirectionX",
+            "shotDirectionY",
+            "shotDirectionZ"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1823935471,
+        "model_id": 53,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.custom.VectorCodecVector3d"
+        ],
+        "fields": [
+            "name_43",
+            "shotId",
+            "var_252"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1147113344,
+        "model_id": 53,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "name_43"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -18176641,
+        "model_id": 54,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "name_43"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1459211021,
+        "model_id": 54,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "shooter"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -484994657,
+        "model_id": 54,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d",
+            "scpacker.networking.protocol.codec.complex.VectorCodecString",
+            "scpacker.networking.protocol.codec.custom.VectorCodecVector3d",
+            "scpacker.networking.protocol.codec.custom.VectorCodecShort",
+            "scpacker.networking.protocol.codec.custom.VectorCodecVector3d",
+            "scpacker.networking.protocol.codec.custom.VectorCodecVector3d"
+        ],
+        "fields": [
+            "name_43",
+            "staticHitPoint",
+            "targets",
+            "targetHitPoints",
+            "name_48",
+            "var_2638",
+            "var_782"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1759063234,
+        "model_id": 54,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "time"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -369590613,
+        "model_id": 54,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d",
+            "scpacker.networking.protocol.codec.complex.VectorCodecString",
+            "scpacker.networking.protocol.codec.custom.VectorCodecVector3d"
+        ],
+        "fields": [
+            "shooter",
+            "staticHitPoint",
+            "targets",
+            "targetHitPoints"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 346830254,
+        "model_id": 54,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "shooter"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 381067984,
+        "model_id": 55,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.ShortCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d"
+        ],
+        "fields": [
+            "time",
+            "target",
+            "var_356",
+            "name_21"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 244072998,
+        "model_id": 55,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.ShortCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d"
+        ],
+        "fields": [
+            "time",
+            "var_356",
+            "var_253",
+            "name_21"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1271729363,
+        "model_id": 55,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "shooter"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 981035905,
+        "model_id": 55,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "shooter"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1051248475,
+        "model_id": 55,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "time"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 2001632000,
+        "model_id": 55,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecIsisState",
+            "scpacker.networking.protocol.codec.custom.CodecTargetHit"
+        ],
+        "fields": [
+            "shooter",
+            "state",
+            "hit"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -248693565,
+        "model_id": 55,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "time"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -75406982,
+        "model_id": 56,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "time"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -2123941185,
+        "model_id": 56,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.complex.VectorCodecString",
+            "scpacker.networking.protocol.codec.custom.VectorCodecShort",
+            "scpacker.networking.protocol.codec.custom.VectorCodecVector3d",
+            "scpacker.networking.protocol.codec.custom.VectorCodecVector3d"
+        ],
+        "fields": [
+            "time",
+            "targets",
+            "var_1019",
+            "var_1229",
+            "var_782"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 979099084,
+        "model_id": 56,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "shooter"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1654947652,
+        "model_id": 56,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "time"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1171353580,
+        "model_id": 56,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "shooter"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1333088437,
+        "model_id": 57,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "shooter"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1212381771,
+        "model_id": 57,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "shooter"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1395251766,
+        "model_id": 57,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.complex.VectorCodecString",
+            "scpacker.networking.protocol.codec.custom.VectorCodecShort",
+            "scpacker.networking.protocol.codec.custom.VectorCodecVector3d",
+            "scpacker.networking.protocol.codec.custom.VectorCodecVector3d"
+        ],
+        "fields": [
+            "time",
+            "targets",
+            "var_1019",
+            "var_2638",
+            "var_782"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1300958299,
+        "model_id": 57,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "time"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1986638927,
+        "model_id": 57,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "time"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -2124388778,
+        "model_id": 58,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "json"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -911983090,
+        "model_id": 59,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "suicideDelayMS"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1767633906,
+        "model_id": 59,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "tank"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -173682854,
+        "model_id": 59,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "tank",
+            "respawnDelay"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1346883037,
+        "model_id": 60,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecBattleTeam"
+        ],
+        "fields": [
+            "team"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1701488017,
+        "model_id": 60,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecBattleTeam"
+        ],
+        "fields": [
+            "team"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1548609916,
+        "model_id": 60,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "pointId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -2141998253,
+        "model_id": 60,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.FloatCodec",
+            "scpacker.networking.protocol.codec.primitive.FloatCodec"
+        ],
+        "fields": [
+            "pointId",
+            "progress",
+            "progressSpeed"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1073178885,
+        "model_id": 60,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.custom.CodecControlPointState"
+        ],
+        "fields": [
+            "pointId",
+            "state"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -456245145,
+        "model_id": 60,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "pointId",
+            "tankId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -773473371,
+        "model_id": 60,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "pointId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1337059439,
+        "model_id": 60,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecControlPointsCC"
+        ],
+        "fields": [
+            "initParams"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1410197917,
+        "model_id": 60,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "pointId",
+            "tankId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 945463181,
+        "model_id": 61,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.BooleanCodec"
+        ],
+        "fields": [
+            "message",
+            "name_73"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -643105296,
+        "model_id": 61,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 606668848,
+        "model_id": 61,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "message"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -449356094,
+        "model_id": 61,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecBattleTeam"
+        ],
+        "fields": [
+            "userId",
+            "message",
+            "team"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1532749363,
+        "model_id": 61,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "uid",
+            "message"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1331361684,
+        "model_id": 61,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "header"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1259981343,
+        "model_id": 61,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecBattleTeam"
+        ],
+        "fields": [
+            "userId",
+            "message",
+            "team"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 272183855,
+        "model_id": 62,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.FloatCodec",
+            "scpacker.networking.protocol.codec.primitive.FloatCodec",
+            "scpacker.networking.protocol.codec.primitive.FloatCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "mineId",
+            "x",
+            "y",
+            "z",
+            "userId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -226978906,
+        "model_id": 62,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecBattleMineCC"
+        ],
+        "fields": [
+            "initParams"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1387974401,
+        "model_id": 62,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "mineId",
+            "targetId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1200619383,
+        "model_id": 62,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "ownerId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -718866741,
+        "model_id": 62,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "mineId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -624217047,
+        "model_id": 62,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "mineId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 930618015,
+        "model_id": 63,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 183561709,
+        "model_id": 64,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 463494974,
+        "model_id": 65,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "uid"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1382076950,
+        "model_id": 65,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "text",
+            "uid"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -666893269,
+        "model_id": 65,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.ResourceGetterCodec"
+        ],
+        "fields": [
+            "text",
+            "sound"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1709511848,
+        "model_id": 66,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "json"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 602656160,
+        "model_id": 67,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecAchievementCC"
+        ],
+        "fields": [
+            "initParams"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 579696867,
+        "model_id": 67,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecAchievement"
+        ],
+        "fields": [
+            "achievement"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1042583203,
+        "model_id": 67,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecAchievement",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "achievement",
+            "message"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -260270890,
+        "model_id": 68,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecNewsShowingCC"
+        ],
+        "fields": [
+            "initParams"
+        ]
+    },
+    {
+        "name": "S2CPaymentCompleted",
+        "packet_id": 1566424318,
+        "model_id": 69,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.custom.ResourceGetterCodec"
+        ],
+        "fields": [
+            "donation",
+            "packageBonusCrystals",
+            "bonusCrystals",
+            "image"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 2128281231,
+        "model_id": 70,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d"
+        ],
+        "fields": [
+            "name_43",
+            "direction"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 471157826,
+        "model_id": 70,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.StringCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d",
+            "scpacker.networking.protocol.codec.custom.VectorCodecTargetHit"
+        ],
+        "fields": [
+            "shooter",
+            "direction",
+            "targets"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -541655881,
+        "model_id": 70,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d",
+            "scpacker.networking.protocol.codec.custom.VectorCodecTargetPosition"
+        ],
+        "fields": [
+            "name_43",
+            "direction",
+            "targets"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1817559787,
+        "model_id": 71,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.custom.CodecVector3d"
+        ],
+        "fields": [
+            "flagId",
+            "position"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1746762585,
+        "model_id": 71,
+        "codecs": [
+            "scpacker.networking.protocol.codec.custom.CodecAssaultCC"
+        ],
+        "fields": [
+            "initParams"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": 1941352088,
+        "model_id": 71,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "flagId",
+            "baseId",
+            "delivererTankId"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -1940289099,
+        "model_id": 71,
+        "codecs": [],
+        "fields": []
+    },
+    {
+        "name": null,
+        "packet_id": 142177784,
+        "model_id": 71,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "flagId",
+            "tank"
+        ]
+    },
+    {
+        "name": null,
+        "packet_id": -325434725,
+        "model_id": 71,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.StringCodec"
+        ],
+        "fields": [
+            "flagId",
+            "tankId"
+        ]
+    },
+    {
+        "name": "S2CBeginnerPassActivate",
+        "packet_id": 29211250,
+        "model_id": 72,
+        "codecs": [
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec",
+            "scpacker.networking.protocol.codec.primitive.IntCodec"
+        ],
+        "fields": [
+            "lifeTimeInSecondsFromCurrentDateTime",
+            "crystalBonusInPercent",
+            "scoreBonusInPercent"
+        ]
+    }
+]
