@@ -1,7 +1,7 @@
 use std::net::SocketAddr;
 
 use futures::StreamExt;
-use tank_bot_rs::{ConnectionStreamItem, Connection, packets::{PacketDowncast, self}};
+use tank_bot_rs::{Connection, SimplePacketDebugFilter};
 use tokio::net::{TcpSocket, TcpStream};
 use tracing::{Level, info, warn, debug};
 use clap::Parser;
@@ -25,8 +25,22 @@ async fn proxy_client(client: TcpStream, local_address: SocketAddr, target_addre
     let server_socket = TcpSocket::new_v4()?;
     let server_stream = server_socket.connect(target_address).await?;
 
-    let mut client_connection = Connection::new(true, local_address, Box::new(client), log_protocol);
-    let mut server_connection = Connection::new(false, target_address, Box::new(server_stream), false);
+    let mut client_connection = Connection::new(
+        true, 
+        local_address, 
+        Box::new(client), 
+        if log_protocol {
+            Box::new(SimplePacketDebugFilter::logging_enabled())
+        } else {
+            Box::new(SimplePacketDebugFilter::logging_disabled())
+        }
+    );
+    let mut server_connection = Connection::new(
+        false, 
+        target_address, 
+        Box::new(server_stream), 
+        Box::new(SimplePacketDebugFilter::logging_disabled())
+    );
 
     /* Await connection setup. */
     let (result_client, result_server) = tokio::join!(
@@ -49,7 +63,7 @@ async fn proxy_client(client: TcpStream, local_address: SocketAddr, target_addre
                     }
                 };
 
-                if let ConnectionStreamItem::Packet(packet) = &event {
+                if let Ok(packet) = &event {
                     server_connection.send_packet(Box::as_ref(packet))?;
                 }
             }
@@ -62,7 +76,7 @@ async fn proxy_client(client: TcpStream, local_address: SocketAddr, target_addre
                     }
                 };
 
-                if let ConnectionStreamItem::Packet(packet) = &event {
+                if let Ok(packet) = &event {
                     client_connection.send_packet(Box::as_ref(packet))?;
                 }
             }

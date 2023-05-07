@@ -7,15 +7,20 @@ edition = "2021"
 
 [dependencies]
 anyhow = "1.0.71"
+async-trait = "0.1.68"
 byteorder = "1.4.3"
 clap = { version = "4.2.7", features = ["derive"] }
 console-subscriber = "0.1.8"
+fast-socks5 = "0.8.2"
 futures = "0.3.28"
 rand = "0.8.5"
-tokio = { version = "1.28.0", features = ["net", "rt", "macros", "rt-multi-thread"] }
+reqwest = { version = "0.11.17", features = ["multipart"] }
+serde = { version = "1.0.162", features = ["derive"] }
+serde_json = "1.0.96"
+tokio = { version = "1.28.0", features = ["net", "rt", "macros", "rt-multi-thread", "sync"] }
 tokio-stream = "0.1.14"
 tracing = "0.1.37"
-tracing-subscriber = "0.3.17"
+tracing-subscriber = { version = "0.3.17", features = ["env-filter"] }
 
 [build-dependencies]
 serde = { version = "1.0.162", features = ["derive"] }

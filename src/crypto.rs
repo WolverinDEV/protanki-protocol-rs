@@ -25,23 +25,21 @@ pub struct XOrCryptContext {
 }
 
 impl XOrCryptContext {
-    pub fn new_server() -> (Self, Vec<i8>) {
+    pub fn new_server() -> (Self, Vec<u8>) {
         let mut rng = rand::thread_rng();
 
         let mut seed = Vec::new();
         seed.resize(4, 0);
-        for index in 0..seed.len() {
-            seed[index] = rng.gen::<i8>();
-        }
+        rng.fill(seed.as_mut_slice());
 
         (Self::new(true, &seed), seed)
     }
 
-    pub fn new_client(initial_hash: &[i8]) -> Self {
+    pub fn new_client(initial_hash: &[u8]) -> Self {
         Self::new(false, initial_hash)
     }
 
-    fn new(is_server: bool, initial_hash: &[i8]) -> Self {
+    fn new(is_server: bool, initial_hash: &[u8]) -> Self {
         let seed = initial_hash.iter().fold(0, |acc, v| acc ^ *v) as u8;
         let mut key_decrypt = [0u8; 8];
         let mut key_encrypt = [0u8; 8];

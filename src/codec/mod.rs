@@ -52,8 +52,15 @@ impl CodecRegistry {
         self.register_codec(LengthCodec{});
         self.register_codec(StringCodec{});
         
-        self.register_codec(VectorCodec::<i8>::default());
+        self.register_codec(VectorCodec::<u8>::default());
         self.register_codec(VectorCodec::<String>::default());
+
+        self.register_custom();
+    }
+
+    fn register_custom(&mut self) {
+        self.register_codec(CaptchaLocationCodec{});
+        self.register_codec(VectorCodec::<CaptchaLocation>::default());
     }
 
     pub fn register_codec<T: 'static>(&mut self, codec: impl Codec<Target = T> + 'static + Sized) -> Arc<dyn Codec<Target = T>> {

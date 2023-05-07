@@ -20,7 +20,7 @@ pub fn register_all_packets(registry: &mut PacketRegistry) {
 "#;
 
 const TEMPLATE_PACKET: &'static str = r#"
-#[derive(Default, Debug)]
+#[derive(Default, Clone, Debug)]
 pub struct #name# {
 #fields#
 }

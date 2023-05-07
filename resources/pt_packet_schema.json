@@ -348,7 +348,7 @@
         "fields": []
     },
     {
-        "name": null,
+        "name": "S2CAccountRegisterCaptchaRequired",
         "packet_id": 1003297349,
         "model_id": 8,
         "codecs": [],

@@ -13,10 +13,15 @@ pub trait Packet : Debug + Send {
 
 pub trait PacketDowncast {
     fn downcast_ref<T: 'static>(&self) -> Option<&T>;
+    fn is_type<T: 'static>(&self) -> bool;
 }
 impl PacketDowncast for dyn Packet + '_ {
     fn downcast_ref<T: 'static>(&self) -> Option<&T> {
         self.as_any().downcast_ref::<T>()
+    }
+
+    fn is_type<T: 'static>(&self) -> bool {
+        self.downcast_ref::<T>().is_some()
     }
 }
 

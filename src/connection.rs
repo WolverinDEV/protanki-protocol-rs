@@ -2,7 +2,8 @@ use std::{net::SocketAddr, task::{Poll, Context, Waker}, io::{Cursor, Read, Writ
 
 use crate::{crypto::{CryptContext, NoCryptContext, XOrCryptContext}, packets};
 use crate::packets::{Packet, PacketRegistry, PacketDowncast};
-use tokio::{io::{self}, net::{TcpStream}};
+use fast_socks5::client::Socks5Stream;
+use tokio::{io::{self, AsyncRead, ReadBuf, AsyncWrite}, net::{TcpStream}};
 use byteorder::{ReadBytesExt, BigEndian, WriteBytesExt};
 use futures::prelude::*;
 use tracing::{warn, trace, debug};
@@ -10,13 +11,64 @@ use tracing::{warn, trace, debug};
 use crate::packets::UnknownPacket;
 
 pub trait Socket {
-    fn poll_recv(&self, cx: &mut Context, buf: &mut [u8]) -> Poll<io::Result<usize>>;
-	fn poll_send(&self, cx: &mut Context, buf: &[u8]) -> Poll<io::Result<usize>>;
+    fn poll_recv(&mut self, cx: &mut Context, buf: &mut [u8]) -> Poll<io::Result<usize>>;
+	fn poll_send(&mut self, cx: &mut Context, buf: &[u8]) -> Poll<io::Result<usize>>;
 	fn local_addr(&self) -> io::Result<SocketAddr>;
 }
 
+pub trait PacketDebugFilter : Send {
+    fn should_log(&self, is_send: bool, packet: &dyn Packet) -> bool;
+}
+
+#[derive(Debug, Clone)]
+pub struct SimplePacketDebugFilter {
+    enabled: bool,
+}
+
+impl SimplePacketDebugFilter {
+    pub fn logging_enabled() -> Self {
+        Self{ enabled: true }
+    }
+
+    pub fn logging_disabled() -> Self {
+        Self{ enabled: false }
+    }
+}
+
+impl PacketDebugFilter for SimplePacketDebugFilter {
+    fn should_log(&self, _is_send: bool, _packet: &dyn Packet) -> bool {
+        self.enabled
+    }
+}
+
+#[derive(Debug, Clone)]
+pub struct ModelPacketDebugFilter {
+    model_ids: Vec<u32>,
+    whitelist: bool,
+}
+
+impl ModelPacketDebugFilter {
+    pub fn whitelist(model_ids: Vec<u32>) -> Self {
+        Self { model_ids, whitelist: true }
+    }
+    
+    pub fn blacklist(model_ids: Vec<u32>) -> Self {
+        Self { model_ids, whitelist: false }
+    }
+}
+
+impl PacketDebugFilter for ModelPacketDebugFilter {
+    fn should_log(&self, _is_send: bool, packet: &dyn Packet) -> bool {
+        if self.model_ids.contains(&packet.model_id()) {
+            return self.whitelist;
+        } else {
+            return !self.whitelist;
+        }
+    }
+}
+
 impl Socket for TcpStream {
-    fn poll_recv(&self, cx: &mut Context, buf: &mut [u8]) -> Poll<io::Result<usize>> {
+    fn poll_recv(&mut self, cx: &mut Context, buf: &mut [u8]) -> Poll<io::Result<usize>> {
         loop {
             match TcpStream::poll_read_ready(&self, cx) {
                 Poll::Ready(Ok(_)) => {},
@@ -32,7 +84,7 @@ impl Socket for TcpStream {
         }
     }
 
-    fn poll_send(&self, cx: &mut Context, buf: &[u8]) -> Poll<io::Result<usize>> {
+    fn poll_send(&mut self, cx: &mut Context, buf: &[u8]) -> Poll<io::Result<usize>> {
         loop {
             match TcpStream::poll_write_ready(&self, cx) {
                 Poll::Ready(Ok(_)) => {},
@@ -53,13 +105,35 @@ impl Socket for TcpStream {
     }
 }
 
+
+
+impl Socket for Socks5Stream<TcpStream> {
+    fn poll_recv(&mut self, cx: &mut std::task::Context, buf: &mut [u8]) -> Poll<io::Result<usize>> {
+        let mut read_buf = ReadBuf::new(buf);
+        match AsyncRead::poll_read(Pin::new(self), cx, &mut read_buf) {
+            Poll::Ready(Ok(())) => Poll::Ready(Ok(read_buf.filled().len())),
+            Poll::Ready(Err(err)) => Poll::Ready(Err(err)),
+            Poll::Pending => Poll::Pending
+        }
+    }
+
+    fn poll_send(&mut self, cx: &mut std::task::Context, buf: &[u8]) -> Poll<io::Result<usize>> {
+        AsyncWrite::poll_write(Pin::new(self), cx, buf)
+    }
+
+    fn local_addr(&self) -> io::Result<SocketAddr> {
+        todo!()
+    }
+}
+
 #[derive(Debug)]
-pub enum ConnectionStreamItem {
-    Packet(Box<dyn Packet>),
+pub enum ConnectionError {
     DecodeError(anyhow::Error),
     RecvError(io::Error),
     SendError(io::Error),
 }
+
+pub type ConnectionStreamItem = std::result::Result<Box<dyn Packet>, ConnectionError>;
 
 pub struct Connection {
     address: SocketAddr,
@@ -69,7 +143,7 @@ pub struct Connection {
     crypt_context: Box<dyn CryptContext>,
 
     disconnected: bool,
-    log_packets: bool,
+    log_filter: Box<dyn PacketDebugFilter>,
 
     recv_buffer: Vec<u8>,
     recv_buffer_index: usize,
@@ -81,7 +155,7 @@ pub struct Connection {
 }
 
 impl Connection {
-    pub fn new(is_server: bool, address: SocketAddr, socket: Box<dyn Socket + Send>, log_packets: bool) -> Self {
+    pub fn new(is_server: bool, address: SocketAddr, socket: Box<dyn Socket + Send>, log_filter: Box<dyn PacketDebugFilter>) -> Self {
         let mut instance = Self {
             address,
             socket,
@@ -90,7 +164,7 @@ impl Connection {
             crypt_context: Box::new(NoCryptContext{}),
 
             disconnected: false,
-            log_packets,
+            log_filter,
 
             recv_buffer: Vec::with_capacity(1024 * 16),
             recv_buffer_index: 0,
@@ -130,7 +204,7 @@ impl Connection {
             waker.wake();
         }
         
-        if self.log_packets {
+        if self.log_filter.should_log(true, packet) {
             trace!("[OUT] {: >11} {: >2} {:?} ({} bytes)", packet.packet_id() as i32, packet.model_id(), packet, packet_length - 8);
         }
         Ok(())
@@ -145,8 +219,8 @@ impl Connection {
             Ok(())
         } else {
             let packet = match self.next().await {
-                Some(ConnectionStreamItem::Packet(packet)) => packet,
-                Some(event) => anyhow::bail!("connect failed: {:?}", event),
+                Some(Ok(packet)) => packet,
+                Some(Err(event)) => anyhow::bail!("connect failed: {:?}", event),
                 None => anyhow::bail!("connection closed during setup"),
             };
     
@@ -171,6 +245,8 @@ impl Connection {
 
         if packet_length > 1024 * 1024 * 64 {
             return Poll::Ready(Err(anyhow::anyhow!("packet too large (size: {})", packet_length)));
+        } else if packet_length < 8 {
+            return Poll::Ready(Err(anyhow::anyhow!("packet too small (size: {}, buffer size: {})", packet_length, self.recv_buffer_index)));
         }
 
         if self.recv_buffer_index < packet_length {
@@ -206,7 +282,7 @@ impl Connection {
             warn!("Packet decoder did not read whole packet of id {} ({} bytes left).", packet_id, packet_reader.remaining_slice().len());
         }
 
-        if self.log_packets {
+        if self.log_filter.should_log(false, Box::as_ref(&packet)) {
             trace!("[IN ] {: >11} {: >2} {:?} ({} bytes)", packet.packet_id() as i32, packet.model_id(), packet, packet_length - 8);
         }
 
@@ -222,8 +298,8 @@ impl Connection {
 
         loop {
             match self.try_parse_read_buffer() {
-                Poll::Ready(Ok(packet)) => return Poll::Ready(ConnectionStreamItem::Packet(packet)),
-                Poll::Ready(Err(error)) => return Poll::Ready(ConnectionStreamItem::DecodeError(error)),
+                Poll::Ready(Ok(packet)) => return Poll::Ready(Ok(packet)),
+                Poll::Ready(Err(error)) => return Poll::Ready(Err(ConnectionError::DecodeError(error))),
                 Poll::Pending => { /* not yet enough data */}
             }
 
@@ -231,7 +307,7 @@ impl Connection {
                 Poll::Ready(Ok(length)) => {
                     self.recv_buffer_index += length;
                 },
-                Poll::Ready(Err(error)) => return Poll::Ready(ConnectionStreamItem::RecvError(error)),
+                Poll::Ready(Err(error)) => return Poll::Ready(Err(ConnectionError::RecvError(error))),
                 Poll::Pending => return Poll::Pending
             }
         }
@@ -245,7 +321,7 @@ impl Connection {
                     self.send_buffer.copy_within(length.., 0);
                     self.send_buffer.truncate(self.send_buffer.len() - length);
                 },
-                Poll::Ready(Err(error)) => return Poll::Ready(ConnectionStreamItem::SendError(error)),
+                Poll::Ready(Err(error)) => return Poll::Ready(Err(ConnectionError::SendError(error))),
                 Poll::Pending => return Poll::Pending
             }
         }
@@ -276,18 +352,11 @@ impl Stream for Connection {
         }
 
         match self.poll_io(cx) {
-            Poll::Ready(item) => {
-                match &item {
-                    &ConnectionStreamItem::DecodeError(_) |
-                    &ConnectionStreamItem::RecvError(_) |
-                    &ConnectionStreamItem::SendError(_) => {
-                        debug!("connection error: {:?}", item);
-                        self.disconnected = true;
-                    },
-                    _ => {}
-                }
-
-                Poll::Ready(Some(item))
+            Poll::Ready(Ok(item)) => Poll::Ready(Some(Ok(item))),
+            Poll::Ready(Err(error)) => {
+                debug!("connection error: {:?}", error);
+                self.disconnected = true;
+                return Poll::Ready(Some(Err(error)));
             },
             Poll::Pending => Poll::Pending
         }

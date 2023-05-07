@@ -265,9 +265,14 @@ impl Codec for StringCodec {
     }
 }
 
-#[derive(Default)]
 pub struct VectorCodec<T> {
     _maker: PhantomData<T>,
+}
+
+impl<T> Default for VectorCodec<T> {
+    fn default() -> Self {
+        Self { _maker: Default::default() }
+    }
 }
 
 impl<T: Send + Sync + 'static> Codec for VectorCodec<T> {

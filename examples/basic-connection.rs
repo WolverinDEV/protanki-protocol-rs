@@ -1,6 +1,6 @@
 use futures::StreamExt;
-use tank_bot_rs::{TanksClient, ConnectionStreamItem, packets::{self, PacketDowncast}};
-use tracing::{Level, info};
+use tank_bot_rs::{TanksClient, packets::{self, PacketDowncast}};
+use tracing::{Level, info, error};
 use clap::Parser;
 
 #[derive(Parser, Debug)]
@@ -37,24 +37,30 @@ async fn main() -> anyhow::Result<()> {
 
     info!("Client connected.");
     while let Some(result) = client.connection.next().await {
-        if let ConnectionStreamItem::Packet(packet) = result {
-            if let Some(packet) = packet.downcast_ref::<packets::S2CResourceLoaderLoadDependencies>() {
-                client.connection.send_packet(&packets::C2SResourceLoaderDependenciesLoaded{
-                    callback_id: packet.callback_id
-                })?;
-
-                client.connection.send_packet(&packets::C2SResourceLoaderDependenciesLoaded{
-                    callback_id: packet.callback_id
-                })?;
-            } else if let Some(_) = packet.downcast_ref::<packets::S2CPingMeasurePing>() {
-                client.connection.send_packet(&packets::C2SPingMeasurePong{})?;
-            } else if let Some(_) = packet.downcast_ref::<packets::S2CResourceLoaderResourcesLoaded>() {
-                info!("Client loaded and viewing the login screen.");
-                if let Some(hash) = &args.login_hash {
-                    client.connection.send_packet(&packets::C2SAccountLoginHashLogin{
-                        hash: hash.clone()
+        match result {
+            Ok(packet) => {
+                if let Some(packet) = packet.downcast_ref::<packets::S2CResourceLoaderLoadDependencies>() {
+                    client.connection.send_packet(&packets::C2SResourceLoaderDependenciesLoaded{
+                        callback_id: packet.callback_id
                     })?;
+    
+                    client.connection.send_packet(&packets::C2SResourceLoaderDependenciesLoaded{
+                        callback_id: packet.callback_id
+                    })?;
+                } else if let Some(_) = packet.downcast_ref::<packets::S2CPingMeasurePing>() {
+                    client.connection.send_packet(&packets::C2SPingMeasurePong{})?;
+                } else if let Some(_) = packet.downcast_ref::<packets::S2CResourceLoaderResourcesLoaded>() {
+                    info!("Client loaded and viewing the login screen.");
+                    if let Some(hash) = &args.login_hash {
+                        client.connection.send_packet(&packets::C2SAccountLoginHashLogin{
+                            hash: hash.clone()
+                        })?;
+                    }
                 }
+            },
+            Err(err) => {
+                error!("Connection error: {:?}", err);
+                break;
             }
         }
     }
