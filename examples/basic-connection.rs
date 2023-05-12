@@ -2,6 +2,7 @@ use futures::StreamExt;
 use tank_bot_rs::{TanksClient, packets::{self, PacketDowncast}};
 use tracing::{Level, info, error};
 use clap::Parser;
+use tracing_subscriber::EnvFilter;
 
 #[derive(Parser, Debug)]
 struct Args {
@@ -18,7 +19,7 @@ struct Args {
     language_code: String,
     
     /// Target language code
-    #[arg(long, default_value = "true")]
+    #[arg(long)]
     log_protocol: bool,
 }
 
@@ -26,6 +27,7 @@ struct Args {
 async fn main() -> anyhow::Result<()> {
     tracing_subscriber::fmt()
         .with_max_level(Level::TRACE)
+        .with_env_filter(EnvFilter::from_default_env())
         .init();
 
     let args: Args = Args::parse();

@@ -1,10 +1,14 @@
-use std::net::SocketAddr;
+use std::{net::SocketAddr, fs::File};
 
 use futures::StreamExt;
 use tank_bot_rs::{Connection, SimplePacketDebugFilter};
 use tokio::net::{TcpSocket, TcpStream};
-use tracing::{Level, info, warn, debug};
+use tracing::{Level, info, warn, debug, error};
 use clap::Parser;
+use tracing_subscriber::EnvFilter;
+use utils::{ProxyProvider, SocksProxyProvider, HostProxyProvider, Proxy};
+
+mod utils;
 
 #[derive(Parser, Debug)]
 struct Args {
@@ -16,15 +20,17 @@ struct Args {
     #[arg(short, long)]
     target: String,
 
+    /// Proxy list to use when connecting to the target server
+    #[arg(short, long)]
+    proxy_list: Option<String>,
+
     /// Target language code
-    #[arg(long, default_value = "true")]
+    #[arg(long)]
     log_protocol: bool,
 }
 
-async fn proxy_client(client: TcpStream, local_address: SocketAddr, target_address: SocketAddr, log_protocol: bool) -> anyhow::Result<()> {
-    let server_socket = TcpSocket::new_v4()?;
-    let server_stream = server_socket.connect(target_address).await?;
-
+async fn proxy_client(client: TcpStream, local_address: SocketAddr, target_address: SocketAddr, proxy: &mut dyn Proxy, log_protocol: bool) -> anyhow::Result<()> {
+    let server_socket = proxy.create_stream(target_address).await?;
     let mut client_connection = Connection::new(
         true, 
         local_address, 
@@ -38,7 +44,7 @@ async fn proxy_client(client: TcpStream, local_address: SocketAddr, target_addre
     let mut server_connection = Connection::new(
         false, 
         target_address, 
-        Box::new(server_stream), 
+        server_socket, 
         Box::new(SimplePacketDebugFilter::logging_disabled())
     );
 
@@ -91,6 +97,7 @@ async fn proxy_client(client: TcpStream, local_address: SocketAddr, target_addre
 async fn main() -> anyhow::Result<()> {
     tracing_subscriber::fmt()
         .with_max_level(Level::TRACE)
+        .with_env_filter(EnvFilter::from_default_env())
         .init();
 
     let args: Args = Args::parse();
@@ -100,15 +107,33 @@ async fn main() -> anyhow::Result<()> {
     socket.bind(args.bind.parse()?)?;
     let listener = socket.listen(5)?;
 
+    let proxy_provider: Box<dyn ProxyProvider> = if let Some(file) = &args.proxy_list {
+        Box::new(SocksProxyProvider::from_file(
+            &mut File::open(file)?
+        )?)
+    } else {
+        Box::new(HostProxyProvider::new())
+    };
+
     loop {
         let (client, address) = listener.accept().await?;
         info!("Received new client from {}", address);
 
         let target_address = target_address.clone();
+        let mut proxy = match proxy_provider.next_proxy() {
+            Some(proxy) => proxy,
+            None => {
+                error!("Could not get next proxy. Aborting server loop.");
+                break;
+            }
+        };
+
         tokio::task::spawn(async move {
-            if let Err(error) = proxy_client(client, address, target_address, args.log_protocol).await {
+            if let Err(error) = proxy_client(client, address, target_address, Box::as_mut(&mut proxy), args.log_protocol).await {
                 warn!("Proxy session error: {}", error);
             }
         });
     }
+
+    Ok(())
 }

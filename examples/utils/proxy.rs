@@ -9,7 +9,7 @@ use tokio::{net::TcpStream};
 use anyhow::Context;
 
 #[async_trait]
-pub trait Proxy {
+pub trait Proxy : Send {
     async fn create_stream(&mut self, target: SocketAddr) -> anyhow::Result<Box<dyn Socket + Send>>;
 }
 
