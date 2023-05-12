@@ -49,6 +49,7 @@ async fn proxy_client(client: TcpStream, local_address: SocketAddr, target_addre
     );
 
     /* Await connection setup. */
+    debug!("Init encryption");
     let (result_client, result_server) = tokio::join!(
         client_connection.init_encryption(),
         server_connection.init_encryption()
@@ -115,6 +116,7 @@ async fn main() -> anyhow::Result<()> {
         Box::new(HostProxyProvider::new())
     };
 
+    info!("Proxy server started");
     loop {
         let (client, address) = listener.accept().await?;
         info!("Received new client from {}", address);
