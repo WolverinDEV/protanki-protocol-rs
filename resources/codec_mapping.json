@@ -1,12 +1,18 @@
 {
     "scpacker.networking.protocol.codec.primitive.StringCodec": "String",
     "scpacker.networking.protocol.codec.primitive.BooleanCodec": "bool",
+    "scpacker.networking.protocol.codec.primitive.ByteCodec": "i8",
+    "scpacker.networking.protocol.codec.primitive.ShortCodec": "i16",
+    "scpacker.networking.protocol.codec.primitive.IntCodec": "i32",
+    "scpacker.networking.protocol.codec.primitive.FloatCodec": "f32",
     "scpacker.networking.protocol.codec.custom.VectorCodecByte": "Vec<u8>",
     "scpacker.networking.protocol.codec.complex.VectorCodecString": "Vec<String>",
-    "scpacker.networking.protocol.codec.primitive.IntCodec": "i32",
-    "scpacker.networking.protocol.codec.primitive.ByteCodec": "i8",
-    "scpacker.networking.protocol.codec.primitive.FloatCodec": "f32",
     "scpacker.networking.protocol.codec.custom.ResourceGetterCodec": "ResourceId",
     "scpacker.networking.protocol.codec.custom.CaptchaLocationCodec": "CaptchaLocation",
-    "scpacker.networking.protocol.codec.custom.VectorCodecCaptchaLocation": "Vec<CaptchaLocation>"
+    "scpacker.networking.protocol.codec.custom.VectorCodecCaptchaLocation": "Vec<CaptchaLocation>",
+    "scpacker.networking.protocol.codec.custom.CodecBattleTeam": "BattleTeam",
+    "scpacker.networking.protocol.codec.custom.CodecLayoutState": "LayoutState",
+    "scpacker.networking.protocol.codec.custom.CodecVector3d": "Option<Vector3::<f32>>",
+    "scpacker.networking.protocol.codec.custom.CodecRotateTurretCommand": "RotateTurretCommand",
+    "scpacker.networking.protocol.codec.custom.CodecMoveCommand": "MoveCommand"
 }

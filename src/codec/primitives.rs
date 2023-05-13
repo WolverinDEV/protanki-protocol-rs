@@ -298,3 +298,36 @@ impl<T: Send + Sync + 'static> Codec for VectorCodec<T> {
         return Ok(result);
     }
 }
+
+pub struct CodecOptional<T> {
+    _maker: PhantomData<T>,
+}
+
+impl<T> Default for CodecOptional<T> {
+    fn default() -> Self {
+        Self { _maker: Default::default() }
+    }
+}
+
+impl<T: Send + Sync + 'static> Codec for CodecOptional<T> {
+    type Target = Option<T>;
+
+    fn encode(self: &Self, registry: &CodecRegistry, writer: &mut dyn Write, target: &Self::Target) -> anyhow::Result<()> {
+        if let Some(value) = &target {
+            registry.encode::<bool>(writer, &false)?;
+            registry.encode::<T>(writer, value)
+        } else {
+            registry.encode::<bool>(writer, &true)
+        }
+    }
+
+    fn decode(self: &Self, registry: &CodecRegistry, reader: &mut dyn Read) -> anyhow::Result<Self::Target> {
+        if registry.decode::<bool>(reader)? {
+            return Ok(None)
+        }
+
+        Ok(Some(
+            registry.decode::<T>(reader)?
+        ))
+    }
+}

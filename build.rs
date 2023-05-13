@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug)]
 struct PacketDescription {
-    name: Option<String>,
+    names: Vec<String>,
 
     packet_id: i32,
     model_id: u32,
@@ -66,7 +66,7 @@ impl Codec for #name# {
 "#;
 
 fn generate_packet_class(writer: &mut dyn Write, description: &PacketDescription, codecs: &BTreeMap<String, String>) -> io::Result<bool> {
-    let name = match &description.name {
+    let name = match description.names.first() {
         Some(value) => value,
         None => {
             writeln!(writer, "/* Skipping {} (Model {}) because we haven't yet assigned a name */", description.packet_id, description.model_id)?;
@@ -120,12 +120,18 @@ fn generate_packet_class(writer: &mut dyn Write, description: &PacketDescription
         .replace("#decode#", &decode);
 
     write!(writer, "{}", class_data)?;
+
+    for alias in description.names[1..].iter() {
+        writeln!(writer, "pub type {} = {};", alias, name)?;
+    }
+
     Ok(true)
 }
 
 fn generate_footer(writer: &mut dyn Write, packets: &[&PacketDescription]) -> io::Result<()> {
     let impl_register = packets.iter()
-        .map(|packet| format!("    registry.register_packet::<{}>(Default::default());", packet.name.as_ref().expect("a packet class name")))
+        .filter_map(|packet| packet.names.first())
+        .map(|name| format!("    registry.register_packet::<{}>(Default::default());", name))
         .collect::<Vec<_>>()
         .join("\n");
 
@@ -137,6 +143,9 @@ fn generate_footer(writer: &mut dyn Write, packets: &[&PacketDescription]) -> io
 }
 
 fn main() {
+    println!("cargo:rerun-if-changed=resources/codec_mapping.json");
+    println!("cargo:rerun-if-changed=resources/pt_packet_schema.json");
+
 	let out_dir = env::var("OUT_DIR").unwrap();
     println!("Out dir: {}", out_dir);
 
@@ -153,6 +162,8 @@ fn main() {
 
     /* TODO: Write header */
     writeln!(&mut packets, "use crate::codec::*;").unwrap();
+    writeln!(&mut packets, "use nalgebra::Vector3;").unwrap();
+    
     let mut generated_packets = Vec::with_capacity(packet_schema.len());
     for packet in packet_schema.iter() {
         let generated = generate_packet_class(&mut packets, packet, &codec_mapping).unwrap();

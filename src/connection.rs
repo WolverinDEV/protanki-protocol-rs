@@ -6,7 +6,7 @@ use fast_socks5::client::Socks5Stream;
 use tokio::{io::{self, AsyncRead, ReadBuf, AsyncWrite}, net::{TcpStream}};
 use byteorder::{ReadBytesExt, BigEndian, WriteBytesExt};
 use futures::prelude::*;
-use tracing::{warn, trace, debug};
+use tracing::{warn, trace, debug, info};
 
 use crate::packets::UnknownPacket;
 
@@ -131,6 +131,7 @@ pub enum ConnectionError {
     DecodeError(anyhow::Error),
     RecvError(io::Error),
     SendError(io::Error),
+    Disconnected,
 }
 
 pub type ConnectionStreamItem = std::result::Result<Box<dyn Packet>, ConnectionError>;
@@ -279,7 +280,7 @@ impl Connection {
         };
 
         if !packet_reader.is_empty() {
-            warn!("Packet decoder did not read whole packet of id {} ({} bytes left).", packet_id, packet_reader.remaining_slice().len());
+            warn!("Packet decoder did not read whole packet of id {} ({} out of {} bytes left).", packet_id as i32, packet_reader.remaining_slice().len(), packet_length - 8);
         }
 
         if self.log_filter.should_log(false, Box::as_ref(&packet)) {
@@ -305,6 +306,10 @@ impl Connection {
 
             match self.socket.poll_recv(cx, &mut self.recv_buffer[self.recv_buffer_index..]) {
                 Poll::Ready(Ok(length)) => {
+                    if length == 0 {
+                        return Poll::Ready(Err(ConnectionError::Disconnected))
+                    }
+                    
                     self.recv_buffer_index += length;
                 },
                 Poll::Ready(Err(error)) => return Poll::Ready(Err(ConnectionError::RecvError(error))),
@@ -331,7 +336,7 @@ impl Connection {
     fn poll_io(&mut self, cx: &mut Context) -> Poll<ConnectionStreamItem> {
         match self.poll_outgoing(cx) {
             Poll::Ready(item) => return Poll::Ready(item),
-            Poll::Pending => {}
+            Poll::Pending => { }
         }
 
         match self.poll_incoming(cx) {

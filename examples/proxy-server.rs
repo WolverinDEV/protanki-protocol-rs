@@ -1,4 +1,4 @@
-use std::{net::SocketAddr, fs::File};
+use std::{net::SocketAddr, fs::File, sync::{Arc, atomic::{AtomicU64, AtomicI64}}};
 
 use futures::StreamExt;
 use tank_bot_rs::{Connection, SimplePacketDebugFilter};
@@ -100,6 +100,8 @@ async fn main() -> anyhow::Result<()> {
         .with_max_level(Level::TRACE)
         .with_env_filter(EnvFilter::from_default_env())
         .init();
+
+    //console_subscriber::init();
 
     let args: Args = Args::parse();
     let target_address: SocketAddr = args.target.parse()?;

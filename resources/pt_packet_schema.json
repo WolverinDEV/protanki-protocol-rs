@@ -1,13 +1,17 @@
 [
     {
-        "name": null,
+        "names": [
+            "S2CAccountLoginFailure"
+        ],
         "packet_id": 103812952,
         "model_id": 0,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "C2SAccountLoginExecute"
+        ],
         "packet_id": -739684591,
         "model_id": 0,
         "codecs": [
@@ -22,14 +26,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "S2CAccountLoginSuccess"
+        ],
         "packet_id": -1923286328,
         "model_id": 0,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "S2CAccountLoginHashUpdate",
+        "names": [
+            "S2CAccountLoginHashUpdate"
+        ],
         "packet_id": 932564569,
         "model_id": 1,
         "codecs": [
@@ -40,14 +48,18 @@
         ]
     },
     {
-        "name": "S2CAccountLoginHashLoginFailed",
+        "names": [
+            "S2CAccountLoginHashLoginFailed"
+        ],
         "packet_id": 655372891,
         "model_id": 1,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "C2SAccountLoginHashLogin",
+        "names": [
+            "C2SAccountLoginHashLogin"
+        ],
         "packet_id": -845588810,
         "model_id": 1,
         "codecs": [
@@ -58,28 +70,36 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1317889894"
+        ],
         "packet_id": -1317889894,
         "model_id": 2,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1179390022"
+        ],
         "packet_id": -1179390022,
         "model_id": 3,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN570114058"
+        ],
         "packet_id": -570114058,
         "model_id": 3,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1967950183"
+        ],
         "packet_id": -1967950183,
         "model_id": 3,
         "codecs": [
@@ -90,7 +110,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN87665118"
+        ],
         "packet_id": -87665118,
         "model_id": 3,
         "codecs": [
@@ -103,7 +125,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1715719586"
+        ],
         "packet_id": -1715719586,
         "model_id": 3,
         "codecs": [
@@ -116,14 +140,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1243673979"
+        ],
         "packet_id": 1243673979,
         "model_id": 3,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1807685988"
+        ],
         "packet_id": -1807685988,
         "model_id": 4,
         "codecs": [
@@ -134,7 +162,9 @@
         ]
     },
     {
-        "name": "S2CResourceLoaderInitializeEncryption",
+        "names": [
+            "S2CResourceLoaderInitializeEncryption"
+        ],
         "packet_id": 2001736388,
         "model_id": 4,
         "codecs": [
@@ -145,7 +175,9 @@
         ]
     },
     {
-        "name": "C2SResourceLoaderDependenciesLoaded",
+        "names": [
+            "C2SResourceLoaderDependenciesLoaded"
+        ],
         "packet_id": -82304134,
         "model_id": 4,
         "codecs": [
@@ -156,7 +188,9 @@
         ]
     },
     {
-        "name": "C2SResourceLoaderEncryptionInitialized",
+        "names": [
+            "C2SResourceLoaderEncryptionInitialized"
+        ],
         "packet_id": -1864333717,
         "model_id": 4,
         "codecs": [
@@ -167,7 +201,9 @@
         ]
     },
     {
-        "name": "S2CResourceLoaderLoadDependencies",
+        "names": [
+            "S2CResourceLoaderLoadDependencies"
+        ],
         "packet_id": -1797047325,
         "model_id": 4,
         "codecs": [
@@ -180,14 +216,18 @@
         ]
     },
     {
-        "name": "S2CResourceLoaderResourcesLoaded",
+        "names": [
+            "S2CResourceLoaderResourcesLoaded"
+        ],
         "packet_id": -1282173466,
         "model_id": 4,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "S2CInviteCodeToggle"
+        ],
         "packet_id": 444933603,
         "model_id": 5,
         "codecs": [
@@ -198,14 +238,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown184934482"
+        ],
         "packet_id": 184934482,
         "model_id": 5,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown714838911"
+        ],
         "packet_id": 714838911,
         "model_id": 5,
         "codecs": [
@@ -216,7 +260,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "C2SInviteCodeSubmit"
+        ],
         "packet_id": 509394385,
         "model_id": 5,
         "codecs": [
@@ -227,14 +273,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown312571157"
+        ],
         "packet_id": 312571157,
         "model_id": 5,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "C2SCaptchaCaptchaValidated",
+        "names": [
+            "C2SCaptchaCaptchaValidated"
+        ],
         "packet_id": -819536476,
         "model_id": 6,
         "codecs": [
@@ -245,7 +295,9 @@
         ]
     },
     {
-        "name": "S2CCaptchaShow",
+        "names": [
+            "S2CCaptchaShow"
+        ],
         "packet_id": -1670408519,
         "model_id": 6,
         "codecs": [
@@ -258,7 +310,9 @@
         ]
     },
     {
-        "name": "S2CCaptchaCaptchaFailed",
+        "names": [
+            "S2CCaptchaCaptchaFailed"
+        ],
         "packet_id": -373510957,
         "model_id": 6,
         "codecs": [
@@ -271,7 +325,9 @@
         ]
     },
     {
-        "name": "C2SCaptchaValidateCaptcha",
+        "names": [
+            "C2SCaptchaValidateCaptcha"
+        ],
         "packet_id": 1271163230,
         "model_id": 6,
         "codecs": [
@@ -284,7 +340,9 @@
         ]
     },
     {
-        "name": "S2CCaptchaParameters",
+        "names": [
+            "S2CCaptchaParameters"
+        ],
         "packet_id": 321971701,
         "model_id": 6,
         "codecs": [
@@ -295,7 +353,9 @@
         ]
     },
     {
-        "name": "C2SCaptchaRequestLocation",
+        "names": [
+            "C2SCaptchaRequestLocation"
+        ],
         "packet_id": -349828108,
         "model_id": 6,
         "codecs": [
@@ -306,7 +366,9 @@
         ]
     },
     {
-        "name": "S2CBanTemporary",
+        "names": [
+            "S2CBanTemporary"
+        ],
         "packet_id": 1200280053,
         "model_id": 7,
         "codecs": [
@@ -323,7 +385,9 @@
         ]
     },
     {
-        "name": "S2CBanPermanent",
+        "names": [
+            "S2CBanPermanent"
+        ],
         "packet_id": -600078553,
         "model_id": 7,
         "codecs": [
@@ -334,28 +398,36 @@
         ]
     },
     {
-        "name": "S2CAccountRegisterUidIncorrect",
+        "names": [
+            "S2CAccountRegisterUidIncorrect"
+        ],
         "packet_id": 1480924803,
         "model_id": 8,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "S2CAccountRegisterUidFree",
+        "names": [
+            "S2CAccountRegisterUidFree"
+        ],
         "packet_id": -706679202,
         "model_id": 8,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "S2CAccountRegisterCaptchaRequired",
+        "names": [
+            "S2CAccountRegisterCaptchaRequired"
+        ],
         "packet_id": 1003297349,
         "model_id": 8,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN653665247"
+        ],
         "packet_id": -653665247,
         "model_id": 8,
         "codecs": [
@@ -366,7 +438,9 @@
         ]
     },
     {
-        "name": "C2SAccountRegisterValidateUid",
+        "names": [
+            "C2SAccountRegisterValidateUid"
+        ],
         "packet_id": 1083705823,
         "model_id": 8,
         "codecs": [
@@ -377,7 +451,9 @@
         ]
     },
     {
-        "name": "S2CAccountRegisterParameters",
+        "names": [
+            "S2CAccountRegisterParameters"
+        ],
         "packet_id": -1277343167,
         "model_id": 8,
         "codecs": [
@@ -394,7 +470,9 @@
         ]
     },
     {
-        "name": "C2SAccountRegisterSubmit",
+        "names": [
+            "C2SAccountRegisterSubmit"
+        ],
         "packet_id": 427083290,
         "model_id": 8,
         "codecs": [
@@ -409,7 +487,9 @@
         ]
     },
     {
-        "name": "S2CAccountRegisterUidBusy",
+        "names": [
+            "S2CAccountRegisterUidBusy"
+        ],
         "packet_id": 442888643,
         "model_id": 8,
         "codecs": [
@@ -420,21 +500,27 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN262455387"
+        ],
         "packet_id": -262455387,
         "model_id": 9,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN16447159"
+        ],
         "packet_id": -16447159,
         "model_id": 9,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown762959326"
+        ],
         "packet_id": 762959326,
         "model_id": 9,
         "codecs": [
@@ -447,7 +533,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1570555748"
+        ],
         "packet_id": 1570555748,
         "model_id": 9,
         "codecs": [
@@ -460,7 +548,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1744584433"
+        ],
         "packet_id": 1744584433,
         "model_id": 9,
         "codecs": [
@@ -471,14 +561,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1607756600"
+        ],
         "packet_id": -1607756600,
         "model_id": 9,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN2118900410"
+        ],
         "packet_id": -2118900410,
         "model_id": 9,
         "codecs": [
@@ -489,7 +583,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown903498755"
+        ],
         "packet_id": 903498755,
         "model_id": 9,
         "codecs": [
@@ -500,7 +596,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown907073245"
+        ],
         "packet_id": 907073245,
         "model_id": 10,
         "codecs": [
@@ -511,7 +609,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown150222118"
+        ],
         "packet_id": 150222118,
         "model_id": 10,
         "codecs": [
@@ -522,7 +622,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1391146385"
+        ],
         "packet_id": 1391146385,
         "model_id": 11,
         "codecs": [
@@ -533,7 +635,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1405859779"
+        ],
         "packet_id": 1405859779,
         "model_id": 11,
         "codecs": [
@@ -546,7 +650,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN478572181"
+        ],
         "packet_id": -478572181,
         "model_id": 11,
         "codecs": [
@@ -557,7 +663,9 @@
         ]
     },
     {
-        "name": "S2CLobbyLayoutSwitchEnd",
+        "names": [
+            "S2CLobbyLayoutSwitchEnd"
+        ],
         "packet_id": -593368100,
         "model_id": 12,
         "codecs": [
@@ -570,7 +678,9 @@
         ]
     },
     {
-        "name": "S2CLobbyLayoutSwitchStart",
+        "names": [
+            "S2CLobbyLayoutSwitchStart"
+        ],
         "packet_id": 1118835050,
         "model_id": 12,
         "codecs": [
@@ -581,7 +691,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1241704092"
+        ],
         "packet_id": -1241704092,
         "model_id": 13,
         "codecs": [
@@ -592,7 +704,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown837875576"
+        ],
         "packet_id": 837875576,
         "model_id": 13,
         "codecs": [
@@ -603,14 +717,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1441234714"
+        ],
         "packet_id": 1441234714,
         "model_id": 13,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1926185291"
+        ],
         "packet_id": -1926185291,
         "model_id": 13,
         "codecs": [
@@ -621,7 +739,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1258754138"
+        ],
         "packet_id": -1258754138,
         "model_id": 13,
         "codecs": [
@@ -632,7 +752,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1588006900"
+        ],
         "packet_id": -1588006900,
         "model_id": 13,
         "codecs": [
@@ -643,7 +765,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown614714702"
+        ],
         "packet_id": 614714702,
         "model_id": 13,
         "codecs": [
@@ -654,7 +778,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown84050355"
+        ],
         "packet_id": 84050355,
         "model_id": 13,
         "codecs": [
@@ -665,7 +791,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown2064692768"
+        ],
         "packet_id": 2064692768,
         "model_id": 13,
         "codecs": [
@@ -676,7 +804,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown126880779"
+        ],
         "packet_id": 126880779,
         "model_id": 13,
         "codecs": [
@@ -687,7 +817,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1041660861"
+        ],
         "packet_id": -1041660861,
         "model_id": 13,
         "codecs": [
@@ -698,7 +830,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN139645601"
+        ],
         "packet_id": -139645601,
         "model_id": 13,
         "codecs": [
@@ -709,7 +843,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1457773660"
+        ],
         "packet_id": -1457773660,
         "model_id": 13,
         "codecs": [
@@ -720,7 +856,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown553380510"
+        ],
         "packet_id": 553380510,
         "model_id": 13,
         "codecs": [
@@ -731,14 +869,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1490761936"
+        ],
         "packet_id": -1490761936,
         "model_id": 13,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN2089008699"
+        ],
         "packet_id": -2089008699,
         "model_id": 13,
         "codecs": [
@@ -749,21 +891,27 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN707501253"
+        ],
         "packet_id": -707501253,
         "model_id": 13,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1590185083"
+        ],
         "packet_id": -1590185083,
         "model_id": 13,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1422563374"
+        ],
         "packet_id": 1422563374,
         "model_id": 13,
         "codecs": [
@@ -782,14 +930,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN437587751"
+        ],
         "packet_id": -437587751,
         "model_id": 13,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN221757454"
+        ],
         "packet_id": -221757454,
         "model_id": 13,
         "codecs": [
@@ -800,7 +952,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown641950429"
+        ],
         "packet_id": 641950429,
         "model_id": 13,
         "codecs": [
@@ -811,7 +965,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1716773193"
+        ],
         "packet_id": 1716773193,
         "model_id": 13,
         "codecs": [
@@ -822,7 +978,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1286861380"
+        ],
         "packet_id": 1286861380,
         "model_id": 13,
         "codecs": [
@@ -833,7 +991,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown650923390"
+        ],
         "packet_id": 650923390,
         "model_id": 13,
         "codecs": [
@@ -844,7 +1004,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1885167992"
+        ],
         "packet_id": -1885167992,
         "model_id": 13,
         "codecs": [
@@ -855,7 +1017,9 @@
         ]
     },
     {
-        "name": "C2SLinkActivateLink",
+        "names": [
+            "C2SLinkActivateLink"
+        ],
         "packet_id": -604091695,
         "model_id": 14,
         "codecs": [
@@ -866,7 +1030,9 @@
         ]
     },
     {
-        "name": "C2SLinkResultAlive",
+        "names": [
+            "S2CLinkResultAlive"
+        ],
         "packet_id": 1152930968,
         "model_id": 14,
         "codecs": [
@@ -877,7 +1043,9 @@
         ]
     },
     {
-        "name": "C2SLinkResultDead",
+        "names": [
+            "S2CLinkResultDead"
+        ],
         "packet_id": 1132011721,
         "model_id": 14,
         "codecs": [
@@ -888,7 +1056,9 @@
         ]
     },
     {
-        "name": "C2SLinkQuery",
+        "names": [
+            "C2SLinkQuery"
+        ],
         "packet_id": -983139626,
         "model_id": 14,
         "codecs": [
@@ -899,7 +1069,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown810713262"
+        ],
         "packet_id": 810713262,
         "model_id": 15,
         "codecs": [
@@ -912,7 +1084,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1152865919"
+        ],
         "packet_id": 1152865919,
         "model_id": 15,
         "codecs": [
@@ -923,7 +1097,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1015650019"
+        ],
         "packet_id": 1015650019,
         "model_id": 15,
         "codecs": [
@@ -934,7 +1110,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown814687528"
+        ],
         "packet_id": 814687528,
         "model_id": 15,
         "codecs": [
@@ -945,7 +1123,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown415207851"
+        ],
         "packet_id": 415207851,
         "model_id": 15,
         "codecs": [
@@ -956,7 +1136,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1851236532"
+        ],
         "packet_id": -1851236532,
         "model_id": 15,
         "codecs": [
@@ -967,7 +1149,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1383159023"
+        ],
         "packet_id": 1383159023,
         "model_id": 15,
         "codecs": [
@@ -978,7 +1162,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN864265623"
+        ],
         "packet_id": -864265623,
         "model_id": 15,
         "codecs": [
@@ -991,7 +1177,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown834877801"
+        ],
         "packet_id": 834877801,
         "model_id": 15,
         "codecs": [
@@ -1002,14 +1190,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1859441081"
+        ],
         "packet_id": -1859441081,
         "model_id": 16,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown880756819"
+        ],
         "packet_id": 880756819,
         "model_id": 16,
         "codecs": [
@@ -1022,7 +1214,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1863710730"
+        ],
         "packet_id": 1863710730,
         "model_id": 16,
         "codecs": [
@@ -1033,7 +1227,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1455955413"
+        ],
         "packet_id": -1455955413,
         "model_id": 16,
         "codecs": [
@@ -1044,14 +1240,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1850050333"
+        ],
         "packet_id": -1850050333,
         "model_id": 16,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN511004908"
+        ],
         "packet_id": -511004908,
         "model_id": 16,
         "codecs": [
@@ -1062,21 +1262,27 @@
         ]
     },
     {
-        "name": "C2SLayoutSwitchPayment",
+        "names": [
+            "C2SLayoutSwitchPayment"
+        ],
         "packet_id": 1153801756,
         "model_id": 17,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "C2SLayoutSwitchGarage",
+        "names": [
+            "C2SLayoutSwitchGarage"
+        ],
         "packet_id": -479046431,
         "model_id": 17,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "C2SLayoutSwitchExitBattle",
+        "names": [
+            "C2SLayoutSwitchExitBattle"
+        ],
         "packet_id": 377959142,
         "model_id": 17,
         "codecs": [
@@ -1087,14 +1293,18 @@
         ]
     },
     {
-        "name": "C2SLayoutSwitchServerSelect",
+        "names": [
+            "C2SLayoutSwitchServerSelect"
+        ],
         "packet_id": 1452181070,
         "model_id": 17,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "S2CUserNotifyNotifyUserInBattle",
+        "names": [
+            "S2CUserNotifyNotifyUserInBattle"
+        ],
         "packet_id": -1895446889,
         "model_id": 18,
         "codecs": [
@@ -1105,7 +1315,9 @@
         ]
     },
     {
-        "name": "S2CUserNotifyNotifyUpdateUserRank",
+        "names": [
+            "S2CUserNotifyNotifyUpdateUserRank"
+        ],
         "packet_id": -962759489,
         "model_id": 18,
         "codecs": [
@@ -1116,7 +1328,9 @@
         ]
     },
     {
-        "name": "C2SUserNotifySubscribeUser",
+        "names": [
+            "C2SUserNotifySubscribeUser"
+        ],
         "packet_id": 1774907609,
         "model_id": 18,
         "codecs": [
@@ -1127,7 +1341,9 @@
         ]
     },
     {
-        "name": "S2CUserNotifyNotifyUserBattleLeave",
+        "names": [
+            "S2CUserNotifyNotifyUserBattleLeave"
+        ],
         "packet_id": 1941694508,
         "model_id": 18,
         "codecs": [
@@ -1138,7 +1354,9 @@
         ]
     },
     {
-        "name": "S2CUserNotifyUpdateUserOnlineStatus",
+        "names": [
+            "S2CUserNotifyUpdateUserOnlineStatus"
+        ],
         "packet_id": 2041598093,
         "model_id": 18,
         "codecs": [
@@ -1149,7 +1367,9 @@
         ]
     },
     {
-        "name": "S2CUserNotifySetUserId",
+        "names": [
+            "S2CUserNotifySetUserId"
+        ],
         "packet_id": -1353047954,
         "model_id": 18,
         "codecs": [
@@ -1160,7 +1380,9 @@
         ]
     },
     {
-        "name": "S2CUserNotifyPremiumTimeLeft",
+        "names": [
+            "S2CUserNotifyPremiumTimeLeft"
+        ],
         "packet_id": -2069508071,
         "model_id": 18,
         "codecs": [
@@ -1171,7 +1393,9 @@
         ]
     },
     {
-        "name": "C2SUserNotifyUnsubscribeUsers",
+        "names": [
+            "C2SUserNotifyUnsubscribeUsers"
+        ],
         "packet_id": -2040152224,
         "model_id": 18,
         "codecs": [
@@ -1182,14 +1406,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1227293080"
+        ],
         "packet_id": 1227293080,
         "model_id": 19,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown885055495"
+        ],
         "packet_id": 885055495,
         "model_id": 19,
         "codecs": [
@@ -1200,7 +1428,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown326032325"
+        ],
         "packet_id": 326032325,
         "model_id": 19,
         "codecs": [
@@ -1211,7 +1441,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1768449810"
+        ],
         "packet_id": 1768449810,
         "model_id": 19,
         "codecs": [
@@ -1222,7 +1454,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1642608662"
+        ],
         "packet_id": 1642608662,
         "model_id": 19,
         "codecs": [
@@ -1233,7 +1467,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1266665816"
+        ],
         "packet_id": -1266665816,
         "model_id": 19,
         "codecs": [
@@ -1246,14 +1482,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1579425801"
+        ],
         "packet_id": 1579425801,
         "model_id": 19,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown809822533"
+        ],
         "packet_id": 809822533,
         "model_id": 19,
         "codecs": [
@@ -1266,7 +1506,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN867767128"
+        ],
         "packet_id": -867767128,
         "model_id": 19,
         "codecs": [
@@ -1277,21 +1519,27 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1417347634"
+        ],
         "packet_id": 1417347634,
         "model_id": 19,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown956252237"
+        ],
         "packet_id": 956252237,
         "model_id": 19,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1711371907"
+        ],
         "packet_id": 1711371907,
         "model_id": 20,
         "codecs": [
@@ -1302,7 +1550,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown855420488"
+        ],
         "packet_id": 855420488,
         "model_id": 21,
         "codecs": [
@@ -1315,7 +1565,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN875418096"
+        ],
         "packet_id": -875418096,
         "model_id": 21,
         "codecs": [
@@ -1330,14 +1582,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN541741971"
+        ],
         "packet_id": -541741971,
         "model_id": 22,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN20513325"
+        ],
         "packet_id": -20513325,
         "model_id": 22,
         "codecs": [
@@ -1348,7 +1604,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown2098576423"
+        ],
         "packet_id": 2098576423,
         "model_id": 22,
         "codecs": [
@@ -1359,7 +1617,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN583564465"
+        ],
         "packet_id": -583564465,
         "model_id": 22,
         "codecs": [
@@ -1370,7 +1630,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1897104567"
+        ],
         "packet_id": -1897104567,
         "model_id": 22,
         "codecs": [
@@ -1381,7 +1643,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN324894035"
+        ],
         "packet_id": -324894035,
         "model_id": 22,
         "codecs": [
@@ -1392,7 +1656,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN731115522"
+        ],
         "packet_id": -731115522,
         "model_id": 23,
         "codecs": [
@@ -1403,21 +1669,27 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1302674105"
+        ],
         "packet_id": -1302674105,
         "model_id": 23,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown850220815"
+        ],
         "packet_id": 850220815,
         "model_id": 23,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1447082276"
+        ],
         "packet_id": 1447082276,
         "model_id": 23,
         "codecs": [
@@ -1428,14 +1700,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown600420685"
+        ],
         "packet_id": 600420685,
         "model_id": 24,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1312986424"
+        ],
         "packet_id": 1312986424,
         "model_id": 24,
         "codecs": [
@@ -1446,14 +1722,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown652872053"
+        ],
         "packet_id": 652872053,
         "model_id": 24,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown147737736"
+        ],
         "packet_id": 147737736,
         "model_id": 24,
         "codecs": [
@@ -1466,7 +1746,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN20486732"
+        ],
         "packet_id": -20486732,
         "model_id": 24,
         "codecs": [
@@ -1477,7 +1759,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown2145091885"
+        ],
         "packet_id": 2145091885,
         "model_id": 24,
         "codecs": [
@@ -1488,21 +1772,27 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1533422832"
+        ],
         "packet_id": -1533422832,
         "model_id": 24,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1507635228"
+        ],
         "packet_id": -1507635228,
         "model_id": 24,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1928355480"
+        ],
         "packet_id": 1928355480,
         "model_id": 24,
         "codecs": [
@@ -1513,21 +1803,27 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN822403331"
+        ],
         "packet_id": -822403331,
         "model_id": 24,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1544223090"
+        ],
         "packet_id": 1544223090,
         "model_id": 24,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1771456254"
+        ],
         "packet_id": 1771456254,
         "model_id": 24,
         "codecs": [
@@ -1538,7 +1834,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1515366171"
+        ],
         "packet_id": -1515366171,
         "model_id": 24,
         "codecs": [
@@ -1549,7 +1847,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown613462801"
+        ],
         "packet_id": 613462801,
         "model_id": 24,
         "codecs": [
@@ -1562,21 +1862,27 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown2029312880"
+        ],
         "packet_id": 2029312880,
         "model_id": 24,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown133238100"
+        ],
         "packet_id": 133238100,
         "model_id": 24,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown668890771"
+        ],
         "packet_id": 668890771,
         "model_id": 24,
         "codecs": [
@@ -1589,14 +1895,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN714487273"
+        ],
         "packet_id": -714487273,
         "model_id": 24,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "S2CAlertShow",
+        "names": [
+            "S2CAlertShow"
+        ],
         "packet_id": -322235316,
         "model_id": 25,
         "codecs": [
@@ -1607,7 +1917,9 @@
         ]
     },
     {
-        "name": "S2CAlertServerHaltScheduled",
+        "names": [
+            "S2CAlertServerHaltScheduled"
+        ],
         "packet_id": -1712113407,
         "model_id": 26,
         "codecs": [
@@ -1618,7 +1930,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1176568376"
+        ],
         "packet_id": -1176568376,
         "model_id": 27,
         "codecs": [
@@ -1629,7 +1943,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN47424608"
+        ],
         "packet_id": -47424608,
         "model_id": 27,
         "codecs": [
@@ -1640,7 +1956,9 @@
         ]
     },
     {
-        "name": "S2CGlobalChatChatInitParameters",
+        "names": [
+            "S2CGlobalChatChatInitParameters"
+        ],
         "packet_id": 178154988,
         "model_id": 28,
         "codecs": [
@@ -1651,14 +1969,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN920985123"
+        ],
         "packet_id": -920985123,
         "model_id": 28,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "S2CGlobalChatChatAntifloodParameters",
+        "names": [
+            "S2CGlobalChatChatAntifloodParameters"
+        ],
         "packet_id": 744948472,
         "model_id": 28,
         "codecs": [
@@ -1671,14 +1993,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1062190024"
+        ],
         "packet_id": -1062190024,
         "model_id": 28,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "S2CGlobalChatCleanUserMessage",
+        "names": [
+            "S2CGlobalChatCleanUserMessage"
+        ],
         "packet_id": 1993050216,
         "model_id": 28,
         "codecs": [
@@ -1689,7 +2015,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown705454610"
+        ],
         "packet_id": 705454610,
         "model_id": 28,
         "codecs": [
@@ -1702,7 +2030,9 @@
         ]
     },
     {
-        "name": "S2CGlobalChatShowMessages",
+        "names": [
+            "S2CGlobalChatShowMessages"
+        ],
         "packet_id": -1263520410,
         "model_id": 28,
         "codecs": [
@@ -1713,7 +2043,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1128606444"
+        ],
         "packet_id": -1128606444,
         "model_id": 29,
         "codecs": [
@@ -1726,7 +2058,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1989173907"
+        ],
         "packet_id": 1989173907,
         "model_id": 29,
         "codecs": [
@@ -1745,7 +2079,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN593513288"
+        ],
         "packet_id": -593513288,
         "model_id": 29,
         "codecs": [
@@ -1756,7 +2092,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown2116086491"
+        ],
         "packet_id": 2116086491,
         "model_id": 29,
         "codecs": [
@@ -1767,21 +2105,27 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown566338297"
+        ],
         "packet_id": 566338297,
         "model_id": 30,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown947161947"
+        ],
         "packet_id": 947161947,
         "model_id": 30,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown120401338"
+        ],
         "packet_id": 120401338,
         "model_id": 30,
         "codecs": [
@@ -1792,7 +2136,9 @@
         ]
     },
     {
-        "name": "S2CBattleCreateParameters",
+        "names": [
+            "S2CBattleCreateParameters"
+        ],
         "packet_id": -838186985,
         "model_id": 30,
         "codecs": [
@@ -1803,14 +2149,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN614313838"
+        ],
         "packet_id": -614313838,
         "model_id": 30,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown566652736"
+        ],
         "packet_id": 566652736,
         "model_id": 30,
         "codecs": [
@@ -1821,7 +2171,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN2135234426"
+        ],
         "packet_id": -2135234426,
         "model_id": 30,
         "codecs": [
@@ -1832,14 +2184,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1491503394"
+        ],
         "packet_id": -1491503394,
         "model_id": 30,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "S2CBattleListBattleCreate",
+        "names": [
+            "S2CBattleListBattleCreate"
+        ],
         "packet_id": 802300608,
         "model_id": 31,
         "codecs": [
@@ -1850,14 +2206,19 @@
         ]
     },
     {
-        "name": "S2CBattleListListDestroy",
+        "names": [
+            "S2CBattleListListDestroy"
+        ],
         "packet_id": -324155151,
         "model_id": 31,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "C2SBattleListBattleSelect",
+        "names": [
+            "S2CBattleListBattleSelect",
+            "C2SBattleListBattleSelect"
+        ],
         "packet_id": 2092412133,
         "model_id": 31,
         "codecs": [
@@ -1868,7 +2229,9 @@
         ]
     },
     {
-        "name": "S2CBattleListBattleRemove",
+        "names": [
+            "S2CBattleListBattleRemove"
+        ],
         "packet_id": -1848001147,
         "model_id": 31,
         "codecs": [
@@ -1879,7 +2242,9 @@
         ]
     },
     {
-        "name": "S2CBattleListListCreate",
+        "names": [
+            "S2CBattleListListCreate"
+        ],
         "packet_id": 552006706,
         "model_id": 31,
         "codecs": [
@@ -1890,7 +2255,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1149131596"
+        ],
         "packet_id": 1149131596,
         "model_id": 32,
         "codecs": [
@@ -1901,7 +2268,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN2133657895"
+        ],
         "packet_id": -2133657895,
         "model_id": 32,
         "codecs": [
@@ -1914,7 +2283,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown2011860838"
+        ],
         "packet_id": 2011860838,
         "model_id": 32,
         "codecs": [
@@ -1927,7 +2298,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN994817471"
+        ],
         "packet_id": -994817471,
         "model_id": 32,
         "codecs": [
@@ -1938,7 +2311,9 @@
         ]
     },
     {
-        "name": "S2CBattleUserListUserJoinBattle",
+        "names": [
+            "S2CBattleUserListUserJoinBattle"
+        ],
         "packet_id": -169305322,
         "model_id": 32,
         "codecs": [
@@ -1953,7 +2328,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN751613832"
+        ],
         "packet_id": -751613832,
         "model_id": 32,
         "codecs": [
@@ -1966,7 +2343,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown504016996"
+        ],
         "packet_id": 504016996,
         "model_id": 32,
         "codecs": [
@@ -1979,7 +2358,9 @@
         ]
     },
     {
-        "name": "S2CBattleUserListUserJoinBattleWithTeam",
+        "names": [
+            "S2CBattleUserListUserJoinBattleWithTeam"
+        ],
         "packet_id": 1447204641,
         "model_id": 32,
         "codecs": [
@@ -1992,7 +2373,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1229594925"
+        ],
         "packet_id": 1229594925,
         "model_id": 33,
         "codecs": [
@@ -2003,7 +2386,9 @@
         ]
     },
     {
-        "name": "S2CBattleInfoAddUserToTeam",
+        "names": [
+            "S2CBattleInfoAddUserToTeam"
+        ],
         "packet_id": 118447426,
         "model_id": 33,
         "codecs": [
@@ -2018,7 +2403,9 @@
         ]
     },
     {
-        "name": "S2CBattleInfoUpdateSuspiciousState",
+        "names": [
+            "S2CBattleInfoUpdateSuspiciousState"
+        ],
         "packet_id": -698399183,
         "model_id": 33,
         "codecs": [
@@ -2033,7 +2420,9 @@
         ]
     },
     {
-        "name": "S2CBattleInfoUpdateTeamScore",
+        "names": [
+            "S2CBattleInfoUpdateTeamScore"
+        ],
         "packet_id": 1428217189,
         "model_id": 33,
         "codecs": [
@@ -2048,7 +2437,9 @@
         ]
     },
     {
-        "name": "S2CBattleInfoUpdateUserKills",
+        "names": [
+            "S2CBattleInfoUpdateUserKills"
+        ],
         "packet_id": -1263036614,
         "model_id": 33,
         "codecs": [
@@ -2063,7 +2454,9 @@
         ]
     },
     {
-        "name": "S2CBattleInfoBattleStop",
+        "names": [
+            "S2CBattleInfoBattleStop"
+        ],
         "packet_id": -879771375,
         "model_id": 33,
         "codecs": [
@@ -2074,7 +2467,9 @@
         ]
     },
     {
-        "name": "S2CBattleInfoSwapTeams",
+        "names": [
+            "S2CBattleInfoSwapTeams"
+        ],
         "packet_id": -1702097572,
         "model_id": 33,
         "codecs": [
@@ -2085,7 +2480,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN10847382"
+        ],
         "packet_id": -10847382,
         "model_id": 33,
         "codecs": [
@@ -2096,7 +2493,9 @@
         ]
     },
     {
-        "name": "S2CBattleInfoUpdateName",
+        "names": [
+            "S2CBattleInfoUpdateName"
+        ],
         "packet_id": 1561014187,
         "model_id": 33,
         "codecs": [
@@ -2109,14 +2508,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1315002220"
+        ],
         "packet_id": -1315002220,
         "model_id": 33,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "S2CBattleInfoRoundStart",
+        "names": [
+            "S2CBattleInfoRoundStart"
+        ],
         "packet_id": -344514517,
         "model_id": 33,
         "codecs": [
@@ -2127,7 +2530,9 @@
         ]
     },
     {
-        "name": "S2CBattleInfoInfoDestroy",
+        "names": [
+            "S2CBattleInfoInfoDestroy"
+        ],
         "packet_id": -602527073,
         "model_id": 33,
         "codecs": [
@@ -2138,7 +2543,9 @@
         ]
     },
     {
-        "name": "S2CBattleInfoRoundFinish",
+        "names": [
+            "S2CBattleInfoRoundFinish"
+        ],
         "packet_id": 546722394,
         "model_id": 33,
         "codecs": [
@@ -2149,7 +2556,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1534651002"
+        ],
         "packet_id": 1534651002,
         "model_id": 33,
         "codecs": [
@@ -2160,7 +2569,9 @@
         ]
     },
     {
-        "name": "S2CBattleInfoUpdateUserScore",
+        "names": [
+            "S2CBattleInfoUpdateUserScore"
+        ],
         "packet_id": -375282889,
         "model_id": 33,
         "codecs": [
@@ -2175,7 +2586,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN831998018"
+        ],
         "packet_id": -831998018,
         "model_id": 33,
         "codecs": [
@@ -2186,7 +2599,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "S2CBattleInfoJoinBattle"
+        ],
         "packet_id": -1284211503,
         "model_id": 33,
         "codecs": [
@@ -2197,7 +2612,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN911626491"
+        ],
         "packet_id": -911626491,
         "model_id": 33,
         "codecs": [
@@ -2210,7 +2627,9 @@
         ]
     },
     {
-        "name": "S2CBattleInfoRemoveUser",
+        "names": [
+            "S2CBattleInfoRemoveUser"
+        ],
         "packet_id": 1924874982,
         "model_id": 33,
         "codecs": [
@@ -2223,7 +2642,9 @@
         ]
     },
     {
-        "name": "C2SGarageBuyItem",
+        "names": [
+            "C2SGarageBuyItem"
+        ],
         "packet_id": -1961983005,
         "model_id": 34,
         "codecs": [
@@ -2238,7 +2659,9 @@
         ]
     },
     {
-        "name": "C2SGarageMountItem",
+        "names": [
+            "C2SGarageMountItem"
+        ],
         "packet_id": -1505530736,
         "model_id": 34,
         "codecs": [
@@ -2249,7 +2672,9 @@
         ]
     },
     {
-        "name": "S2CGarageInitDepot",
+        "names": [
+            "S2CGarageInitDepot"
+        ],
         "packet_id": -255516505,
         "model_id": 34,
         "codecs": [
@@ -2260,7 +2685,9 @@
         ]
     },
     {
-        "name": "C2SGaragePresentsConfirmPurchase",
+        "names": [
+            "C2SGaragePresentsConfirmPurchase"
+        ],
         "packet_id": -1518850075,
         "model_id": 34,
         "codecs": [
@@ -2277,7 +2704,10 @@
         ]
     },
     {
-        "name": "C2SGarageSelectItem",
+        "names": [
+            "S2CGarageSelectItem",
+            "C2SGarageSelectItem"
+        ],
         "packet_id": -803365239,
         "model_id": 34,
         "codecs": [
@@ -2288,14 +2718,18 @@
         ]
     },
     {
-        "name": "S2CGarageRenameFailed",
+        "names": [
+            "S2CGarageRenameFailed"
+        ],
         "packet_id": -471022967,
         "model_id": 34,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "C2SGarageBuyKit",
+        "names": [
+            "C2SGarageBuyKit"
+        ],
         "packet_id": -523392052,
         "model_id": 34,
         "codecs": [
@@ -2308,7 +2742,9 @@
         ]
     },
     {
-        "name": "S2CGarageInitMarket",
+        "names": [
+            "S2CGarageInitMarket"
+        ],
         "packet_id": -300370823,
         "model_id": 34,
         "codecs": [
@@ -2319,7 +2755,9 @@
         ]
     },
     {
-        "name": "S2CGaragePresentsRemove",
+        "names": [
+            "S2CGaragePresentsRemove"
+        ],
         "packet_id": -2001666558,
         "model_id": 34,
         "codecs": [
@@ -2330,28 +2768,36 @@
         ]
     },
     {
-        "name": "S2CGarageSelectFirstItem",
+        "names": [
+            "S2CGarageSelectFirstItem"
+        ],
         "packet_id": -1763914667,
         "model_id": 34,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1211186637"
+        ],
         "packet_id": 1211186637,
         "model_id": 34,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "S2CGarageShowAlert",
+        "names": [
+            "S2CGarageShowAlert"
+        ],
         "packet_id": -1638767166,
         "model_id": 34,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "S2CGarageFit",
+        "names": [
+            "S2CGarageFit"
+        ],
         "packet_id": 1091756732,
         "model_id": 34,
         "codecs": [
@@ -2362,7 +2808,9 @@
         ]
     },
     {
-        "name": "S2CGarageShowCategory",
+        "names": [
+            "S2CGarageShowCategory"
+        ],
         "packet_id": 1318061480,
         "model_id": 34,
         "codecs": [
@@ -2373,14 +2821,18 @@
         ]
     },
     {
-        "name": "C2SGaragePresentsAccept",
+        "names": [
+            "C2SGaragePresentsAccept"
+        ],
         "packet_id": -1154479430,
         "model_id": 34,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "S2CGarageRenameSuccess",
+        "names": [
+            "S2CGarageRenameSuccess"
+        ],
         "packet_id": -1968445033,
         "model_id": 34,
         "codecs": [
@@ -2393,7 +2845,9 @@
         ]
     },
     {
-        "name": "C2SGarageRename",
+        "names": [
+            "C2SGarageRename"
+        ],
         "packet_id": -161726525,
         "model_id": 34,
         "codecs": [
@@ -2404,7 +2858,9 @@
         ]
     },
     {
-        "name": "S2CGarageInitMounted",
+        "names": [
+            "S2CGarageInitMounted"
+        ],
         "packet_id": 2062201643,
         "model_id": 34,
         "codecs": [
@@ -2417,7 +2873,9 @@
         ]
     },
     {
-        "name": "C2SUidCheckRequest",
+        "names": [
+            "C2SUidCheckRequest"
+        ],
         "packet_id": -635715470,
         "model_id": 35,
         "codecs": [
@@ -2428,7 +2886,9 @@
         ]
     },
     {
-        "name": "C2SUidCheckResponse",
+        "names": [
+            "C2SUidCheckResponse"
+        ],
         "packet_id": -1565553333,
         "model_id": 35,
         "codecs": [
@@ -2439,7 +2899,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown201628290"
+        ],
         "packet_id": 201628290,
         "model_id": 36,
         "codecs": [
@@ -2450,7 +2912,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "S2CBattleUserInit"
+        ],
         "packet_id": -1643824092,
         "model_id": 36,
         "codecs": [
@@ -2461,7 +2925,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown417965410"
+        ],
         "packet_id": 417965410,
         "model_id": 36,
         "codecs": [
@@ -2472,7 +2938,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN745598420"
+        ],
         "packet_id": -745598420,
         "model_id": 36,
         "codecs": [
@@ -2483,7 +2951,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "S2CBattleMapInfo"
+        ],
         "packet_id": -152638117,
         "model_id": 36,
         "codecs": [
@@ -2494,7 +2964,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "S2CBattleBonusItemsInit"
+        ],
         "packet_id": 228171466,
         "model_id": 36,
         "codecs": [
@@ -2505,7 +2977,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1047185003"
+        ],
         "packet_id": -1047185003,
         "model_id": 36,
         "codecs": [
@@ -2516,7 +2990,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "S2CBattleBonusDestroy"
+        ],
         "packet_id": -2026749922,
         "model_id": 36,
         "codecs": [
@@ -2527,7 +3003,9 @@
         ]
     },
     {
-        "name": "S2CBattleBonusSpawnBonus",
+        "names": [
+            "S2CBattleBonusItems"
+        ],
         "packet_id": 1831462385,
         "model_id": 36,
         "codecs": [
@@ -2542,7 +3020,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1291499147"
+        ],
         "packet_id": -1291499147,
         "model_id": 36,
         "codecs": [
@@ -2553,14 +3033,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN985579124"
+        ],
         "packet_id": -985579124,
         "model_id": 36,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown870278784"
+        ],
         "packet_id": 870278784,
         "model_id": 36,
         "codecs": [
@@ -2571,7 +3055,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1262947513"
+        ],
         "packet_id": 1262947513,
         "model_id": 37,
         "codecs": [
@@ -2584,14 +3070,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1249639251"
+        ],
         "packet_id": 1249639251,
         "model_id": 37,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown522993449"
+        ],
         "packet_id": 522993449,
         "model_id": 37,
         "codecs": [
@@ -2602,7 +3092,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1149211509"
+        ],
         "packet_id": 1149211509,
         "model_id": 37,
         "codecs": [
@@ -2613,7 +3105,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown446781737"
+        ],
         "packet_id": 446781737,
         "model_id": 37,
         "codecs": [
@@ -2626,7 +3120,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown732434644"
+        ],
         "packet_id": 732434644,
         "model_id": 37,
         "codecs": [
@@ -2637,7 +3133,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown560336625"
+        ],
         "packet_id": 560336625,
         "model_id": 37,
         "codecs": [
@@ -2650,21 +3148,27 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1953272681"
+        ],
         "packet_id": 1953272681,
         "model_id": 37,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1156768699"
+        ],
         "packet_id": 1156768699,
         "model_id": 38,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "S2CTankMoveCommand",
+        "names": [
+            "S2CTankMoveCommand"
+        ],
         "packet_id": -64696933,
         "model_id": 39,
         "codecs": [
@@ -2677,7 +3181,9 @@
         ]
     },
     {
-        "name": "S2CTankKill",
+        "names": [
+            "S2CTankKill"
+        ],
         "packet_id": -42520728,
         "model_id": 39,
         "codecs": [
@@ -2692,7 +3198,9 @@
         ]
     },
     {
-        "name": "S2CTankMoveControlFlags",
+        "names": [
+            "S2CTankMoveControlFlags"
+        ],
         "packet_id": -301298508,
         "model_id": 39,
         "codecs": [
@@ -2705,7 +3213,9 @@
         ]
     },
     {
-        "name": "C2STankTurretCommand",
+        "names": [
+            "C2STankTurretCommand"
+        ],
         "packet_id": -114968993,
         "model_id": 39,
         "codecs": [
@@ -2720,14 +3230,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "C2STankInit"
+        ],
         "packet_id": 268832557,
         "model_id": 39,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "C2STankMoveCommand",
+        "names": [
+            "C2STankMoveCommand"
+        ],
         "packet_id": 329279865,
         "model_id": 39,
         "codecs": [
@@ -2742,7 +3256,9 @@
         ]
     },
     {
-        "name": "S2CTankMoveTurretCommand",
+        "names": [
+            "S2CTankMoveTurretCommand"
+        ],
         "packet_id": 1516578027,
         "model_id": 39,
         "codecs": [
@@ -2757,7 +3273,9 @@
         ]
     },
     {
-        "name": "S2CTankTurretCommand",
+        "names": [
+            "S2CTankTurretCommand"
+        ],
         "packet_id": 1927704181,
         "model_id": 39,
         "codecs": [
@@ -2770,21 +3288,27 @@
         ]
     },
     {
-        "name": "C2STankReady2Place",
+        "names": [
+            "C2STankReady2Place"
+        ],
         "packet_id": -1378839846,
         "model_id": 39,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "C2STankReady2Activate",
+        "names": [
+            "C2STankReady2Activate"
+        ],
         "packet_id": 1178028365,
         "model_id": 39,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "S2CTankDead",
+        "names": [
+            "S2CTankActivated"
+        ],
         "packet_id": 1868573511,
         "model_id": 39,
         "codecs": [
@@ -2795,7 +3319,9 @@
         ]
     },
     {
-        "name": "S2CTankHealth",
+        "names": [
+            "S2CTankHealth"
+        ],
         "packet_id": -611961116,
         "model_id": 39,
         "codecs": [
@@ -2808,7 +3334,9 @@
         ]
     },
     {
-        "name": "S2CTankSpawn",
+        "names": [
+            "S2CTankSpawn"
+        ],
         "packet_id": 875259457,
         "model_id": 39,
         "codecs": [
@@ -2829,7 +3357,9 @@
         ]
     },
     {
-        "name": "S2CTankUpdateOrientation",
+        "names": [
+            "S2CTankUpdateOrientation"
+        ],
         "packet_id": -157204477,
         "model_id": 39,
         "codecs": [
@@ -2842,7 +3372,9 @@
         ]
     },
     {
-        "name": "C2STankMoveControlFlags",
+        "names": [
+            "C2STankMoveControlFlags"
+        ],
         "packet_id": -1749108178,
         "model_id": 39,
         "codecs": [
@@ -2857,7 +3389,9 @@
         ]
     },
     {
-        "name": "C2STankMoveTurretCommand",
+        "names": [
+            "C2STankMoveTurretCommand"
+        ],
         "packet_id": -1683279062,
         "model_id": 39,
         "codecs": [
@@ -2874,7 +3408,9 @@
         ]
     },
     {
-        "name": "S2CTankUpdateSpeed",
+        "names": [
+            "S2CTankUpdateSpeed"
+        ],
         "packet_id": -1672577397,
         "model_id": 39,
         "codecs": [
@@ -2895,7 +3431,9 @@
         ]
     },
     {
-        "name": "S2CTankEffectApply",
+        "names": [
+            "S2CTankEffectApply"
+        ],
         "packet_id": -1639713644,
         "model_id": 39,
         "codecs": [
@@ -2914,7 +3452,9 @@
         ]
     },
     {
-        "name": "S2CTankUpdateTemperature",
+        "names": [
+            "S2CTankUpdateTemperature"
+        ],
         "packet_id": 581377054,
         "model_id": 39,
         "codecs": [
@@ -2927,7 +3467,9 @@
         ]
     },
     {
-        "name": "S2CTankEffectRemove",
+        "names": [
+            "S2CTankEffectRemove"
+        ],
         "packet_id": -1994318624,
         "model_id": 39,
         "codecs": [
@@ -2940,7 +3482,9 @@
         ]
     },
     {
-        "name": "S2CTankDestroy",
+        "names": [
+            "S2CTankDestroy"
+        ],
         "packet_id": 1719707347,
         "model_id": 39,
         "codecs": [
@@ -2951,14 +3495,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown988664577"
+        ],
         "packet_id": 988664577,
         "model_id": 40,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown162656882"
+        ],
         "packet_id": 162656882,
         "model_id": 40,
         "codecs": [
@@ -2971,7 +3519,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1205151619"
+        ],
         "packet_id": -1205151619,
         "model_id": 41,
         "codecs": [
@@ -2982,7 +3532,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1044854075"
+        ],
         "packet_id": 1044854075,
         "model_id": 41,
         "codecs": [
@@ -2993,7 +3545,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1433937811"
+        ],
         "packet_id": 1433937811,
         "model_id": 41,
         "codecs": [
@@ -3004,14 +3558,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1832611824"
+        ],
         "packet_id": -1832611824,
         "model_id": 42,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1026428589"
+        ],
         "packet_id": -1026428589,
         "model_id": 42,
         "codecs": [
@@ -3024,7 +3582,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1870108387"
+        ],
         "packet_id": -1870108387,
         "model_id": 42,
         "codecs": [
@@ -3037,7 +3597,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown789790814"
+        ],
         "packet_id": 789790814,
         "model_id": 42,
         "codecs": [
@@ -3048,7 +3610,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1282406496"
+        ],
         "packet_id": -1282406496,
         "model_id": 42,
         "codecs": [
@@ -3061,7 +3625,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1142938284"
+        ],
         "packet_id": -1142938284,
         "model_id": 42,
         "codecs": [
@@ -3072,7 +3638,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1925237062"
+        ],
         "packet_id": 1925237062,
         "model_id": 42,
         "codecs": [
@@ -3085,7 +3653,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN2102525054"
+        ],
         "packet_id": -2102525054,
         "model_id": 43,
         "codecs": [
@@ -3096,7 +3666,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "S2CBattleDrugsInit"
+        ],
         "packet_id": -137249251,
         "model_id": 43,
         "codecs": [
@@ -3107,7 +3679,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown2032104949"
+        ],
         "packet_id": 2032104949,
         "model_id": 43,
         "codecs": [
@@ -3122,7 +3696,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1981777467"
+        ],
         "packet_id": -1981777467,
         "model_id": 43,
         "codecs": [
@@ -3133,7 +3709,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN502907094"
+        ],
         "packet_id": -502907094,
         "model_id": 43,
         "codecs": [
@@ -3146,7 +3724,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1668779175"
+        ],
         "packet_id": -1668779175,
         "model_id": 44,
         "codecs": [
@@ -3159,7 +3739,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN497293992"
+        ],
         "packet_id": -497293992,
         "model_id": 44,
         "codecs": [
@@ -3172,7 +3754,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown561771020"
+        ],
         "packet_id": 561771020,
         "model_id": 44,
         "codecs": [
@@ -3185,7 +3769,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1411656080"
+        ],
         "packet_id": 1411656080,
         "model_id": 44,
         "codecs": [
@@ -3196,7 +3782,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1233891872"
+        ],
         "packet_id": -1233891872,
         "model_id": 44,
         "codecs": [
@@ -3207,7 +3795,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown2040021062"
+        ],
         "packet_id": 2040021062,
         "model_id": 44,
         "codecs": [
@@ -3222,21 +3812,27 @@
         ]
     },
     {
-        "name": "S2CPingMeasurePing",
+        "names": [
+            "S2CPingMeasurePing"
+        ],
         "packet_id": -555602629,
         "model_id": 45,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "C2SPingMeasurePong",
+        "names": [
+            "C2SPingMeasurePong"
+        ],
         "packet_id": 1484572481,
         "model_id": 45,
         "codecs": [],
         "fields": []
     },
     {
-        "name": "C2SServerSessionSyncResponse",
+        "names": [
+            "C2SServerSessionSyncResponse"
+        ],
         "packet_id": 2074243318,
         "model_id": 46,
         "codecs": [
@@ -3249,7 +3845,9 @@
         ]
     },
     {
-        "name": "S2CServerSessionSync",
+        "names": [
+            "S2CServerSessionSync"
+        ],
         "packet_id": 34068208,
         "model_id": 46,
         "codecs": [
@@ -3262,7 +3860,9 @@
         ]
     },
     {
-        "name": "S2CBattleDamageIndicator",
+        "names": [
+            "S2CBattleDamageIndicator"
+        ],
         "packet_id": -1165230470,
         "model_id": 47,
         "codecs": [
@@ -3273,7 +3873,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1959138292"
+        ],
         "packet_id": -1959138292,
         "model_id": 48,
         "codecs": [
@@ -3284,7 +3886,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "S2CBattleUserStatsRemoveUser"
+        ],
         "packet_id": -1689876764,
         "model_id": 48,
         "codecs": [
@@ -3295,7 +3899,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1061006142"
+        ],
         "packet_id": 1061006142,
         "model_id": 48,
         "codecs": [
@@ -3306,7 +3912,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "S2CBattleUserStatsAddUser"
+        ],
         "packet_id": 696140460,
         "model_id": 48,
         "codecs": [
@@ -3317,7 +3925,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown862913394"
+        ],
         "packet_id": 862913394,
         "model_id": 48,
         "codecs": [
@@ -3330,7 +3940,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown546849203"
+        ],
         "packet_id": 546849203,
         "model_id": 49,
         "codecs": [
@@ -3343,7 +3955,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1032328347"
+        ],
         "packet_id": -1032328347,
         "model_id": 49,
         "codecs": [
@@ -3354,7 +3968,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN671618989"
+        ],
         "packet_id": -671618989,
         "model_id": 49,
         "codecs": [
@@ -3365,7 +3981,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1334002026"
+        ],
         "packet_id": -1334002026,
         "model_id": 49,
         "codecs": [
@@ -3384,7 +4002,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1470597926"
+        ],
         "packet_id": 1470597926,
         "model_id": 49,
         "codecs": [
@@ -3397,7 +4017,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "C2SWeaponSmokyShot"
+        ],
         "packet_id": 229267683,
         "model_id": 49,
         "codecs": [
@@ -3418,7 +4040,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1478921140"
+        ],
         "packet_id": 1478921140,
         "model_id": 49,
         "codecs": [
@@ -3429,7 +4053,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN2030760866"
+        ],
         "packet_id": -2030760866,
         "model_id": 50,
         "codecs": [
@@ -3452,7 +4078,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1184835319"
+        ],
         "packet_id": 1184835319,
         "model_id": 50,
         "codecs": [
@@ -3471,21 +4099,27 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown843751647"
+        ],
         "packet_id": 843751647,
         "model_id": 50,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1527013252"
+        ],
         "packet_id": -1527013252,
         "model_id": 50,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN367760678"
+        ],
         "packet_id": -367760678,
         "model_id": 50,
         "codecs": [
@@ -3496,7 +4130,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN380595194"
+        ],
         "packet_id": -380595194,
         "model_id": 50,
         "codecs": [
@@ -3507,14 +4143,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1487306515"
+        ],
         "packet_id": -1487306515,
         "model_id": 50,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown11992250"
+        ],
         "packet_id": 11992250,
         "model_id": 50,
         "codecs": [
@@ -3529,7 +4169,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1517837003"
+        ],
         "packet_id": -1517837003,
         "model_id": 50,
         "codecs": [
@@ -3542,7 +4184,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1224288585"
+        ],
         "packet_id": 1224288585,
         "model_id": 50,
         "codecs": [
@@ -3553,7 +4197,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1380283560"
+        ],
         "packet_id": -1380283560,
         "model_id": 50,
         "codecs": [
@@ -3564,7 +4210,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1222085753"
+        ],
         "packet_id": -1222085753,
         "model_id": 50,
         "codecs": [
@@ -3575,7 +4223,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1632423559"
+        ],
         "packet_id": 1632423559,
         "model_id": 50,
         "codecs": [
@@ -3598,7 +4248,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN534192254"
+        ],
         "packet_id": -534192254,
         "model_id": 50,
         "codecs": [
@@ -3611,7 +4263,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN159686980"
+        ],
         "packet_id": -159686980,
         "model_id": 51,
         "codecs": [
@@ -3628,7 +4282,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN482023661"
+        ],
         "packet_id": -482023661,
         "model_id": 51,
         "codecs": [
@@ -3643,7 +4299,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1805942142"
+        ],
         "packet_id": -1805942142,
         "model_id": 51,
         "codecs": [
@@ -3656,7 +4314,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN44282936"
+        ],
         "packet_id": -44282936,
         "model_id": 51,
         "codecs": [
@@ -3673,7 +4333,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1723353904"
+        ],
         "packet_id": -1723353904,
         "model_id": 51,
         "codecs": [
@@ -3692,7 +4354,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN328554480"
+        ],
         "packet_id": -328554480,
         "model_id": 51,
         "codecs": [
@@ -3705,7 +4369,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN136344740"
+        ],
         "packet_id": -136344740,
         "model_id": 52,
         "codecs": [
@@ -3716,7 +4382,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1501310158"
+        ],
         "packet_id": 1501310158,
         "model_id": 52,
         "codecs": [
@@ -3729,7 +4397,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1690491826"
+        ],
         "packet_id": 1690491826,
         "model_id": 52,
         "codecs": [
@@ -3742,7 +4412,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown259979915"
+        ],
         "packet_id": 259979915,
         "model_id": 52,
         "codecs": [
@@ -3763,7 +4435,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown958509220"
+        ],
         "packet_id": 958509220,
         "model_id": 52,
         "codecs": [
@@ -3774,7 +4448,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN190359403"
+        ],
         "packet_id": -190359403,
         "model_id": 52,
         "codecs": [
@@ -3789,7 +4465,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1229701582"
+        ],
         "packet_id": 1229701582,
         "model_id": 53,
         "codecs": [
@@ -3808,7 +4486,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1670466290"
+        ],
         "packet_id": -1670466290,
         "model_id": 53,
         "codecs": [
@@ -3819,7 +4499,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1907971330"
+        ],
         "packet_id": -1907971330,
         "model_id": 53,
         "codecs": [
@@ -3838,7 +4520,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN118119523"
+        ],
         "packet_id": -118119523,
         "model_id": 53,
         "codecs": [
@@ -3855,7 +4539,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1823935471"
+        ],
         "packet_id": -1823935471,
         "model_id": 53,
         "codecs": [
@@ -3870,7 +4556,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1147113344"
+        ],
         "packet_id": 1147113344,
         "model_id": 53,
         "codecs": [
@@ -3881,7 +4569,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN18176641"
+        ],
         "packet_id": -18176641,
         "model_id": 54,
         "codecs": [
@@ -3892,7 +4582,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1459211021"
+        ],
         "packet_id": 1459211021,
         "model_id": 54,
         "codecs": [
@@ -3903,7 +4595,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN484994657"
+        ],
         "packet_id": -484994657,
         "model_id": 54,
         "codecs": [
@@ -3926,7 +4620,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1759063234"
+        ],
         "packet_id": -1759063234,
         "model_id": 54,
         "codecs": [
@@ -3937,7 +4633,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN369590613"
+        ],
         "packet_id": -369590613,
         "model_id": 54,
         "codecs": [
@@ -3954,7 +4652,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown346830254"
+        ],
         "packet_id": 346830254,
         "model_id": 54,
         "codecs": [
@@ -3965,7 +4665,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown381067984"
+        ],
         "packet_id": 381067984,
         "model_id": 55,
         "codecs": [
@@ -3982,7 +4684,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown244072998"
+        ],
         "packet_id": 244072998,
         "model_id": 55,
         "codecs": [
@@ -3999,7 +4703,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1271729363"
+        ],
         "packet_id": -1271729363,
         "model_id": 55,
         "codecs": [
@@ -4010,7 +4716,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown981035905"
+        ],
         "packet_id": 981035905,
         "model_id": 55,
         "codecs": [
@@ -4021,7 +4729,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1051248475"
+        ],
         "packet_id": -1051248475,
         "model_id": 55,
         "codecs": [
@@ -4032,7 +4742,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown2001632000"
+        ],
         "packet_id": 2001632000,
         "model_id": 55,
         "codecs": [
@@ -4047,7 +4759,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN248693565"
+        ],
         "packet_id": -248693565,
         "model_id": 55,
         "codecs": [
@@ -4058,7 +4772,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN75406982"
+        ],
         "packet_id": -75406982,
         "model_id": 56,
         "codecs": [
@@ -4069,7 +4785,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN2123941185"
+        ],
         "packet_id": -2123941185,
         "model_id": 56,
         "codecs": [
@@ -4088,7 +4806,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown979099084"
+        ],
         "packet_id": 979099084,
         "model_id": 56,
         "codecs": [
@@ -4099,7 +4819,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1654947652"
+        ],
         "packet_id": -1654947652,
         "model_id": 56,
         "codecs": [
@@ -4110,7 +4832,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1171353580"
+        ],
         "packet_id": -1171353580,
         "model_id": 56,
         "codecs": [
@@ -4121,7 +4845,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1333088437"
+        ],
         "packet_id": 1333088437,
         "model_id": 57,
         "codecs": [
@@ -4132,7 +4858,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1212381771"
+        ],
         "packet_id": 1212381771,
         "model_id": 57,
         "codecs": [
@@ -4143,7 +4871,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1395251766"
+        ],
         "packet_id": 1395251766,
         "model_id": 57,
         "codecs": [
@@ -4162,7 +4892,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1300958299"
+        ],
         "packet_id": -1300958299,
         "model_id": 57,
         "codecs": [
@@ -4173,7 +4905,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1986638927"
+        ],
         "packet_id": -1986638927,
         "model_id": 57,
         "codecs": [
@@ -4184,7 +4918,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "S2CWeaponsInit"
+        ],
         "packet_id": -2124388778,
         "model_id": 58,
         "codecs": [
@@ -4195,7 +4931,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN911983090"
+        ],
         "packet_id": -911983090,
         "model_id": 59,
         "codecs": [
@@ -4206,7 +4944,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1767633906"
+        ],
         "packet_id": -1767633906,
         "model_id": 59,
         "codecs": [
@@ -4217,7 +4957,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN173682854"
+        ],
         "packet_id": -173682854,
         "model_id": 59,
         "codecs": [
@@ -4230,7 +4972,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1346883037"
+        ],
         "packet_id": -1346883037,
         "model_id": 60,
         "codecs": [
@@ -4241,7 +4985,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1701488017"
+        ],
         "packet_id": -1701488017,
         "model_id": 60,
         "codecs": [
@@ -4252,7 +4998,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1548609916"
+        ],
         "packet_id": -1548609916,
         "model_id": 60,
         "codecs": [
@@ -4263,7 +5011,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN2141998253"
+        ],
         "packet_id": -2141998253,
         "model_id": 60,
         "codecs": [
@@ -4278,7 +5028,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1073178885"
+        ],
         "packet_id": -1073178885,
         "model_id": 60,
         "codecs": [
@@ -4291,7 +5043,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN456245145"
+        ],
         "packet_id": -456245145,
         "model_id": 60,
         "codecs": [
@@ -4304,7 +5058,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN773473371"
+        ],
         "packet_id": -773473371,
         "model_id": 60,
         "codecs": [
@@ -4315,7 +5071,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1337059439"
+        ],
         "packet_id": -1337059439,
         "model_id": 60,
         "codecs": [
@@ -4326,7 +5084,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1410197917"
+        ],
         "packet_id": -1410197917,
         "model_id": 60,
         "codecs": [
@@ -4339,7 +5099,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown945463181"
+        ],
         "packet_id": 945463181,
         "model_id": 61,
         "codecs": [
@@ -4352,14 +5114,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN643105296"
+        ],
         "packet_id": -643105296,
         "model_id": 61,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown606668848"
+        ],
         "packet_id": 606668848,
         "model_id": 61,
         "codecs": [
@@ -4370,7 +5136,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN449356094"
+        ],
         "packet_id": -449356094,
         "model_id": 61,
         "codecs": [
@@ -4385,7 +5153,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1532749363"
+        ],
         "packet_id": 1532749363,
         "model_id": 61,
         "codecs": [
@@ -4398,7 +5168,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1331361684"
+        ],
         "packet_id": -1331361684,
         "model_id": 61,
         "codecs": [
@@ -4409,7 +5181,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1259981343"
+        ],
         "packet_id": 1259981343,
         "model_id": 61,
         "codecs": [
@@ -4424,7 +5198,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown272183855"
+        ],
         "packet_id": 272183855,
         "model_id": 62,
         "codecs": [
@@ -4443,7 +5219,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN226978906"
+        ],
         "packet_id": -226978906,
         "model_id": 62,
         "codecs": [
@@ -4454,7 +5232,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1387974401"
+        ],
         "packet_id": 1387974401,
         "model_id": 62,
         "codecs": [
@@ -4467,7 +5247,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1200619383"
+        ],
         "packet_id": -1200619383,
         "model_id": 62,
         "codecs": [
@@ -4478,7 +5260,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN718866741"
+        ],
         "packet_id": -718866741,
         "model_id": 62,
         "codecs": [
@@ -4489,7 +5273,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN624217047"
+        ],
         "packet_id": -624217047,
         "model_id": 62,
         "codecs": [
@@ -4500,21 +5286,27 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown930618015"
+        ],
         "packet_id": 930618015,
         "model_id": 63,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown183561709"
+        ],
         "packet_id": 183561709,
         "model_id": 64,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown463494974"
+        ],
         "packet_id": 463494974,
         "model_id": 65,
         "codecs": [
@@ -4525,7 +5317,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1382076950"
+        ],
         "packet_id": 1382076950,
         "model_id": 65,
         "codecs": [
@@ -4538,7 +5332,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN666893269"
+        ],
         "packet_id": -666893269,
         "model_id": 65,
         "codecs": [
@@ -4551,7 +5347,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1709511848"
+        ],
         "packet_id": -1709511848,
         "model_id": 66,
         "codecs": [
@@ -4562,7 +5360,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown602656160"
+        ],
         "packet_id": 602656160,
         "model_id": 67,
         "codecs": [
@@ -4573,7 +5373,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown579696867"
+        ],
         "packet_id": 579696867,
         "model_id": 67,
         "codecs": [
@@ -4584,7 +5386,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1042583203"
+        ],
         "packet_id": -1042583203,
         "model_id": 67,
         "codecs": [
@@ -4597,7 +5401,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN260270890"
+        ],
         "packet_id": -260270890,
         "model_id": 68,
         "codecs": [
@@ -4608,7 +5414,9 @@
         ]
     },
     {
-        "name": "S2CPaymentCompleted",
+        "names": [
+            "S2CPaymentCompleted"
+        ],
         "packet_id": 1566424318,
         "model_id": 69,
         "codecs": [
@@ -4625,7 +5433,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown2128281231"
+        ],
         "packet_id": 2128281231,
         "model_id": 70,
         "codecs": [
@@ -4638,7 +5448,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown471157826"
+        ],
         "packet_id": 471157826,
         "model_id": 70,
         "codecs": [
@@ -4653,7 +5465,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN541655881"
+        ],
         "packet_id": -541655881,
         "model_id": 70,
         "codecs": [
@@ -4668,7 +5482,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1817559787"
+        ],
         "packet_id": 1817559787,
         "model_id": 71,
         "codecs": [
@@ -4681,7 +5497,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1746762585"
+        ],
         "packet_id": 1746762585,
         "model_id": 71,
         "codecs": [
@@ -4692,7 +5510,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown1941352088"
+        ],
         "packet_id": 1941352088,
         "model_id": 71,
         "codecs": [
@@ -4707,14 +5527,18 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN1940289099"
+        ],
         "packet_id": -1940289099,
         "model_id": 71,
         "codecs": [],
         "fields": []
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknown142177784"
+        ],
         "packet_id": 142177784,
         "model_id": 71,
         "codecs": [
@@ -4727,7 +5551,9 @@
         ]
     },
     {
-        "name": null,
+        "names": [
+            "X2XUnknownN325434725"
+        ],
         "packet_id": -325434725,
         "model_id": 71,
         "codecs": [
@@ -4740,7 +5566,9 @@
         ]
     },
     {
-        "name": "S2CBeginnerPassActivate",
+        "names": [
+            "S2CBeginnerPassActivate"
+        ],
         "packet_id": 29211250,
         "model_id": 72,
         "codecs": [

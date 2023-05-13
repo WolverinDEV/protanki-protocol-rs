@@ -2,6 +2,7 @@ use std::{any::{Any, TypeId, type_name}, io::{Write, Read}, sync::Arc, collectio
 use anyhow::anyhow;
 
 mod primitives;
+use nalgebra::Vector3;
 pub use primitives::*;
 
 mod custom;
@@ -55,12 +56,20 @@ impl CodecRegistry {
         self.register_codec(VectorCodec::<u8>::default());
         self.register_codec(VectorCodec::<String>::default());
 
+        self.register_codec(CodecVector3d{});
+        self.register_codec(CodecOptional::<Vector3<f32>>::default());
+
         self.register_custom();
     }
 
     fn register_custom(&mut self) {
         self.register_codec(CaptchaLocationCodec{});
         self.register_codec(VectorCodec::<CaptchaLocation>::default());
+        
+        self.register_codec(CodecBattleTeam{});
+        self.register_codec(CodecLayoutState{});
+        self.register_codec(CodecRotateTurretCommand{});
+        self.register_codec(CodecMoveCommand{});
     }
 
     pub fn register_codec<T: 'static>(&mut self, codec: impl Codec<Target = T> + 'static + Sized) -> Arc<dyn Codec<Target = T>> {

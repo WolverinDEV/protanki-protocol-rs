@@ -1,7 +1,8 @@
 use std::{cell::{RefCell}, task::{Poll, Context}, collections::BTreeMap, sync::atomic::{AtomicU32, Ordering}};
+use anyhow::anyhow;
 use tokio::sync::oneshot;
 
-use crate::{packets::{self, Packet, PacketDowncast}, TanksClient};
+use crate::{packets::{self, Packet, PacketDowncast}, TanksClient, Task};
 
 type PacketHandlerId = u32;
 
@@ -17,13 +18,13 @@ pub trait PacketHandler {
 
 #[derive(Default)]
 pub struct PacketHandlerRegistry {
-    handler: RefCell<BTreeMap<PacketHandlerId, Box<dyn PacketHandler + Send>>>,
+    handler: RefCell<BTreeMap<PacketHandlerId, Box<dyn PacketHandler>>>,
     handler_index: AtomicU32,
-    pending_handler_updates: RefCell<BTreeMap<PacketHandlerId, Option<Box<dyn PacketHandler + Send>>>>,
+    pending_handler_updates: RefCell<BTreeMap<PacketHandlerId, Option<Box<dyn PacketHandler>>>>,
 }
 
 impl PacketHandlerRegistry {
-    pub fn register_handler(&self, handler: impl PacketHandler + Send + 'static) -> PacketHandlerId {
+    pub fn register_handler(&self, handler: impl PacketHandler + 'static) -> PacketHandlerId {
         let handler_id = 1 + self.handler_index.fetch_add(1, Ordering::Relaxed);
 
         match self.handler.try_borrow_mut() {
@@ -94,7 +95,36 @@ impl PacketHandlerRegistry {
     }
 }
 
+pub struct TaskHandler<T: Task<Result = R>, R> {
+    pub task: T,
+    pub tx: Option<oneshot::Sender<anyhow::Result<R>>>,
+}
 
+impl<T: Task<Result = R>, R> PacketHandler for TaskHandler<T, R> {
+    fn handle_packet(&mut self, client: &mut TanksClient, packet: &dyn Packet) -> anyhow::Result<()> {
+        self.task.handle_packet(client, packet)
+    }
+
+    fn poll(&mut self, client: &mut TanksClient, cx: &mut Context) -> Poll<anyhow::Result<()>> {
+        match self.task.poll(client, cx) {
+            Poll::Ready(result) => {
+                let result = {
+                    if let Some(sender) = self.tx.take() {
+                        if let Err(_) = sender.send(result) {
+                            Err(anyhow!("failed to emit task result"))
+                        } else {
+                            Ok(())
+                        }
+                    } else {
+                        Err(anyhow!("missing task result sender"))
+                    }
+                };
+                Poll::Ready(result)
+            },
+            Poll::Pending => Poll::Pending
+        }
+    }
+}
 
 pub struct LowLevelPing;
 impl PacketHandler for LowLevelPing {
@@ -105,6 +135,22 @@ impl PacketHandler for LowLevelPing {
         };
         
         client.connection.send_packet(&packets::C2SPingMeasurePong{})?;
+        Ok(())
+    }
+}
+
+pub struct SessionPing;
+impl PacketHandler for SessionPing {
+    fn handle_packet(&mut self, client: &mut TanksClient, packet: &dyn Packet) -> anyhow::Result<()> {
+        let packet = match packet.downcast_ref::<packets::S2CServerSessionSync>() {
+            Some(packet) => packet,
+            None => return Ok(())
+        };
+        
+        client.connection.send_packet(&packets::C2SServerSessionSyncResponse{
+            name_43: client.session_timestamp(),
+            server_session_time: packet.server_session_time
+        })?;
         Ok(())
     }
 }

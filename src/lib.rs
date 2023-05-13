@@ -8,6 +8,7 @@ pub use client::*;
 mod connection;
 pub use connection::*;
 
+pub mod task;
 pub mod packet_handler;
 pub mod codec;
 pub mod packets;
