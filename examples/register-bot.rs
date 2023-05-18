@@ -1,18 +1,16 @@
 use std::{fs::File, io::{BufRead, BufReader}, time::Duration, net::SocketAddr, sync::{Arc, Mutex}};
 
-use captcha::CaptchaSolver;
-use proxy::{Proxy, ProxyProvider, HostProxyProvider, SocksProxyProvider};
 use tank_bot_rs::{TanksClient, packets::{self, PacketDowncast}, codec::CaptchaLocation, packet_handler};
 use tokio::{time::{self}, task};
 use tracing::{Level, info, warn};
 use clap::Parser;
 use tracing_subscriber::EnvFilter;
+use utils::{Proxy, CaptchaSolver, ProxyProvider, SocksProxyProvider, HostProxyProvider, CaptchaSolver2Captcha};
 use std::io::Write;
 
-use crate::captcha::{CaptchaSolver2Captcha, solve_captcha};
+use crate::utils::solve_captcha;
 
-mod captcha;
-mod proxy;
+mod utils;
 
 #[derive(Parser, Debug)]
 struct Args {
@@ -26,7 +24,7 @@ struct Args {
     #[arg(short, long)]
     username_file: String,
 
-    #[arg(short, long)]
+    #[arg(long)]
     proxy_file: Option<String>,
 
     #[arg(short, long)]
@@ -108,36 +106,15 @@ async fn register_account_loop(proxy: &mut dyn Proxy, server: SocketAddr, userna
 
     /* Sending these command might cause the server to close the connected. Then no account has been created. */
     client.connection.send_packet(&packets::C2SGarageBuyItem {
-        var_204: 500,
+        var_204: 300, /* normally 500! */
         item: "pro_battle_m0".to_string(),
         count: 1,
     })?;
     tokio::select! {
         /* do not act too fast */
-        _ = time::sleep(Duration::from_secs(7)) => {},
+        _ = time::sleep(Duration::from_secs(1)) => {},
         _ = &mut client => {}
     }; 
-    client.connection.send_packet(&packets::C2SGarageBuyItem {
-        var_204: 150,
-        item: "flamethrower_m0".to_string(),
-        count: 1,
-    })?;
-    tokio::select! {
-        /* do not act too fast */
-        _ = time::sleep(Duration::from_secs(2)) => {},
-        _ = &mut client => {}
-    }; 
-    client.connection.send_packet(&packets::C2SGarageMountItem {
-        item: "flamethrower_m0".to_string(),
-    })?;
-
-    client.await_match(|_, packet| {
-        if packet.is_type::<packets::S2CGarageInitMounted>() {
-            Some(())
-        } else {
-            None
-        }
-    }).await?;
 
     Ok(result)
 }

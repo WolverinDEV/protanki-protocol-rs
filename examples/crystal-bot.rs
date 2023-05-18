@@ -1,4 +1,4 @@
-use std::{task::{Poll, Waker}, time::Duration, pin::Pin, cell::{RefCell}, rc::Rc, collections::BTreeMap, fs::File, path::{Path}, io::{BufRead, BufReader}, sync::atomic::{AtomicBool, self}};
+use std::{task::{Poll, Waker}, time::Duration, pin::Pin, cell::{RefCell}, rc::Rc, collections::BTreeMap, fs::File, path::{Path}, io::{BufRead, BufReader}, sync::atomic::{AtomicBool, self, AtomicU16, AtomicU32}, f32::consts::PI};
 
 use anyhow::{anyhow, Context};
 use futures::FutureExt;
@@ -157,10 +157,17 @@ impl<
     }
 }
 
+#[derive(Debug)]
+enum LoginResult {
+    Success,
+    Falure,
+    BanTemporary { reason: String },
+    BanPermanent { reason: String },
+}
 
 struct TaskAccountLogin;
 impl TaskAccountLogin {
-    pub fn new(username: String, password: String) -> impl Task<Result = bool> {
+    pub fn new(username: String, password: String) -> impl Task<Result = LoginResult> {
         TaskSimpleAction::create(
             |client| {
                 client.connection.send_packet(&packets::C2SAccountLoginExecute{
@@ -173,9 +180,13 @@ impl TaskAccountLogin {
             }, 
             |_, packet| {
                 if packet.is_type::<packets::S2CAccountLoginFailure>() {
-                    Ok(Some(false))
+                    Ok(Some(LoginResult::Falure))
                 } else if packet.is_type::<packets::S2CAccountLoginSuccess>() {
-                    Ok(Some(true))
+                    Ok(Some(LoginResult::Success))
+                } else if let Some(packet) = packet.downcast_ref::<packets::S2CBanPermanent>() {
+                    Ok(Some(LoginResult::BanPermanent { reason: packet.reason_for_user.clone() }))
+                } else if let Some(packet) = packet.downcast_ref::<packets::S2CBanTemporary>() {
+                    Ok(Some(LoginResult::BanTemporary { reason: packet.reason_for_user.clone() }))
                 } else {
                     Ok(None)
                 }
@@ -290,10 +301,22 @@ impl PacketHandler for PacketHandlerRandomMoveControlFlags {
                 None => continue,
             };
 
-            client.connection.send_packet(&packets::C2STankMoveControlFlags{
-                control: if tank.state != TankState::Dead { 0 } else { (rand::random::<u8>() & 0x3F) as i8 },
+            if tank.state == TankState::Dead {
+                client.connection.send_packet(&packets::C2STankMoveControlFlags{
+                    control: 0,
+                    name_43: client.session_timestamp(),
+                    specification_id: tank.incarnation_id
+                })?;
+                continue;
+            }
+
+            client.connection.send_packet(&packets::C2STankTurretCommand{
+                incarnation_id: tank.incarnation_id,
                 name_43: client.session_timestamp(),
-                specification_id: tank.incarnation_id
+                rotate_turret_command: RotateTurretCommand { 
+                    target: rand::random::<f32>() * PI * 2f32,
+                    control: if rand::random::<bool>() { 32 } else { 64 } 
+                }
             })?;
         }
 
@@ -338,21 +361,6 @@ impl PacketHandlerTankSpawner {
             LocalTankState::Dead { timer } => {
                 if timer.poll_unpin(cx).is_ready() {
                     client.connection.send_packet(&packets::C2STankReady2Place{})?;
-                    if let Some(tanks) = client.get_component::<BattleTanks>() {
-                        if let Some(tank) = tanks.tanks.get(&self.local_id) {
-                            client.connection.send_packet(&packets::C2STankMoveCommand{
-                                name_43: client.session_timestamp(),
-                                specification_id: tank.incarnation_id,
-                                move_command: MoveCommand { 
-                                    control: 1, 
-                                    position: Some(Vector3::new(-4419.121081889269, 2987.706842379967, 90.05072843344034)), 
-                                    orientation: Some(Vector3::zeros()), 
-                                    velocity: Some(Vector3::zeros()), 
-                                    angular_velocity: Some(Vector3::zeros())
-                                }
-                            })?;
-                        }
-                    }
 
                     Some(
                         LocalTankState::Placed { 
@@ -562,7 +570,6 @@ impl PacketHandler for BattleTanksPacketHandler {
         if let Some(packet) = packet.downcast_ref::<packets::S2CBattleUserInit>() {
             let payload = serde_json::from_str::<BattleUserInit>(&packet.json)?;
             
-            info!("Register tank {}", payload.tank_id);
             let tank = BattleTank{
                 tank_id: payload.tank_id.clone(),
                 team: match payload.team_type.as_str() {
@@ -653,6 +660,7 @@ impl PacketHandler for BattleTanksPacketHandler {
     }
 }
 
+static RED_COUNT: AtomicU32 = AtomicU32::new(0);
 async fn create_shot_bot(args: &Args, username: String, password: String, battle_id: String) -> anyhow::Result<()> {
     let mut client = TanksClient::builder()
         .set_lang_code(args.language_code.clone())
@@ -668,20 +676,24 @@ async fn create_shot_bot(args: &Args, username: String, password: String, battle
     client.await_server_resources_loaded().await?;
     info!("Client loaded and viewing the login screen.");
 
-    let success = client.execute_task(
+    let login_result = client.execute_task(
         TaskAccountLogin::new(username.clone(), password.clone())
     ).await?;
-    if !success {
-        anyhow::bail!("login failed")
+    match login_result {
+        LoginResult::Success => {},
+        result => {
+            anyhow::bail!("login failed: {:?}", result);
+        }
     }
 
-    /* FIXME: Detect an account ban! */
-    
-    /* first we need to load the battle list */
-    tokio::select! {
-        _ = tokio::time::sleep(Duration::from_millis(1000)) => {},
-        _ = &mut client => {}
-    };
+    client.await_match(|_, packet| {
+        if let Some(_) = packet.downcast_ref::<packets::S2CLobbyLayoutSwitchEnd>() {
+            Some(())
+        } else {
+            None
+        }
+    }).await?;
+
     client.connection.send_packet(&packets::C2SGarageMountItem{
         item: "smoky_m0".to_string()
     })?;
@@ -706,7 +718,7 @@ async fn create_shot_bot(args: &Args, username: String, password: String, battle
 
     info!("joining battle!");
     client.execute_task(
-        TaskBattleList::join_selected_battle(BattleTeam::None)
+        TaskBattleList::join_selected_battle(if RED_COUNT.fetch_add(1, atomic::Ordering::Relaxed) % 2 == 0 { BattleTeam::Red } else { BattleTeam::Blue })
     ).await?;
 
     client.register_component(BattleTanks::new(username.clone()));
@@ -785,9 +797,11 @@ async fn main() -> anyhow::Result<()> {
         local.spawn_local(async move {
             loop {
                 if let Err(error) = create_shot_bot(&args, username.clone(), password.clone(), args.battle_id.to_owned()).await {
-                    tracing::error!("{}: {:?}. Restarting.", username, error);
-                } else {
-                    break;
+                    if format!("{:?}", error).contains("BanPermanent") {
+                        tracing::warn!("Perma ban: {:?}", error);
+                        break;
+                    }
+                    tracing::error!("{}: {:?}", username, error);
                 }
             }
         });
