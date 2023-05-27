@@ -142,7 +142,7 @@ InviteCode:
       direction: X2X
       packet_id: 714838911
       model_id: 5
-      fields: 
+      fields:
         nickname: scpacker.networking.protocol.codec.primitive.StringCodec
     Submit:
       direction: C2S
@@ -711,11 +711,11 @@ UserNotifyNotify:
       fields:
         user: scpacker.networking.protocol.codec.custom.CodecOnlineNotifierData
     UserNotifySetUserId:
-      direction: S2C
-      packet_id: -1353047954
+      direction: X2X
+      packet_id: 558723173
       model_id: 18
       fields:
-        user: scpacker.networking.protocol.codec.primitive.StringCodec
+        user: scpacker.networking.protocol.codec.custom.CodecUidNotifierData
     UserNotifyPremiumTimeLeft:
       direction: S2C
       packet_id: -2069508071
@@ -1761,6 +1761,36 @@ Tank:
       model_id: 39
       fields:
         tank: scpacker.networking.protocol.codec.primitive.StringCodec
+    UnknownN301298508:
+      direction: X2X
+      packet_id: -301298508
+      model_id: 39
+      fields:
+        tankId: scpacker.networking.protocol.codec.primitive.StringCodec
+        control: scpacker.networking.protocol.codec.primitive.ByteCodec
+    UnknownN64696933:
+      direction: X2X
+      packet_id: -64696933
+      model_id: 39
+      fields:
+        tankId: scpacker.networking.protocol.codec.primitive.StringCodec
+        moveCommand: scpacker.networking.protocol.codec.custom.CodecMoveCommand
+    Unknown1516578027:
+      direction: X2X
+      packet_id: 1516578027
+      model_id: 39
+      fields:
+        tankId: scpacker.networking.protocol.codec.primitive.StringCodec
+        moveCommand: scpacker.networking.protocol.codec.custom.CodecMoveCommand
+        turretDirection: scpacker.networking.protocol.codec.primitive.FloatCodec
+    UnknownN114968993:
+      direction: X2X
+      packet_id: -114968993
+      model_id: 39
+      fields:
+        name_50: scpacker.networking.protocol.codec.primitive.IntCodec
+        rotateTurretCommand: scpacker.networking.protocol.codec.custom.CodecRotateTurretCommand
+        incarnationId: scpacker.networking.protocol.codec.primitive.ShortCodec
 UnknownM40:
   model_id: 40
   packets:
@@ -2088,7 +2118,8 @@ UnknownM50:
       direction: X2X
       packet_id: -1527013252
       model_id: 50
-      fields: {}
+      fields:
+        time: scpacker.networking.protocol.codec.primitive.IntCodec
     UnknownN367760678:
       direction: X2X
       packet_id: -367760678
@@ -2844,3 +2875,17 @@ UnknownM72:
         lifeTimeInSecondsFromCurrentDateTime: scpacker.networking.protocol.codec.primitive.IntCodec
         crystalBonusInPercent: scpacker.networking.protocol.codec.primitive.IntCodec
         scoreBonusInPercent: scpacker.networking.protocol.codec.primitive.IntCodec
+UnknownM73:
+  model_id: 73
+  packets:
+    Unknown2094741924:
+      direction: X2X
+      packet_id: 2094741924
+      model_id: 73
+      fields:
+        initParams: scpacker.networking.protocol.codec.custom.CodecTipItemCC
+    UnknownN1376947245:
+      direction: X2X
+      packet_id: -1376947245
+      model_id: 73
+      fields: {}
