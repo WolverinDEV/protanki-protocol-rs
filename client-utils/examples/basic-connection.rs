@@ -1,9 +1,6 @@
-use std::fs::File;
-
 use fost_client_utils::Session;
 use futures::StreamExt;
 use fost_protocol::{packets::{self, PacketDowncast}};
-use serde::Deserialize;
 use tracing::{Level, info, error, warn};
 use clap::Parser;
 use tracing_subscriber::EnvFilter;
@@ -27,32 +24,6 @@ struct Args {
     log_protocol: bool,
 }
 
-#[derive(Deserialize)]
-struct Resources {
-    pub resources: Vec<ResourceInfo>,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Deserialize)]
-#[serde(rename_all = "camelCase")]
-struct ResourceInfo {
-    pub idhigh: i64,
-    pub idlow: i64,
-
-    pub versionhigh: i64,
-    pub versionlow: i64,
-
-    pub lazy: bool,
-    pub alpha: Option<bool>,
-    #[serde(rename = "type")]
-    pub resource_type: i64,
-
-    pub weight: Option<i64>,
-    pub height: Option<i64>,
-    pub num_frames: Option<i64>,
-    pub fps: Option<i64>,
-    pub file_names: Option<Vec<String>>,
-}
-
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     tracing_subscriber::fmt()
@@ -72,13 +43,15 @@ async fn main() -> anyhow::Result<()> {
         match result {
             Ok(packet) => {
                 if let Some(packet) = packet.downcast_ref::<packets::s2c::ResourceLoaderRegisterResources>() {
-                    use std::io::Write;
-                    let mut file = File::options()
-                        .create(true)
-                        .write(true)
-                        .open(format!("output_{}.txt", packet.callback_id))
-                        .unwrap();
-                    write!(&mut file, "{}", packet.json).unwrap();
+                    // Dump the registered resources
+                    // use std::io::Write;
+                    // let mut file = File::options()
+                    //     .create(true)
+                    //     .write(true)
+                    //     .open(format!("output_{}.txt", packet.callback_id))
+                    //     .unwrap();
+                    // write!(&mut file, "{}", packet.json).unwrap();
+
                     client.connection.send_packet(&packets::c2s::ResourceLoaderResourcesRegistered{
                         callback_id: packet.callback_id
                     })?;

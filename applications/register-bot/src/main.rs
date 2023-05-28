@@ -1,11 +1,11 @@
 use std::{fs::File, io::{BufRead, BufReader}, time::Duration, net::SocketAddr, sync::{Arc, Mutex}};
 
-use fost_protocol::{Session, packets::{self, PacketDowncast}, codec::CaptchaLocation, packet_handler};
+use fost_client_utils::{Session, CaptchaSolver2Captcha, Proxy, DummyResourceLoader, LowLevelPing, CaptchaSolver, solve_captcha, ProxyProvider, SocksProxyProvider, HostProxyProvider};
+use fost_protocol::{packets::{self, PacketDowncast}, codec::CaptchaLocation};
 use tokio::{time::{self}, task};
 use tracing::{Level, info, warn};
 use clap::Parser;
 use tracing_subscriber::EnvFilter;
-use fost_utils::{Proxy, CaptchaSolver, ProxyProvider, SocksProxyProvider, HostProxyProvider, CaptchaSolver2Captcha, solve_captcha};
 use std::io::Write;
 
 #[derive(Parser, Debug)]
@@ -40,7 +40,7 @@ enum RegisterResult {
 }
 
 async fn register_account(client: &mut Session, username: String, password: String) -> anyhow::Result<RegisterResult> {
-    client.connection.send_packet(&packets::C2SAccountRegisterSubmit{
+    client.connection.send_packet(&packets::c2s::AccountRegisterSubmit{
         password: password,
         uid: username,
         remember_me: true,    
@@ -48,13 +48,13 @@ async fn register_account(client: &mut Session, username: String, password: Stri
 
     client.await_match(
         |_, packet| {
-            if packet.is_type::<packets::S2CAccountRegisterUidBusy>() {
+            if packet.is_type::<packets::s2c::AccountRegisterUidBusy>() {
                 Some(RegisterResult::UsernameBusy)
-            } else if packet.is_type::<packets::S2CAccountRegisterUidIncorrect>() {
+            } else if packet.is_type::<packets::s2c::AccountRegisterUidIncorrect>() {
                 Some(RegisterResult::UsernameInvalid)
-            } else if packet.is_type::<packets::S2CAccountRegisterCaptchaRequired>() {
+            } else if packet.is_type::<packets::s2c::AccountRegisterCaptchaRequired>() {
                 Some(RegisterResult::CaptchaRequired)
-            } else if packet.is_type::<packets::S2CAccountRegisterUidFree>() {
+            } else if packet.is_type::<packets::s2c::AccountRegisterUidFree>() {
                 Some(RegisterResult::Success)
             } else {
                 None
@@ -76,8 +76,8 @@ async fn register_account_loop(proxy: &mut dyn Proxy, server: SocketAddr, userna
             .connect_with_socket(server, socket).await?
     };
 
-    client.register_packet_handler(packet_handler::DummyResourceLoader{});
-    client.register_packet_handler(packet_handler::LowLevelPing{});
+    client.register_packet_handler(DummyResourceLoader{});
+    client.register_packet_handler(LowLevelPing{});
     
     info!("Client connected.");
     client.await_server_resources_loaded().await?;
@@ -101,7 +101,7 @@ async fn register_account_loop(proxy: &mut dyn Proxy, server: SocketAddr, userna
     }; 
 
     /* Sending these command might cause the server to close the connected. Then no account has been created. */
-    client.connection.send_packet(&packets::C2SGarageBuyItem {
+    client.connection.send_packet(&packets::c2s::GarageBuyItem {
         var_204: 300, /* normally 500! */
         item: "pro_battle_m0".to_string(),
         count: 1,

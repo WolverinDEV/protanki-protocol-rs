@@ -1,12 +1,12 @@
-use std::{net::SocketAddr, fs::File, sync::{Arc, atomic::{AtomicU64, AtomicI64}}};
+use std::{net::SocketAddr, fs::File};
 
+use fost_client_utils::{Proxy, ProxyProvider, SocksProxyProvider, HostProxyProvider};
 use futures::StreamExt;
 use fost_protocol::{Connection, SimplePacketDebugFilter};
 use tokio::net::{TcpSocket, TcpStream};
 use tracing::{Level, info, warn, debug, error};
 use clap::Parser;
 use tracing_subscriber::EnvFilter;
-use fost_utils::{ProxyProvider, SocksProxyProvider, HostProxyProvider, Proxy};
 
 #[derive(Parser, Debug)]
 struct Args {

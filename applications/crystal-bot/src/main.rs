@@ -1,9 +1,10 @@
-use std::{task::{Poll, Waker}, time::Duration, pin::Pin, cell::{RefCell}, rc::Rc, collections::BTreeMap, fs::File, path::{Path}, io::{BufRead, BufReader}, sync::atomic::{AtomicBool, self, AtomicU16, AtomicU32}, f32::consts::PI};
+use std::{task::{Poll, Waker}, time::Duration, pin::Pin, cell::{RefCell}, rc::Rc, collections::BTreeMap, fs::File, path::{Path}, io::{BufRead, BufReader}, sync::atomic::{AtomicBool, self, AtomicU32}, f32::consts::PI};
 
 use anyhow::{anyhow, Context};
+use fost_client_utils::{Session, Task, PacketHandler, DummyResourceLoader, LowLevelPing, SessionPing};
+use fost_protocol::{packets::{Packet, self, PacketDowncast}, codec::{BattleTeam, LayoutState, RotateTurretCommand, MoveCommand}, PacketDebugFilter, SimplePacketDebugFilter};
 use futures::FutureExt;
 use nalgebra::Vector3;
-use fost_protocol::{Session, packet_handler::{self, PacketHandler}, Task, packets::{Packet, PacketDowncast, self}, codec::{BattleTeam, LayoutState, MoveCommand, RotateTurretCommand}, PacketDebugFilter, SimplePacketDebugFilter};
 use tokio::{sync::oneshot, task};
 use tracing::{info, warn};
 use clap::Parser;
@@ -158,6 +159,7 @@ impl<
 }
 
 #[derive(Debug)]
+#[allow(dead_code)]
 enum LoginResult {
     Success,
     Falure,
@@ -170,7 +172,7 @@ impl TaskAccountLogin {
     pub fn new(username: String, password: String) -> impl Task<Result = LoginResult> {
         TaskSimpleAction::create(
             |client| {
-                client.connection.send_packet(&packets::C2SAccountLoginExecute{
+                client.connection.send_packet(&packets::c2s::AccountLoginExecute{
                     login: username,
                     password,
                     remember: false
@@ -179,13 +181,13 @@ impl TaskAccountLogin {
                 Ok(())
             }, 
             |_, packet| {
-                if packet.is_type::<packets::S2CAccountLoginFailure>() {
+                if packet.is_type::<packets::s2c::AccountLoginFailure>() {
                     Ok(Some(LoginResult::Falure))
-                } else if packet.is_type::<packets::S2CAccountLoginSuccess>() {
+                } else if packet.is_type::<packets::s2c::AccountLoginSuccess>() {
                     Ok(Some(LoginResult::Success))
-                } else if let Some(packet) = packet.downcast_ref::<packets::S2CBanPermanent>() {
+                } else if let Some(packet) = packet.downcast_ref::<packets::s2c::BanPermanent>() {
                     Ok(Some(LoginResult::BanPermanent { reason: packet.reason_for_user.clone() }))
-                } else if let Some(packet) = packet.downcast_ref::<packets::S2CBanTemporary>() {
+                } else if let Some(packet) = packet.downcast_ref::<packets::s2c::BanTemporary>() {
                     Ok(Some(LoginResult::BanTemporary { reason: packet.reason_for_user.clone() }))
                 } else {
                     Ok(None)
@@ -200,13 +202,13 @@ impl TaskBattleList {
     pub fn join_selected_battle(team: BattleTeam) -> impl Task<Result = ()> {
         TaskSimpleAction::create(
             move |client| {
-                client.connection.send_packet(&packets::S2CBattleInfoJoinBattle {
+                client.connection.send_packet(&packets::s2c::BattleInfoJoinBattle {
                     var_625: team,
                 })?;
                 Ok(())
             }, 
             |_, packet| {
-                if let Some(packet) = packet.downcast_ref::<packets::S2CLobbyLayoutSwitchStart>() {
+                if let Some(packet) = packet.downcast_ref::<packets::s2c::LobbyLayoutSwitchStart>() {
                     if packet.state == LayoutState::Battle {
                         return Ok(Some(()))
                     }
@@ -220,17 +222,17 @@ impl TaskBattleList {
         let battle_id2 = battle_id.clone();
         TaskSimpleAction::create(
             move |client| {
-                client.connection.send_packet(&packets::C2SBattleListBattleSelect {
+                client.connection.send_packet(&packets::c2s::BattleListBattleSelect {
                     item: battle_id2
                 })?;
                 Ok(())
             }, 
             move |_, packet| {
-                if let Some(packet) = packet.downcast_ref::<packets::S2CBattleListBattleSelect>() {
+                if let Some(packet) = packet.downcast_ref::<packets::s2c::BattleListBattleSelect>() {
                     if packet.item == battle_id {
                         return Ok(Some(true))
                     }
-                } else if let Some(packet) = packet.downcast_ref::<packets::S2CLinkResultDead>() {
+                } else if let Some(packet) = packet.downcast_ref::<packets::s2c::LinkResultDead>() {
                     if packet.battle_id == battle_id {
                         return Ok(Some(false))
                     }
@@ -302,19 +304,19 @@ impl PacketHandler for PacketHandlerRandomMoveControlFlags {
             };
 
             if tank.state == TankState::Dead {
-                client.connection.send_packet(&packets::C2STankMoveControlFlags{
+                client.connection.send_packet(&packets::c2s::TankMoveControlFlags{
                     control: 0,
-                    name_43: client.session_timestamp(),
+                    client_session_time: client.session_timestamp(),
                     specification_id: tank.incarnation_id
                 })?;
                 continue;
             }
 
-            client.connection.send_packet(&packets::C2STankTurretCommand{
+            client.connection.send_packet(&packets::c2s::TankTurretCommand{
                 incarnation_id: tank.incarnation_id,
-                name_43: client.session_timestamp(),
+                client_session_time: client.session_timestamp(),
                 rotate_turret_command: RotateTurretCommand { 
-                    target: rand::random::<f32>() * PI * 2f32,
+                    angle: rand::random::<f32>() * PI * 2f32,
                     control: if rand::random::<bool>() { 32 } else { 64 } 
                 }
             })?;
@@ -349,7 +351,7 @@ impl PacketHandlerTankSpawner {
     fn update(&mut self, state: &mut LocalTankState, client: &mut Session, cx: &mut std::task::Context) -> anyhow::Result<Option<LocalTankState>> {
         let new_state = match state {
             LocalTankState::Uninit => {
-                client.connection.send_packet(&packets::C2STankInit{})?;
+                client.connection.send_packet(&packets::c2s::TankInit{})?;
                 Some(
                     LocalTankState::Dead { 
                         timer: Box::pin(
@@ -360,7 +362,7 @@ impl PacketHandlerTankSpawner {
             },
             LocalTankState::Dead { timer } => {
                 if timer.poll_unpin(cx).is_ready() {
-                    client.connection.send_packet(&packets::C2STankReady2Place{})?;
+                    client.connection.send_packet(&packets::c2s::TankReady2Place{})?;
 
                     Some(
                         LocalTankState::Placed { 
@@ -375,7 +377,7 @@ impl PacketHandlerTankSpawner {
             },
             LocalTankState::Placed { timer } => {
                 if timer.poll_unpin(cx).is_ready() {
-                    client.connection.send_packet(&packets::C2STankReady2Activate{})?;
+                    client.connection.send_packet(&packets::c2s::TankReady2Activate{})?;
                     Some(LocalTankState::Activated)
                 } else {
                     None
@@ -390,7 +392,7 @@ impl PacketHandlerTankSpawner {
 
 impl PacketHandler for PacketHandlerTankSpawner {
     fn handle_packet(&mut self, _client: &mut Session, packet: &dyn Packet) -> anyhow::Result<()> {
-        if let Some(packet) = packet.downcast_ref::<packets::S2CTankKill>() {
+        if let Some(packet) = packet.downcast_ref::<packets::s2c::TankKill>() {
             if packet.tank_id == self.local_id {
                 info!("Own tank died. Respawning.");
                 /* The respwan interval is currently not checked */
@@ -482,10 +484,10 @@ impl PacketHandler for PacketHandlerTankSmokyShoter {
             }
 
             if let Some(tank) = best_tank {
-                client.connection.send_packet(&packets::C2SWeaponSmokyShot{
-                    name_43: client.session_timestamp(),
+                client.connection.send_packet(&packets::c2s::WeaponSmokyShot{
+                    client_session_time: client.session_timestamp(),
                     target: tank.tank_id.clone(),
-                    var_356: tank.incarnation_id,
+                    incarnation_id: tank.incarnation_id,
 
                     hit_point: Some(Vector3::zeros()),
                     var_253: Some(Vector3::zeros()),
@@ -541,7 +543,7 @@ impl BattleTank {
     }
 
     fn update_from_turret_command(&mut self, command: &RotateTurretCommand) {
-        self.turret_rotation = command.target;
+        self.turret_rotation = command.angle;
     }
 }
 
@@ -567,7 +569,7 @@ impl PacketHandler for BattleTanksPacketHandler {
             None => anyhow::bail!("missing battle tanks component")
         };
         
-        if let Some(packet) = packet.downcast_ref::<packets::S2CBattleUserInit>() {
+        if let Some(packet) = packet.downcast_ref::<packets::s2c::BattleUserInit>() {
             let payload = serde_json::from_str::<BattleUserInit>(&packet.json)?;
             
             let tank = BattleTank{
@@ -597,7 +599,7 @@ impl PacketHandler for BattleTanksPacketHandler {
             if let Some(_) = tanks.tanks.insert(payload.tank_id.clone(), Box::new(tank)) {
                 anyhow::bail!("failed to init user tank as it already existed");
             }
-        } else if let Some(packet) = packet.downcast_ref::<packets::S2CTankSpawn>() {
+        } else if let Some(packet) = packet.downcast_ref::<packets::s2c::TankSpawn>() {
             let tank = BattleTank{
                 tank_id: packet.tank_id.clone(),
                 team: packet.team.clone(),
@@ -616,40 +618,40 @@ impl PacketHandler for BattleTanksPacketHandler {
                     warn!("Received new task for {} but old tank still existed.", &packet.tank_id);
                 }
             }
-        } else if let Some(packet) = packet.downcast_ref::<packets::S2CTankHealth>() {
+        } else if let Some(packet) = packet.downcast_ref::<packets::s2c::TankHealth>() {
             if let Some(tank) = tanks.tanks.get_mut(&packet.tank_id) {
                 tank.health = packet.health;
             }
-        } else if let Some(packet) = packet.downcast_ref::<packets::S2CTankActivated>() {
+        } else if let Some(packet) = packet.downcast_ref::<packets::s2c::TankActivated>() {
             if let Some(tank) = tanks.tanks.get_mut(&packet.tank_id) {
                 tank.state = TankState::Active;
             }
-        } else if let Some(packet) = packet.downcast_ref::<packets::S2CTankKill>() {
+        } else if let Some(packet) = packet.downcast_ref::<packets::s2c::TankKill>() {
             if let Some(tank) = tanks.tanks.get_mut(&packet.tank_id) {
                 tank.state = TankState::Dead;
             }
-        } else if let Some(packet) = packet.downcast_ref::<packets::S2CTankMoveControlFlags>() {
+        } else if let Some(packet) = packet.downcast_ref::<packets::s2c::TankMoveControlFlags>() {
             if let Some(tank) = tanks.tanks.get_mut(&packet.tank_id) {
                 tank.control = packet.control as u8;
             }
-        } else if let Some(packet) = packet.downcast_ref::<packets::S2CTankMoveTurretCommand>() {
+        } else if let Some(packet) = packet.downcast_ref::<packets::s2c::TankMoveTurretCommand>() {
             if let Some(tank) = tanks.tanks.get_mut(&packet.tank_id) {
                 tank.update_from_move_command(&packet.move_command)?;
                 tank.turret_rotation = packet.turret_direction;
             }
-        } else if let Some(packet) = packet.downcast_ref::<packets::S2CTankMoveCommand>() {
+        } else if let Some(packet) = packet.downcast_ref::<packets::s2c::TankMoveCommand>() {
             if let Some(tank) = tanks.tanks.get_mut(&packet.tank_id) {
                 tank.update_from_move_command(&packet.move_command)?;
             }
-        } else if let Some(packet) = packet.downcast_ref::<packets::S2CTankUpdateOrientation>() {
+        } else if let Some(packet) = packet.downcast_ref::<packets::s2c::TankSpawnLocation>() {
             let local_tank = tanks.tanks.get_mut(&tanks.local_tank_id).context("missing local tank")?;
             local_tank.position = packet.position.context("missing tank position")?;
             local_tank.orientation = packet.orientation.context("missing tank orientation")?;
-        } else if let Some(packet) = packet.downcast_ref::<packets::S2CTankTurretCommand>() {
+        } else if let Some(packet) = packet.downcast_ref::<packets::s2c::TankTurretCommand>() {
             if let Some(tank) = tanks.tanks.get_mut(&packet.tank_id) {
                 tank.update_from_turret_command(&packet.rotate_turret_command);
             }
-        } else if let Some(packet) = packet.downcast_ref::<packets::S2CTankDestroy>() {
+        } else if let Some(packet) = packet.downcast_ref::<packets::s2c::TankDestroy>() {
             tanks.tanks.remove(&packet.tank);
         }
         Ok(())
@@ -667,9 +669,9 @@ async fn create_shot_bot(args: &Args, username: String, password: String, battle
         .set_log_filter(if args.log_protocol { Box::new(LogFilter{}) } else { Box::new(SimplePacketDebugFilter::logging_disabled()) })
         .connect(args.target.parse()?).await?;
 
-    client.register_packet_handler(packet_handler::DummyResourceLoader{});
-    client.register_packet_handler(packet_handler::LowLevelPing{});
-    client.register_packet_handler(packet_handler::SessionPing{});
+    client.register_packet_handler(DummyResourceLoader{});
+    client.register_packet_handler(LowLevelPing{});
+    client.register_packet_handler(SessionPing{});
 
     info!("Client connected.");
 
@@ -687,17 +689,17 @@ async fn create_shot_bot(args: &Args, username: String, password: String, battle
     }
 
     client.await_match(|_, packet| {
-        if let Some(_) = packet.downcast_ref::<packets::S2CLobbyLayoutSwitchEnd>() {
+        if let Some(_) = packet.downcast_ref::<packets::s2c::LobbyLayoutSwitchEnd>() {
             Some(())
         } else {
             None
         }
     }).await?;
 
-    client.connection.send_packet(&packets::C2SGarageMountItem{
+    client.connection.send_packet(&packets::c2s::GarageMountItem{
         item: "smoky_m0".to_string()
     })?;
-    client.connection.send_packet(&packets::C2SGarageBuyItem{
+    client.connection.send_packet(&packets::c2s::GarageBuyItem{
         item: "wasp_m0".to_string(),
         count: 1,
         var_204: 120
@@ -706,7 +708,7 @@ async fn create_shot_bot(args: &Args, username: String, password: String, battle
         _ = tokio::time::sleep(Duration::from_millis(1000)) => {},
         _ = &mut client => {}
     };
-    client.connection.send_packet(&packets::C2SGarageMountItem{
+    client.connection.send_packet(&packets::c2s::GarageMountItem{
         item: "wasp_m0".to_string()
     })?;
     let success = client.execute_task(
@@ -726,7 +728,7 @@ async fn create_shot_bot(args: &Args, username: String, password: String, battle
     client.register_packet_handler(BattleTanksPacketHandler{});
 
     client.await_match(|_, packet| {
-        if let Some(packet) = packet.downcast_ref::<packets::S2CBattleMapInfo>() {
+        if let Some(packet) = packet.downcast_ref::<packets::s2c::BattleMapInfo>() {
             Some(packet.json.clone())
         } else {
             None
@@ -735,7 +737,7 @@ async fn create_shot_bot(args: &Args, username: String, password: String, battle
     info!("received map");
 
     /* await switch finish */
-    client.await_match(|_, packet| if packet.is_type::<packets::S2CLobbyLayoutSwitchEnd>() { Some(()) } else { None }).await?;
+    client.await_match(|_, packet| if packet.is_type::<packets::s2c::LobbyLayoutSwitchEnd>() { Some(()) } else { None }).await?;
 
     info!("sending ready & spawn packets");
     client.register_packet_handler(PacketHandlerTankSpawner::new(username.clone()));

@@ -89,7 +89,7 @@ pub async fn solve_captcha(client: &mut Session, location: CaptchaLocation, solv
     let captcha_data = client.await_match(
         move |_, packet| {
             if let Some(captcha) = packet.downcast_ref::<packets::s2c::CaptchaShow>() {
-                if captcha.captcha_location == location {
+                if captcha.location == location {
                     Some(captcha.captcha_data.clone())
                 } else {
                     None
@@ -102,15 +102,15 @@ pub async fn solve_captcha(client: &mut Session, location: CaptchaLocation, solv
 
     let captcha_value = solver.solve_captcha(captcha_data).await?;
 
-    client.connection.send_packet(&packets::c2s::CaptchaValidateCaptcha{ captcha_location: location, var_1950: captcha_value.clone() })?;
+    client.connection.send_packet(&packets::c2s::CaptchaValidateCaptcha{ location, code: captcha_value.clone() })?;
     let captcha_solved = client.await_match(
         move |_, packet| {
             if let Some(packet) = packet.downcast_ref::<packets::s2c::CaptchaCaptchaValidated>() {
-                if packet.captcha_location == location {
+                if packet.location == location {
                     return Some(true);
                 }
             } else if let Some(packet) = packet.downcast_ref::<packets::s2c::CaptchaCaptchaFailed>() {
-                if packet.captcha_location == location {
+                if packet.location == location {
                     return Some(false);
                 }
             }

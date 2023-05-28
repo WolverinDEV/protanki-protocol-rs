@@ -229,6 +229,12 @@ AccountRegister:
       packet_id: -706679202
       model_id: 8
       fields: {}
+    UidBusy:
+      direction: S2C
+      packet_id: 442888643
+      model_id: 8
+      fields:
+        advicedUids: scpacker.networking.protocol.codec.complex.VectorCodecString
     CaptchaRequired:
       direction: S2C
       packet_id: 1003297349
@@ -263,12 +269,6 @@ AccountRegister:
         uid: scpacker.networking.protocol.codec.primitive.StringCodec
         password: scpacker.networking.protocol.codec.primitive.StringCodec
         rememberMe: scpacker.networking.protocol.codec.primitive.BooleanCodec
-    Busy:
-      direction: S2C
-      packet_id: 442888643
-      model_id: 8
-      fields:
-        advicedUids: scpacker.networking.protocol.codec.complex.VectorCodecString
 AccountRecover:
   model_id: 9
   packets:
@@ -1642,7 +1642,7 @@ Tank:
       packet_id: 329279865
       model_id: 39
       fields:
-        name_43: scpacker.networking.protocol.codec.primitive.IntCodec
+        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
         specificationId: scpacker.networking.protocol.codec.primitive.ShortCodec
         moveCommand: scpacker.networking.protocol.codec.custom.CodecMoveCommand
     Kill:
@@ -1658,7 +1658,7 @@ Tank:
       packet_id: -1749108178
       model_id: 39
       fields:
-        name_43: scpacker.networking.protocol.codec.primitive.IntCodec
+        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
         specificationId: scpacker.networking.protocol.codec.primitive.ShortCodec
         control: scpacker.networking.protocol.codec.primitive.ByteCodec
     TurretCommand:
@@ -1678,7 +1678,7 @@ Tank:
       packet_id: -1683279062
       model_id: 39
       fields:
-        name_43: scpacker.networking.protocol.codec.primitive.IntCodec
+        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
         specificationId: scpacker.networking.protocol.codec.primitive.ShortCodec
         moveCommand: scpacker.networking.protocol.codec.custom.CodecMoveCommand
         turretDirection: scpacker.networking.protocol.codec.primitive.FloatCodec
@@ -1764,34 +1764,34 @@ Tank:
       model_id: 39
       fields:
         tank: scpacker.networking.protocol.codec.primitive.StringCodec
-    UnknownN301298508:
-      direction: X2X
+    MoveControlFlags:
+      direction: S2C
       packet_id: -301298508
       model_id: 39
       fields:
         tankId: scpacker.networking.protocol.codec.primitive.StringCodec
         control: scpacker.networking.protocol.codec.primitive.ByteCodec
-    UnknownN64696933:
-      direction: X2X
+    MoveCommand:
+      direction: S2C
       packet_id: -64696933
       model_id: 39
       fields:
         tankId: scpacker.networking.protocol.codec.primitive.StringCodec
         moveCommand: scpacker.networking.protocol.codec.custom.CodecMoveCommand
-    Unknown1516578027:
-      direction: X2X
+    MoveTurretCommand:
+      direction: S2C
       packet_id: 1516578027
       model_id: 39
       fields:
         tankId: scpacker.networking.protocol.codec.primitive.StringCodec
         moveCommand: scpacker.networking.protocol.codec.custom.CodecMoveCommand
         turretDirection: scpacker.networking.protocol.codec.primitive.FloatCodec
-    UnknownN114968993:
-      direction: X2X
+    TurretCommand:
+      direction: C2S
       packet_id: -114968993
       model_id: 39
       fields:
-        name_50: scpacker.networking.protocol.codec.primitive.IntCodec
+        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
         rotateTurretCommand: scpacker.networking.protocol.codec.custom.CodecRotateTurretCommand
         incarnationId: scpacker.networking.protocol.codec.primitive.ShortCodec
 UnknownM40:
@@ -1979,7 +1979,7 @@ ServerSession:
       packet_id: 2074243318
       model_id: 46
       fields:
-        name_43: scpacker.networking.protocol.codec.primitive.IntCodec
+        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
         serverSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
     Sync:
       direction: S2C
@@ -2068,16 +2068,16 @@ WeaponSmoky:
       packet_id: 1470597926
       model_id: 49
       fields:
-        name_43: scpacker.networking.protocol.codec.primitive.IntCodec
+        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
         hitPoint: scpacker.networking.protocol.codec.custom.CodecVector3d
-    WeaponSmokyShot:
+    Shot:
       direction: C2S
       packet_id: 229267683
       model_id: 49
       fields:
-        name_43: scpacker.networking.protocol.codec.primitive.IntCodec
+        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
         target: scpacker.networking.protocol.codec.primitive.StringCodec
-        var_356: scpacker.networking.protocol.codec.primitive.ShortCodec
+        incarnationId: scpacker.networking.protocol.codec.primitive.ShortCodec
         var_253: scpacker.networking.protocol.codec.custom.CodecVector3d
         hitPoint: scpacker.networking.protocol.codec.custom.CodecVector3d
         var_2967: scpacker.networking.protocol.codec.custom.CodecVector3d
@@ -2086,7 +2086,7 @@ WeaponSmoky:
       packet_id: 1478921140
       model_id: 49
       fields:
-        name_43: scpacker.networking.protocol.codec.primitive.IntCodec
+        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
 UnknownM50:
   model_id: 50
   packets:
@@ -2200,7 +2200,7 @@ WeaponTwins:
       packet_id: -159686980
       model_id: 51
       fields:
-        name_43: scpacker.networking.protocol.codec.primitive.IntCodec
+        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
         barrel: scpacker.networking.protocol.codec.primitive.ByteCodec
         shotId: scpacker.networking.protocol.codec.primitive.IntCodec
         shotDirection: scpacker.networking.protocol.codec.custom.CodecVector3d
@@ -2209,7 +2209,7 @@ WeaponTwins:
       packet_id: -482023661
       model_id: 51
       fields:
-        name_43: scpacker.networking.protocol.codec.primitive.IntCodec
+        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
         shotId: scpacker.networking.protocol.codec.primitive.IntCodec
         var_2967: scpacker.networking.protocol.codec.custom.CodecVector3d
     UnknownN1805942142:
@@ -2217,7 +2217,7 @@ WeaponTwins:
       packet_id: -1805942142
       model_id: 51
       fields:
-        name_43: scpacker.networking.protocol.codec.primitive.IntCodec
+        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
         barrel: scpacker.networking.protocol.codec.primitive.ByteCodec
     UnknownN44282936:
       direction: X2X
@@ -2233,7 +2233,7 @@ WeaponTwins:
       packet_id: -1723353904
       model_id: 51
       fields:
-        name_43: scpacker.networking.protocol.codec.primitive.IntCodec
+        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
         shotId: scpacker.networking.protocol.codec.primitive.IntCodec
         target: scpacker.networking.protocol.codec.primitive.StringCodec
         var_253: scpacker.networking.protocol.codec.custom.CodecVector3d
@@ -2301,7 +2301,7 @@ UnknownM53:
       packet_id: 1229701582
       model_id: 53
       fields:
-        name_43: scpacker.networking.protocol.codec.primitive.IntCodec
+        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
         target: scpacker.networking.protocol.codec.primitive.StringCodec
         shotId: scpacker.networking.protocol.codec.primitive.IntCodec
         var_253: scpacker.networking.protocol.codec.custom.CodecVector3d
@@ -2317,7 +2317,7 @@ UnknownM53:
       packet_id: -1907971330
       model_id: 53
       fields:
-        name_43: scpacker.networking.protocol.codec.primitive.IntCodec
+        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
         shotId: scpacker.networking.protocol.codec.primitive.IntCodec
         shotDirectionX: scpacker.networking.protocol.codec.primitive.ShortCodec
         shotDirectionY: scpacker.networking.protocol.codec.primitive.ShortCodec
@@ -2336,7 +2336,7 @@ UnknownM53:
       packet_id: -1823935471
       model_id: 53
       fields:
-        name_43: scpacker.networking.protocol.codec.primitive.IntCodec
+        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
         shotId: scpacker.networking.protocol.codec.primitive.IntCodec
         var_252: scpacker.networking.protocol.codec.custom.VectorCodecVector3d
     Unknown1147113344:
@@ -2344,7 +2344,7 @@ UnknownM53:
       packet_id: 1147113344
       model_id: 53
       fields:
-        name_43: scpacker.networking.protocol.codec.primitive.IntCodec
+        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
 UnknownM54:
   model_id: 54
   packets:
@@ -2353,7 +2353,7 @@ UnknownM54:
       packet_id: -18176641
       model_id: 54
       fields:
-        name_43: scpacker.networking.protocol.codec.primitive.IntCodec
+        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
     Unknown1459211021:
       direction: X2X
       packet_id: 1459211021
@@ -2365,7 +2365,7 @@ UnknownM54:
       packet_id: -484994657
       model_id: 54
       fields:
-        name_43: scpacker.networking.protocol.codec.primitive.IntCodec
+        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
         staticHitPoint: scpacker.networking.protocol.codec.custom.CodecVector3d
         targets: scpacker.networking.protocol.codec.complex.VectorCodecString
         targetHitPoints: scpacker.networking.protocol.codec.custom.VectorCodecVector3d
@@ -2806,7 +2806,7 @@ WeaponUnknownM70:
       packet_id: 2128281231
       model_id: 70
       fields:
-        name_43: scpacker.networking.protocol.codec.primitive.IntCodec
+        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
         direction: scpacker.networking.protocol.codec.custom.CodecVector3d
     Unknown471157826:
       direction: X2X
@@ -2821,7 +2821,7 @@ WeaponUnknownM70:
       packet_id: -541655881
       model_id: 70
       fields:
-        name_43: scpacker.networking.protocol.codec.primitive.IntCodec
+        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
         direction: scpacker.networking.protocol.codec.custom.CodecVector3d
         targets: scpacker.networking.protocol.codec.custom.VectorCodecTargetPosition
 BattleCTFFlag:

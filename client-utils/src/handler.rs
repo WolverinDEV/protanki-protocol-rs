@@ -161,7 +161,7 @@ impl PacketHandler for SessionPing {
         };
         
         client.connection.send_packet(&packets::c2s::ServerSessionSyncResponse{
-            name_43: client.session_timestamp(),
+            client_session_time: client.session_timestamp(),
             server_session_time: packet.server_session_time
         })?;
         Ok(())

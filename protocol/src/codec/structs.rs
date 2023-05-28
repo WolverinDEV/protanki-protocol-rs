@@ -239,7 +239,7 @@ codec_struct!(NewsItemCC {
 codec_struct!(MoveCommand {
     angular_velocity: Option<Vector3<f32>>
     control: i8
-    method_1323: Option<Vector3<f32>>
+    velocity: Option<Vector3<f32>>
     orientation: Option<Vector3<f32>>
     position: Option<Vector3<f32>>
 });
