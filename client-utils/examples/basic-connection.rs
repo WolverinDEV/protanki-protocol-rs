@@ -1,7 +1,8 @@
 use std::fs::File;
 
+use fost_client_utils::Session;
 use futures::StreamExt;
-use fost_protocol::{Session, packets::{self, PacketDowncast}};
+use fost_protocol::{packets::{self, PacketDowncast}};
 use serde::Deserialize;
 use tracing::{Level, info, error, warn};
 use clap::Parser;
@@ -44,7 +45,7 @@ struct ResourceInfo {
     pub alpha: Option<bool>,
     #[serde(rename = "type")]
     pub resource_type: i64,
-    
+
     pub weight: Option<i64>,
     pub height: Option<i64>,
     pub num_frames: Option<i64>,
@@ -67,7 +68,6 @@ async fn main() -> anyhow::Result<()> {
         .connect(args.target.parse()?).await?;
 
     info!("Client connected.");
-    info!("{}", env!("OUT_DIR"));
     while let Some(result) = client.connection.next().await {
         match result {
             Ok(packet) => {

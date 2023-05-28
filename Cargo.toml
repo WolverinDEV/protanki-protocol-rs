@@ -5,5 +5,9 @@ members = [
 
     "applications/crystal-bot",
     "applications/proxy-server",
-    "applications/register-bot"
+    "applications/register-bot",
+
+    "client-utils",
+
+    "server"
 ]

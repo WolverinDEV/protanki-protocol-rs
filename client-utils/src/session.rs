@@ -4,7 +4,10 @@ use anyhow::anyhow;
 use futures::{StreamExt, Future, FutureExt};
 use tokio::{net::TcpSocket, sync::{oneshot}};
 
-use crate::{connection::Connection, packets::{self, Packet, PacketDowncast, PacketHandlerRegistry, PacketHandler}, SimplePacketDebugFilter, PacketDebugFilter, Socket, ProtocolError};
+use fost_protocol::{Connection, packets::{self, Packet, PacketDowncast}, SimplePacketDebugFilter, PacketDebugFilter, Socket, ProtocolError};
+
+use crate::{PacketHandlerRegistry, PacketHandler};
+use crate::{ HandlerAwaitMatching, TaskHandler };
 
 pub trait Task : Send {
     type Result : Send;
@@ -14,10 +17,6 @@ pub trait Task : Send {
     }
 
     fn poll(&mut self, _session: &mut Session, _cx: &mut Context) -> Poll<anyhow::Result<Self::Result>>;
-}
-
-pub trait SessionComponent : Send {
-
 }
 
 pub struct TaskHandle<'a, R: Send> {
@@ -83,7 +82,7 @@ impl Session {
     pub fn get_component_mut<T: Any>(&mut self) -> Option<&mut T> {
         self.components.get_mut(&TypeId::of::<T>())
             .map(|c| c.downcast_mut::<T>().expect("to be of type T"))
-    } 
+    }
 
     pub fn register_packet_handler(&mut self, handler: impl PacketHandler + 'static) -> PacketHandlerId {
         self.packet_handler.register_handler(handler)
@@ -116,7 +115,7 @@ impl Session {
         let (tx, rx) = oneshot::channel();
 
         /* packet handler unregisters automaticaly as soon as task finishes */
-        self.packet_handler.register_handler(packets::TaskHandler{
+        self.packet_handler.register_handler(TaskHandler{
             task,
             tx: Some(tx)
         });
@@ -129,7 +128,7 @@ impl Session {
         let (tx, rx) = oneshot::channel::<R>();
 
         let packet_handler = self.packet_handler.clone();
-        let handler_id = packet_handler.register_handler(packets::HandlerAwaitMatching{ matcher, sender: Some(tx) });
+        let handler_id = packet_handler.register_handler(HandlerAwaitMatching{ matcher, sender: Some(tx) });
 
         tokio::select! {
             result = rx => {

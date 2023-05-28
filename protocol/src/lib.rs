@@ -5,9 +5,6 @@
 mod socket;
 pub use socket::*;
 
-mod session;
-pub use session::*;
-
 mod connection;
 pub use connection::*;
 

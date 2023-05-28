@@ -2,8 +2,6 @@ use std::{net::SocketAddr, task::{Poll, Context, Waker}, io::Cursor, pin::Pin};
 
 use crate::{crypto::{Cipher, PlainCipher, XOrCipher, CipherMode}, packets, ProtocolError, ProtocolResult, ConnectionClosedError, Socket};
 use crate::packets::{Packet, PacketRegistry, PacketDowncast};
-use fast_socks5::client::Socks5Stream;
-use tokio::{io::{self, AsyncRead, ReadBuf, AsyncWrite}, net::{TcpStream}};
 use byteorder::{ReadBytesExt, BigEndian, WriteBytesExt};
 use futures::prelude::*;
 use tracing::{warn, trace, debug};
@@ -64,7 +62,7 @@ pub type ConnectionStreamItem = std::result::Result<Box<dyn Packet>, ProtocolErr
 
 /// Simple tanks connection capeable of sending and receiving packets.
 pub struct Connection {
-    address: SocketAddr,
+    pub address: SocketAddr,
     socket: Box<dyn Socket + Send>,
 
     is_server: bool,

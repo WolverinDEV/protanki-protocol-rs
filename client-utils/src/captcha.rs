@@ -1,8 +1,10 @@
 use std::time::Duration;
 
 use async_trait::async_trait;
-use fost_protocol::{packets::{self, PacketDowncast}, codec::CaptchaLocation, Session};
+use fost_protocol::{packets::{self, PacketDowncast}, codec::CaptchaLocation};
 use tracing::{debug};
+
+use crate::Session;
 
 
 #[async_trait]
@@ -83,10 +85,10 @@ impl CaptchaSolver for CaptchaSolver2Captcha {
 }
 
 pub async fn solve_captcha(client: &mut Session, location: CaptchaLocation, solver: &mut dyn CaptchaSolver) -> anyhow::Result<bool> {
-    client.connection.send_packet(&packets::C2SCaptchaRequestLocation{ location })?;
+    client.connection.send_packet(&packets::c2s::CaptchaRequestLocation{ location })?;
     let captcha_data = client.await_match(
         move |_, packet| {
-            if let Some(captcha) = packet.downcast_ref::<packets::S2CCaptchaShow>() {
+            if let Some(captcha) = packet.downcast_ref::<packets::s2c::CaptchaShow>() {
                 if captcha.captcha_location == location {
                     Some(captcha.captcha_data.clone())
                 } else {
@@ -100,14 +102,14 @@ pub async fn solve_captcha(client: &mut Session, location: CaptchaLocation, solv
 
     let captcha_value = solver.solve_captcha(captcha_data).await?;
 
-    client.connection.send_packet(&packets::C2SCaptchaValidateCaptcha{ captcha_location: location, var_1950: captcha_value.clone() })?;
+    client.connection.send_packet(&packets::c2s::CaptchaValidateCaptcha{ captcha_location: location, var_1950: captcha_value.clone() })?;
     let captcha_solved = client.await_match(
         move |_, packet| {
-            if let Some(packet) = packet.downcast_ref::<packets::C2SCaptchaCaptchaValidated>() {
+            if let Some(packet) = packet.downcast_ref::<packets::s2c::CaptchaCaptchaValidated>() {
                 if packet.captcha_location == location {
                     return Some(true);
                 }
-            } else if let Some(packet) = packet.downcast_ref::<packets::S2CCaptchaCaptchaFailed>() {
+            } else if let Some(packet) = packet.downcast_ref::<packets::s2c::CaptchaCaptchaFailed>() {
                 if packet.captcha_location == location {
                     return Some(false);
                 }

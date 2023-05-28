@@ -502,5 +502,5 @@ codec_struct!(AchievementCC {
 
 codec_struct!(UidNotifierData {
     uid: String
-    userId: String
+    user_id: String
 });

@@ -2,10 +2,10 @@ use std::{cell::{RefCell}, task::{Poll, Context}, collections::BTreeMap, sync::a
 
 use tokio::sync::oneshot;
 
-use crate::{packets::{ Packet, self }, Session, Task};
+use fost_protocol::{packets::{ Packet, self, PacketDowncast }};
 use anyhow::{ anyhow };
 
-use super::PacketDowncast;
+use crate::{Session, Task};
 
 type PacketHandlerId = u32;
 

@@ -160,32 +160,32 @@ Captcha:
   model_id: 6
   packets:
     CaptchaValidated:
-      direction: C2S
+      direction: S2C
       packet_id: -819536476
       model_id: 6
       fields:
-        captchaLocation: scpacker.networking.protocol.codec.custom.CaptchaLocationCodec
+        location: scpacker.networking.protocol.codec.custom.CaptchaLocationCodec
     Show:
       direction: S2C
       packet_id: -1670408519
       model_id: 6
       fields:
-        captchaLocation: scpacker.networking.protocol.codec.custom.CaptchaLocationCodec
+        location: scpacker.networking.protocol.codec.custom.CaptchaLocationCodec
         captchaData: scpacker.networking.protocol.codec.custom.VectorCodecByte
     CaptchaFailed:
       direction: S2C
       packet_id: -373510957
       model_id: 6
       fields:
-        captchaLocation: scpacker.networking.protocol.codec.custom.CaptchaLocationCodec
+        location: scpacker.networking.protocol.codec.custom.CaptchaLocationCodec
         newCaptcha: scpacker.networking.protocol.codec.custom.VectorCodecByte
     ValidateCaptcha:
       direction: C2S
       packet_id: 1271163230
       model_id: 6
       fields:
-        captchaLocation: scpacker.networking.protocol.codec.custom.CaptchaLocationCodec
-        var_1950: scpacker.networking.protocol.codec.primitive.StringCodec
+        location: scpacker.networking.protocol.codec.custom.CaptchaLocationCodec
+        code: scpacker.networking.protocol.codec.primitive.StringCodec
     Parameters:
       direction: S2C
       packet_id: 321971701
@@ -216,37 +216,37 @@ Ban:
       model_id: 7
       fields:
         reasonForUser: scpacker.networking.protocol.codec.primitive.StringCodec
-AccountRegisterUid:
+AccountRegister:
   model_id: 8
   packets:
-    Incorrect:
+    UidIncorrect:
       direction: S2C
       packet_id: 1480924803
       model_id: 8
       fields: {}
-    Free:
+    UidFree:
       direction: S2C
       packet_id: -706679202
       model_id: 8
       fields: {}
-    AccountRegisterCaptchaRequired:
+    CaptchaRequired:
       direction: S2C
       packet_id: 1003297349
       model_id: 8
       fields: {}
-    UnknownN653665247:
-      direction: X2X
+    FinishExternalUser:
+      direction: C2S
       packet_id: -653665247
       model_id: 8
       fields:
         uid: scpacker.networking.protocol.codec.primitive.StringCodec
-    AccountRegisterValidateUid:
+    ValidateUid:
       direction: C2S
       packet_id: 1083705823
       model_id: 8
       fields:
         uid: scpacker.networking.protocol.codec.primitive.StringCodec
-    AccountRegisterParameters:
+    Parameters:
       direction: S2C
       packet_id: -1277343167
       model_id: 8
@@ -255,7 +255,7 @@ AccountRegisterUid:
         enableRequiredEmail: scpacker.networking.protocol.codec.primitive.BooleanCodec
         maxPasswordLength: scpacker.networking.protocol.codec.primitive.IntCodec
         minPasswordLength: scpacker.networking.protocol.codec.primitive.IntCodec
-    AccountRegisterSubmit:
+    Submit:
       direction: C2S
       packet_id: 427083290
       model_id: 8

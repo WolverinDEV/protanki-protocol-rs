@@ -387,6 +387,7 @@ dependencies = [
  "chrono",
  "clap",
  "fast-socks5",
+ "fost-client-utils",
  "fost-protocol",
  "futures",
  "nalgebra",
@@ -534,6 +535,27 @@ dependencies = [
 ]
 
 [[package]]
+name = "fost-client-utils"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "byteorder",
+ "clap",
+ "fast-socks5",
+ "fost-protocol",
+ "futures",
+ "nalgebra",
+ "rand",
+ "reqwest",
+ "serde",
+ "tokio",
+ "tokio-stream",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
 name = "fost-protocol"
 version = "0.1.0"
 dependencies = [
@@ -560,23 +582,27 @@ dependencies = [
 ]
 
 [[package]]
-name = "fost-utils"
+name = "fost-server"
 version = "0.1.0"
 dependencies = [
  "anyhow",
  "async-trait",
+ "bitflags 2.3.1",
  "byteorder",
  "clap",
  "fast-socks5",
  "fost-protocol",
  "futures",
+ "lazy_static",
  "nalgebra",
  "rand",
- "reqwest",
  "serde",
+ "serde_json",
+ "thiserror",
  "tokio",
  "tokio-stream",
  "tracing",
+ "tracing-subscriber",
 ]
 
 [[package]]
@@ -1324,8 +1350,8 @@ dependencies = [
  "clap",
  "console-subscriber",
  "fast-socks5",
+ "fost-client-utils",
  "fost-protocol",
- "fost-utils",
  "futures",
  "nalgebra",
  "rand",
@@ -1434,8 +1460,8 @@ dependencies = [
  "clap",
  "console-subscriber",
  "fast-socks5",
+ "fost-client-utils",
  "fost-protocol",
- "fost-utils",
  "futures",
  "nalgebra",
  "rand",

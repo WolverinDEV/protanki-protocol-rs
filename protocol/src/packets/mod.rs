@@ -2,9 +2,6 @@ use std::{io::{Write, Read}, any::Any};
 use std::fmt::Debug;
 use crate::ProtocolResult;
 
-mod handler;
-pub use handler::*;
-
 mod registry;
 pub use registry::*;
 
