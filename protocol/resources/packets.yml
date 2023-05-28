@@ -39,15 +39,16 @@ AccountLoginHash:
       model_id: 1
       fields:
         hash: scpacker.networking.protocol.codec.primitive.StringCodec
-UnknownM2:
+ServerHalt:
   model_id: 2
   packets:
-    ServerHaltNotify:
+    Notify:
       direction: S2C
       packet_id: -1317889894
       model_id: 2
       fields: {}
-UnknownM3:
+      description: The server is shutting down. Login not possible.
+AccountLoginExternal:
   model_id: 3
   packets:
     UnknownN1179390022:
@@ -100,7 +101,7 @@ ResourceLoader:
       model_id: 4
       fields:
         protectionData: scpacker.networking.protocol.codec.custom.VectorCodecByte
-    DependenciesLoaded:
+    ResourcesRegistered:
       direction: C2S
       packet_id: -82304134
       model_id: 4
@@ -112,14 +113,14 @@ ResourceLoader:
       model_id: 4
       fields:
         lang: scpacker.networking.protocol.codec.primitive.StringCodec
-    LoadDependencies:
+    RegisterResources:
       direction: S2C
       packet_id: -1797047325
       model_id: 4
       fields:
         json: scpacker.networking.protocol.codec.primitive.StringCodec
         callbackId: scpacker.networking.protocol.codec.primitive.IntCodec
-    ResourcesLoaded:
+    Finished:
       direction: S2C
       packet_id: -1282173466
       model_id: 4
@@ -268,7 +269,7 @@ AccountRegisterUid:
       model_id: 8
       fields:
         advicedUids: scpacker.networking.protocol.codec.complex.VectorCodecString
-UnknownM9:
+AccountRecover:
   model_id: 9
   packets:
     UnknownN262455387:
@@ -333,7 +334,7 @@ UnknownM10:
       model_id: 10
       fields:
         enabled: scpacker.networking.protocol.codec.primitive.BooleanCodec
-UnknownM11:
+AccountPremium:
   model_id: 11
   packets:
     Unknown1391146385:
@@ -371,7 +372,7 @@ LobbyLayoutSwitch:
       model_id: 12
       fields:
         state: scpacker.networking.protocol.codec.custom.CodecLayoutState
-UnknownM13:
+Friends:
   model_id: 13
   packets:
     UnknownN1241704092:
@@ -728,7 +729,7 @@ UserNotifyNotify:
       model_id: 18
       fields:
         var_1832: scpacker.networking.protocol.codec.complex.VectorCodecString
-UnknownM19:
+Quests:
   model_id: 19
   packets:
     Unknown1227293080:
@@ -795,7 +796,7 @@ UnknownM19:
       packet_id: 956252237
       model_id: 19
       fields: {}
-UnknownM20:
+QuestReward:
   model_id: 20
   packets:
     Unknown1711371907:
@@ -885,7 +886,7 @@ UnknownM23:
       model_id: 23
       fields:
         notificationEnabled: scpacker.networking.protocol.codec.primitive.BooleanCodec
-UnknownM24:
+AccountSettings:
   model_id: 24
   packets:
     Unknown600420685:
@@ -990,22 +991,24 @@ UnknownM24:
       packet_id: -714487273
       model_id: 24
       fields: {}
-UnknownM25:
+Alert:
   model_id: 25
   packets:
-    AlertShow:
+    Show:
       direction: S2C
       packet_id: -322235316
       model_id: 25
+      description: "Show a general alert message to the client"
       fields:
         text: scpacker.networking.protocol.codec.primitive.StringCodec
-UnknownM26:
+AlertServer:
   model_id: 26
   packets:
-    AlertServerHaltScheduled:
+    HaltScheduled:
       direction: S2C
       packet_id: -1712113407
       model_id: 26
+      description: "Show the server will shutdown error message"
       fields:
         timeLeftInSec: scpacker.networking.protocol.codec.primitive.IntCodec
 UnknownM27:
@@ -1023,7 +1026,7 @@ UnknownM27:
       model_id: 27
       fields:
         items: scpacker.networking.protocol.codec.custom.VectorCodecGarageItemInfo
-GlobalChatChat:
+GlobalChat:
   model_id: 28
   packets:
     InitParameters:
@@ -1068,7 +1071,7 @@ GlobalChatChat:
       model_id: 28
       fields:
         messages: scpacker.networking.protocol.codec.custom.VectorCodecChatMessage
-UnknownM29:
+AccountRank:
   model_id: 29
   packets:
     UnknownN1128606444:
@@ -1100,7 +1103,7 @@ UnknownM29:
       model_id: 29
       fields:
         score: scpacker.networking.protocol.codec.primitive.IntCodec
-UnknownM30:
+BattleCreate:
   model_id: 30
   packets:
     Unknown566338297:
@@ -1179,7 +1182,7 @@ BattleList:
       model_id: 31
       fields:
         json: scpacker.networking.protocol.codec.primitive.StringCodec
-BattleUserListUserJoinBattle:
+BattleUserList:
   model_id: 32
   packets:
     Unknown1149131596:
@@ -1208,8 +1211,8 @@ BattleUserListUserJoinBattle:
       model_id: 32
       fields:
         battleId: scpacker.networking.protocol.codec.primitive.StringCodec
-    ? ''
-    : direction: S2C
+    UserJoinBattle: 
+      direction: S2C
       packet_id: -169305322
       model_id: 32
       fields:
@@ -1230,7 +1233,7 @@ BattleUserListUserJoinBattle:
       fields:
         battleId: scpacker.networking.protocol.codec.primitive.StringCodec
         userId: scpacker.networking.protocol.codec.primitive.StringCodec
-    WithTeam:
+    UserJoinBattleWithTeam:
       direction: S2C
       packet_id: 1447204641
       model_id: 32
@@ -1806,7 +1809,7 @@ UnknownM40:
       fields:
         tankId: scpacker.networking.protocol.codec.primitive.StringCodec
         respawnDelay: scpacker.networking.protocol.codec.primitive.IntCodec
-UnknownM41:
+BattleBonus:
   model_id: 41
   packets:
     UnknownN1205151619:
@@ -1827,7 +1830,7 @@ UnknownM41:
       model_id: 41
       fields:
         bonusId: scpacker.networking.protocol.codec.primitive.StringCodec
-UnknownM42:
+BattleCTF:
   model_id: 42
   packets:
     UnknownN1832611824:
@@ -1875,7 +1878,7 @@ UnknownM42:
       fields:
         position: scpacker.networking.protocol.codec.custom.CodecVector3d
         flagTeam: scpacker.networking.protocol.codec.custom.CodecBattleTeam
-UnknownM43:
+BattleDrugs:
   model_id: 43
   packets:
     UnknownN2102525054:
@@ -1911,7 +1914,7 @@ UnknownM43:
       fields:
         itemId: scpacker.networking.protocol.codec.primitive.StringCodec
         count: scpacker.networking.protocol.codec.primitive.IntCodec
-UnknownM44:
+BattleUsers:
   model_id: 44
   packets:
     UnknownN1668779175:
@@ -1968,27 +1971,27 @@ PingMeasure:
       packet_id: 1484572481
       model_id: 45
       fields: {}
-ServerSessionSync:
+ServerSession:
   model_id: 46
   packets:
-    Response:
+    SyncResponse:
       direction: C2S
       packet_id: 2074243318
       model_id: 46
       fields:
         name_43: scpacker.networking.protocol.codec.primitive.IntCodec
         serverSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
-    ? ''
-    : direction: S2C
+    Sync:
+      direction: S2C
       packet_id: 34068208
       model_id: 46
       fields:
         serverSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
         clientPing: scpacker.networking.protocol.codec.primitive.IntCodec
-UnknownM47:
+BattleDamage:
   model_id: 47
   packets:
-    BattleDamageIndicator:
+    Indicator:
       direction: S2C
       packet_id: -1165230470
       model_id: 47
@@ -2028,7 +2031,7 @@ BattleUserStats:
       fields:
         userId: scpacker.networking.protocol.codec.primitive.StringCodec
         usersInfo: scpacker.networking.protocol.codec.custom.VectorCodecUserInfo
-UnknownM49:
+WeaponSmoky:
   model_id: 49
   packets:
     Unknown546849203:
@@ -2189,7 +2192,7 @@ UnknownM50:
       fields:
         shooterId: scpacker.networking.protocol.codec.primitive.StringCodec
         projectionOnVerticalAxis: scpacker.networking.protocol.codec.primitive.FloatCodec
-UnknownM51:
+WeaponTwins:
   model_id: 51
   packets:
     UnknownN159686980:
@@ -2517,16 +2520,16 @@ WeaponFirebird:
       model_id: 57
       fields:
         time: scpacker.networking.protocol.codec.primitive.IntCodec
-UnknownM58:
+BattleWeapons:
   model_id: 58
   packets:
-    WeaponsInit:
+    Init:
       direction: S2C
       packet_id: -2124388778
       model_id: 58
       fields:
         json: scpacker.networking.protocol.codec.primitive.StringCodec
-UnknownM59:
+BattleSuicide:
   model_id: 59
   packets:
     UnknownN911983090:
@@ -2548,7 +2551,7 @@ UnknownM59:
       fields:
         tank: scpacker.networking.protocol.codec.primitive.StringCodec
         respawnDelay: scpacker.networking.protocol.codec.primitive.IntCodec
-UnknownM60:
+BattleCP:
   model_id: 60
   packets:
     UnknownN1346883037:
@@ -2610,7 +2613,7 @@ UnknownM60:
       fields:
         pointId: scpacker.networking.protocol.codec.primitive.IntCodec
         tankId: scpacker.networking.protocol.codec.primitive.StringCodec
-UnknownM61:
+BattleMessage:
   model_id: 61
   packets:
     Unknown945463181:
@@ -2660,7 +2663,7 @@ UnknownM61:
         userId: scpacker.networking.protocol.codec.primitive.StringCodec
         message: scpacker.networking.protocol.codec.primitive.StringCodec
         team: scpacker.networking.protocol.codec.custom.CodecBattleTeam
-UnknownM62:
+BattleMines:
   model_id: 62
   packets:
     Unknown272183855:
@@ -2752,7 +2755,7 @@ UnknownM66:
       model_id: 66
       fields:
         json: scpacker.networking.protocol.codec.primitive.StringCodec
-UnknownM67:
+Achivements:
   model_id: 67
   packets:
     Unknown602656160:
@@ -2774,7 +2777,7 @@ UnknownM67:
       fields:
         achievement: scpacker.networking.protocol.codec.custom.CodecAchievement
         message: scpacker.networking.protocol.codec.primitive.StringCodec
-UnknownM68:
+News:
   model_id: 68
   packets:
     UnknownN260270890:
@@ -2783,7 +2786,7 @@ UnknownM68:
       model_id: 68
       fields:
         initParams: scpacker.networking.protocol.codec.custom.CodecNewsShowingCC
-UnknownM69:
+Payment:
   model_id: 69
   packets:
     PaymentCompleted:
@@ -2795,7 +2798,7 @@ UnknownM69:
         packageBonusCrystals: scpacker.networking.protocol.codec.primitive.IntCodec
         bonusCrystals: scpacker.networking.protocol.codec.primitive.IntCodec
         image: scpacker.networking.protocol.codec.custom.ResourceGetterCodec
-UnknownM70:
+WeaponUnknownM70:
   model_id: 70
   packets:
     Unknown2128281231:
@@ -2821,7 +2824,7 @@ UnknownM70:
         name_43: scpacker.networking.protocol.codec.primitive.IntCodec
         direction: scpacker.networking.protocol.codec.custom.CodecVector3d
         targets: scpacker.networking.protocol.codec.custom.VectorCodecTargetPosition
-UnknownM71:
+BattleCTFFlag:
   model_id: 71
   packets:
     Unknown1817559787:
@@ -2864,10 +2867,10 @@ UnknownM71:
       fields:
         flagId: scpacker.networking.protocol.codec.primitive.IntCodec
         tankId: scpacker.networking.protocol.codec.primitive.StringCodec
-UnknownM72:
+BeginnerPass:
   model_id: 72
   packets:
-    BeginnerPassActivate:
+    Activate:
       direction: S2C
       packet_id: 29211250
       model_id: 72
@@ -2875,17 +2878,17 @@ UnknownM72:
         lifeTimeInSecondsFromCurrentDateTime: scpacker.networking.protocol.codec.primitive.IntCodec
         crystalBonusInPercent: scpacker.networking.protocol.codec.primitive.IntCodec
         scoreBonusInPercent: scpacker.networking.protocol.codec.primitive.IntCodec
-UnknownM73:
+LoaderTips:
   model_id: 73
   packets:
-    Unknown2094741924:
-      direction: X2X
+    ShowTip:
+      direction: S2C
       packet_id: 2094741924
       model_id: 73
       fields:
         initParams: scpacker.networking.protocol.codec.custom.CodecTipItemCC
-    UnknownN1376947245:
-      direction: X2X
+    TipCompleted:
+      direction: C2S
       packet_id: -1376947245
       model_id: 73
       fields: {}

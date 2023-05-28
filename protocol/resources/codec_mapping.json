@@ -59,5 +59,9 @@
     "scpacker.networking.protocol.codec.custom.CodecRankNotifierData": "RankNotifierData",
     "scpacker.networking.protocol.codec.custom.CodecBattleNotifierData": "BattleNotifierData",
     "scpacker.networking.protocol.codec.custom.CodecPremiumNotifierData": "PremiumNotifierData",
-    "scpacker.networking.protocol.codec.custom.CodecOnlineNotifierData": "OnlineNotifierData"
+    "scpacker.networking.protocol.codec.custom.CodecOnlineNotifierData": "OnlineNotifierData",
+    "scpacker.networking.protocol.codec.custom.CodecPremiumNotifierCC": "PremiumNotifierCC",
+    "scpacker.networking.protocol.codec.custom.CodecTargetHit": "TargetHit",
+    "scpacker.networking.protocol.codec.custom.CodecTipItemCC": "TipItemCC",
+    "scpacker.networking.protocol.codec.custom.CodecUidNotifierData": "UidNotifierData"
 }

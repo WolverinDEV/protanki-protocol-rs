@@ -1,4 +1,5 @@
-# A Rust implementation of the pro tanki / gtanks protocol
+# FOST - Free and open source tanks
+## A Rust implementation of the pro tanki / gtanks protocol
 This is a simple implementation of the pro tanki / gtanks protocol written in rust.  
 Currently only a few packets are parsed (namely thus I manually assigned a human readable name).  
 Since the name is required for generating the according parser all others are currently ignored. 
@@ -6,7 +7,7 @@ Since the name is required for generating the according parser all others are cu
 A list of all know packets, their ids, properties and model ids can be found in `resources/pt_packet_schema.json`.  
 This dump is from the newest Pro-Tanki client as of 06/05/2023.  
   
-# Examples
+## Examples
 Currently there are two examples provided.  
 The first one is a simple client which can connect to the Pro Tanki server.  
 If provided with an login hash it automaticly uses it.  

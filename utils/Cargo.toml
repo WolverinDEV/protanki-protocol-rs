@@ -1,0 +1,20 @@
+[package]
+name = "fost-utils"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.71"
+byteorder = "1.4.3"
+clap = { version = "4.2.7", features = ["derive"] }
+fast-socks5 = "0.8.2"
+async-trait = "0.1.68"
+futures = "0.3.28"
+nalgebra = "0.32.2"
+rand = "0.8.5"
+reqwest = { version = "0.11.17", features = ["multipart"] }
+serde = { version = "1.0.162", features = ["derive"] }
+tokio = { version = "1.28.0", features = ["net", "rt", "macros", "rt-multi-thread", "sync", "signal"] }
+tokio-stream = "0.1.14"
+tracing = "0.1.37"
+fost-protocol = { path = "../protocol" }
