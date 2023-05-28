@@ -61,8 +61,8 @@ AccountLoginExternal:
       packet_id: -570114058
       model_id: 3
       fields: {}
-    UnknownN1967950183:
-      direction: X2X
+    Start:
+      direction: C2S
       packet_id: -1967950183
       model_id: 3
       fields:
@@ -296,8 +296,8 @@ AccountRecover:
       fields:
         success: scpacker.networking.protocol.codec.primitive.BooleanCodec
         error: scpacker.networking.protocol.codec.primitive.StringCodec
-    Unknown1744584433:
-      direction: X2X
+    RequestForEMail:
+      direction: C2S
       packet_id: 1744584433
       model_id: 9
       fields:
@@ -319,17 +319,17 @@ AccountRecover:
       model_id: 9
       fields:
         var_281: scpacker.networking.protocol.codec.primitive.StringCodec
-UnknownM10:
+AccountInfo:
   model_id: 10
   packets:
-    Unknown907073245:
-      direction: X2X
+    Properties:
+      direction: S2C
       packet_id: 907073245
       model_id: 10
       fields:
         userPropertyCC: scpacker.networking.protocol.codec.custom.CodecUserPropertyCC
-    Unknown150222118:
-      direction: X2X
+    DoubleCrystal:
+      direction: S2C
       packet_id: 150222118
       model_id: 10
       fields:
@@ -343,8 +343,8 @@ AccountPremium:
       model_id: 11
       fields:
         leftTimeInSeconds: scpacker.networking.protocol.codec.primitive.IntCodec
-    Unknown1405859779:
-      direction: X2X
+    Init:
+      direction: S2C
       packet_id: 1405859779
       model_id: 11
       fields:
@@ -479,8 +479,8 @@ Friends:
       packet_id: -1590185083
       model_id: 13
       fields: {}
-    Unknown1422563374:
-      direction: X2X
+    Initialize:
+      direction: S2C
       packet_id: 1422563374
       model_id: 13
       fields:
@@ -557,7 +557,7 @@ Link:
       model_id: 14
       fields:
         battleId: scpacker.networking.protocol.codec.primitive.StringCodec
-UnknownM15:
+BattleInvite:
   model_id: 15
   packets:
     Unknown810713262:
@@ -610,8 +610,8 @@ UnknownM15:
       fields:
         var_2558: scpacker.networking.protocol.codec.primitive.StringCodec
         battleId: scpacker.networking.protocol.codec.primitive.StringCodec
-    Unknown834877801:
-      direction: X2X
+    Parameters:
+      direction: S2C
       packet_id: 834877801
       model_id: 15
       fields:
@@ -678,57 +678,57 @@ LayoutSwitch:
       packet_id: 1452181070
       model_id: 17
       fields: {}
-UserNotifyNotify:
+UserNotify:
   model_id: 18
   packets:
-    UserInBattle:
+    InBattle:
       direction: S2C
       packet_id: -1895446889
       model_id: 18
       fields:
         user: scpacker.networking.protocol.codec.custom.CodecBattleNotifierData
-    UpdateUserRank:
+    UserRank:
       direction: S2C
       packet_id: -962759489
       model_id: 18
       fields:
         user: scpacker.networking.protocol.codec.custom.CodecRankNotifierData
-    UserNotifySubscribeUser:
+    Subscribe:
       direction: C2S
       packet_id: 1774907609
       model_id: 18
       fields:
         userId: scpacker.networking.protocol.codec.primitive.StringCodec
-    UserBattleLeave:
-      direction: S2C
-      packet_id: 1941694508
-      model_id: 18
-      fields:
-        userId: scpacker.networking.protocol.codec.primitive.StringCodec
-    UserNotifyUpdateUserOnlineStatus:
-      direction: S2C
-      packet_id: 2041598093
-      model_id: 18
-      fields:
-        user: scpacker.networking.protocol.codec.custom.CodecOnlineNotifierData
-    UserNotifySetUserId:
-      direction: X2X
-      packet_id: 558723173
-      model_id: 18
-      fields:
-        user: scpacker.networking.protocol.codec.custom.CodecUidNotifierData
-    UserNotifyPremiumTimeLeft:
-      direction: S2C
-      packet_id: -2069508071
-      model_id: 18
-      fields:
-        user: scpacker.networking.protocol.codec.custom.CodecPremiumNotifierData
-    UserNotifyUnsubscribeUsers:
+    Unsubscribe:
       direction: C2S
       packet_id: -2040152224
       model_id: 18
       fields:
         var_1832: scpacker.networking.protocol.codec.complex.VectorCodecString
+    BattleLeave:
+      direction: S2C
+      packet_id: 1941694508
+      model_id: 18
+      fields:
+        userId: scpacker.networking.protocol.codec.primitive.StringCodec
+    OnlineStatus:
+      direction: S2C
+      packet_id: 2041598093
+      model_id: 18
+      fields:
+        user: scpacker.networking.protocol.codec.custom.CodecOnlineNotifierData
+    SetUserId:
+      direction: X2X
+      packet_id: 558723173
+      model_id: 18
+      fields:
+        user: scpacker.networking.protocol.codec.custom.CodecUidNotifierData
+    PremiumTimeLeft:
+      direction: S2C
+      packet_id: -2069508071
+      model_id: 18
+      fields:
+        user: scpacker.networking.protocol.codec.custom.CodecPremiumNotifierData
 Quests:
   model_id: 19
   packets:
@@ -819,11 +819,12 @@ UnknownM21:
       direction: X2X
       packet_id: -875418096
       model_id: 21
+      description: "Triggeres the x2 card (image contains the image resource and topText the card text)"
       fields:
         image: scpacker.networking.protocol.codec.custom.ResourceGetterCodec
         bottomText: scpacker.networking.protocol.codec.primitive.StringCodec
         topText: scpacker.networking.protocol.codec.primitive.StringCodec
-UnknownM22:
+SocialNetwork:
   model_id: 22
   packets:
     UnknownN541741971:
@@ -843,8 +844,8 @@ UnknownM22:
       model_id: 22
       fields:
         socialNetworkId: scpacker.networking.protocol.codec.primitive.StringCodec
-    UnknownN583564465:
-      direction: X2X
+    PannelInit:
+      direction: S2C
       packet_id: -583564465
       model_id: 22
       fields:
@@ -861,36 +862,36 @@ UnknownM22:
       model_id: 22
       fields:
         socialNetworkId: scpacker.networking.protocol.codec.primitive.StringCodec
-UnknownM23:
+Settings:
   model_id: 23
   packets:
-    UnknownN731115522:
-      direction: X2X
+    RequestClose:
+      direction: C2S
       packet_id: -731115522
       model_id: 23
       fields:
-        name_76: scpacker.networking.protocol.codec.primitive.BooleanCodec
-    UnknownN1302674105:
-      direction: X2X
+        showDamage: scpacker.networking.protocol.codec.primitive.BooleanCodec
+    Close:
+      direction: S2C
       packet_id: -1302674105
       model_id: 23
       fields: {}
-    Unknown850220815:
-      direction: X2X
+    RequestOpen:
+      direction: C2S
       packet_id: 850220815
       model_id: 23
       fields: {}
-    Unknown1447082276:
-      direction: X2X
+    Open:
+      direction: S2C
       packet_id: 1447082276
       model_id: 23
       fields:
         notificationEnabled: scpacker.networking.protocol.codec.primitive.BooleanCodec
-AccountSettings:
+AccountCredentials:
   model_id: 24
   packets:
     Unknown600420685:
-      direction: X2X
+      direction: S2C
       packet_id: 600420685
       model_id: 24
       fields: {}
@@ -901,7 +902,7 @@ AccountSettings:
       fields:
         var_113: scpacker.networking.protocol.codec.primitive.BooleanCodec
     Unknown652872053:
-      direction: X2X
+      direction: S2C
       packet_id: 652872053
       model_id: 24
       fields: {}
@@ -919,7 +920,7 @@ AccountSettings:
       fields:
         email: scpacker.networking.protocol.codec.primitive.StringCodec
     Unknown2145091885:
-      direction: X2X
+      direction: S2C
       packet_id: 2145091885
       model_id: 24
       fields:
@@ -935,7 +936,7 @@ AccountSettings:
       model_id: 24
       fields: {}
     Unknown1928355480:
-      direction: X2X
+      direction: S2C
       packet_id: 1928355480
       model_id: 24
       fields:
@@ -962,20 +963,20 @@ AccountSettings:
       model_id: 24
       fields:
         password: scpacker.networking.protocol.codec.primitive.StringCodec
-    Unknown613462801:
-      direction: X2X
+    Init:
+      direction: S2C
       packet_id: 613462801
       model_id: 24
       fields:
         email: scpacker.networking.protocol.codec.primitive.StringCodec
         emailConfirmed: scpacker.networking.protocol.codec.primitive.BooleanCodec
     Unknown2029312880:
-      direction: X2X
+      direction: S2C
       packet_id: 2029312880
       model_id: 24
       fields: {}
     Unknown133238100:
-      direction: X2X
+      direction: S2C
       packet_id: 133238100
       model_id: 24
       fields: {}
@@ -1035,8 +1036,8 @@ GlobalChat:
       model_id: 28
       fields:
         initParams: scpacker.networking.protocol.codec.custom.CodecChatCC
-    UnknownN920985123:
-      direction: X2X
+    Destroy:
+      direction: S2C
       packet_id: -920985123
       model_id: 28
       fields: {}
@@ -1047,25 +1048,25 @@ GlobalChat:
       fields:
         symbolCost: scpacker.networking.protocol.codec.primitive.IntCodec
         enterCost: scpacker.networking.protocol.codec.primitive.IntCodec
-    UnknownN1062190024:
-      direction: X2X
+    Clear:
+      direction: S2C
       packet_id: -1062190024
       model_id: 28
       fields: {}
-    GlobalChatCleanUserMessage:
+    CleanUserMessage:
       direction: S2C
       packet_id: 1993050216
       model_id: 28
       fields:
         uid: scpacker.networking.protocol.codec.primitive.StringCodec
-    Unknown705454610:
-      direction: X2X
+    SendMessage:
+      direction: C2S
       packet_id: 705454610
       model_id: 28
       fields:
-        var_396: scpacker.networking.protocol.codec.primitive.StringCodec
+        target: scpacker.networking.protocol.codec.primitive.StringCodec
         text: scpacker.networking.protocol.codec.primitive.StringCodec
-    GlobalChatShowMessages:
+    AddMessages:
       direction: S2C
       packet_id: -1263520410
       model_id: 28

@@ -1,4 +1,6 @@
 #![feature(drain_filter)]
+#![feature(iterator_try_collect)]
+#![feature(btree_drain_filter)]
 #![allow(unused)]
 use std::{net::SocketAddr, sync::{Arc, Mutex}, task::Poll, future::poll_fn};
 
@@ -18,6 +20,12 @@ mod users;
 mod tasks;
 pub use tasks::*;
 
+mod resources;
+pub use resources::*;
+
+mod chat;
+pub use chat::*;
+
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     tracing_subscriber::fmt()
@@ -33,7 +41,7 @@ async fn main() -> anyhow::Result<()> {
     let socket = socket.listen(5)?;
     info!("Server started on {}", addr);
 
-    let server = Server::new();
+    let server = Server::new()?;
     let server = Arc::new(Mutex::new(server));
 
     {

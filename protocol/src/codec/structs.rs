@@ -52,12 +52,12 @@ impl Debug for ResourceReference {
 }
 
 codec_struct!(class_16 {
-    uid: Option<String>
-    user_id: Option<String>
+    uid: String
+    user_id: String
 });
 
 codec_struct!(class_14 {
-    bonus_id: Option<String>
+    bonus_id: String
     name_38: i32
     method_219: Option<Vector3<f32>>
 });
@@ -77,38 +77,42 @@ codec_struct!(WeeklyQuestDescription {
 
 codec_struct!(UserStatus {
     chat_moderator_level: ChatModeratorLevel
-    ip: Option<String>
+    ip: String
     rank_index: i32
-    uid: Option<String>
+    uid: String
 });
 
 codec_struct!(UserStat {
     deaths: i32
     kills: i32
     score: i32
-    user: Option<String>
+    user: String
 });
 
 codec_struct!(UserReward {
     name_6: i32
     name_59: i32
     reward: i32
-    user_id: Option<String>
+    user_id: String
 });
 
 codec_struct!(UserPropertyCC {
     crystals: i32
     current_rank_score: i32
+
+    // Double crystal time remaining
     duration_crystal_abonement: i32
+    // Double crystal indicator for the buy button
     has_double_crystal: bool
+
     next_rank_score: i32
     place: i32
     rank: i8
     rating: f32
     score: i32
     server_number: i32
-    id: Option<String>
-    user_profile_url: Option<String>
+    id: String
+    user_profile_url: String
 });
 
 codec_struct!(UserInfo {
@@ -117,11 +121,11 @@ codec_struct!(UserInfo {
     kills: i32
     rank: i8
     score: i32
-    uid: Option<String>
+    uid: String
 });
 
 codec_struct!(UserContainerCC {
-    users: Option<Vec<Option<String>>>
+    users: Option<Vec<String>>
 });
 
 codec_struct!(TipItemCC {
@@ -131,7 +135,7 @@ codec_struct!(TipItemCC {
 codec_struct!(TargetTankDamage {
     method_2673: f32
     method_2351: DamageIndicatorType
-    target: Option<String>
+    target: String
 });
 
 codec_struct!(TargetPosition {
@@ -148,8 +152,8 @@ codec_struct!(TargetHit {
 });
 
 codec_struct!(StringPair {
-    key: Option<String>
-    value: Option<String>
+    key: String
+    value: String
 });
 
 codec_struct!(StatisticsTeamCC {
@@ -164,12 +168,12 @@ codec_struct!(StatisticsModelCC {
     equipment_constraints_mode: EquipmentConstraintsMode
     fund: i32
     method_1309: BattleLimits
-    map_name: Option<String>
+    map_name: String
     max_people_count: i32
     parkour_mode: bool
     method_2682: i32
     spectator: bool
-    method_2378: Option<Vec<Option<String>>>
+    method_2378: Option<Vec<String>>
     name_5: i32
 });
 
@@ -178,9 +182,9 @@ codec_struct!(StatisticsDMCC {
 });
 
 codec_struct!(SocialNetworkPanelParams {
-    authorization_url: Option<String>
+    authorization_url: String
     link_exists: bool
-    sn_id: Option<String>
+    sn_id: String
 });
 
 codec_struct!(SocialNetworkPanelCC {
@@ -195,7 +199,7 @@ codec_struct!(RotateTurretCommand {
 
 codec_struct!(RankNotifierData {
     rank: i32
-    user_id: Option<String>
+    user_id: String
 });
 
 codec_struct!(Range {
@@ -205,7 +209,7 @@ codec_struct!(Range {
 
 codec_struct!(PremiumNotifierData {
     premium_time_left_in_seconds: i32
-    user_id: Option<String>
+    user_id: String
 });
 
 codec_struct!(PremiumNotifierCC {
@@ -223,7 +227,7 @@ codec_struct!(PremiumAccountAlertCC {
 codec_struct!(OnlineNotifierData {
     online: bool
     server_number: i32
-    user_id: Option<String>
+    user_id: String
 });
 
 codec_struct!(NewsShowingCC {
@@ -231,9 +235,9 @@ codec_struct!(NewsShowingCC {
 });
 
 codec_struct!(NewsItemCC {
-    image_url: Option<String>
-    news_date: Option<String>
-    news_text: Option<String>
+    image_url: String
+    news_date: String
+    news_text: String
 });
 
 codec_struct!(MoveCommand {
@@ -250,7 +254,7 @@ codec_struct!(LocaleStruct {
 });
 
 codec_struct!(ImagePair {
-    key: Option<String>
+    key: String
     value: Vec<u8>
 });
 
@@ -259,7 +263,7 @@ codec_struct!(GarageItemInfo {
     item_view_category: ItemViewCategory
     modification_index: i32
     mounted: bool
-    name: Option<String>
+    name: String
     position: i32
     premium_item: bool
     preview: ResourceReference
@@ -296,12 +300,12 @@ codec_struct!(DominationResources {
 
 codec_struct!(DailyQuestPrizeInfo {
     count: i32
-    name: Option<String>
+    name: String
 });
 
 codec_struct!(DailyQuestInfo {
     method_2718: bool
-    description: Option<String>
+    description: String
     method_2630: i32
     image: ResourceReference
     method_562: Vec<DailyQuestPrizeInfo>
@@ -320,23 +324,23 @@ codec_struct!(ControlPointsCC {
 
 codec_struct!(ClientPointData {
     id: i32
-    name: Option<String>
+    name: String
     position: Option<Vector3<f32>>
     score: f32
     method_2190: f32
     state: ControlPointState
-    method_2697: Option<Vec<Option<String>>>
+    method_2697: Option<Vec<String>>
 });
 
 codec_struct!(ClientFlag {
     method_1384: Option<Vector3<f32>>
-    method_1275: Option<String>
+    method_1275: String
     name_81: Option<Vector3<f32>>
 });
 
 codec_struct!(ClientAssaultFlag {
     method_1384: Option<Vector3<f32>>
-    method_1275: Option<String>
+    method_1275: String
     name_81: Option<Vector3<f32>>
     id: i32
 });
@@ -345,7 +349,7 @@ codec_struct!(ChatMessage {
     source_user_status: Option<UserStatus>
     system: bool
     target_user_status: Option<UserStatus>
-    text: Option<String>
+    text: String
     warning: bool
 });
 
@@ -355,10 +359,10 @@ codec_struct!(ChatCC {
     buffer_size: i32
     chat_enabled: bool
     chat_moderator_level: ChatModeratorLevel
-    links_white_list: Option<Vec<Option<String>>>
+    links_white_list: Option<Vec<String>>
     min_char: i32
     min_word: i32
-    self_name: Option<String>
+    self_name: String
     show_links: bool
     typing_speed_antiflood_enabled: bool
 });
@@ -381,14 +385,14 @@ codec_struct!(CaptureTheFlagCC {
 });
 
 codec_struct!(BonusInfoCC {
-    bottom_text: Option<String>
+    bottom_text: String
     image: ResourceReference
-    top_text: Option<String>
+    top_text: String
 });
 
 codec_struct!(BattleNotifierData {
     battle_data: BattleInfoData
-    user_id: Option<String>
+    user_id: String
 });
 
 codec_struct!(BattleMineCC {
@@ -413,8 +417,8 @@ codec_struct!(BattleMineCC {
 });
 
 codec_struct!(BattleMine {
-    mine_id: Option<String>
-    owner_id: Option<String>
+    mine_id: String
+    owner_id: String
     position: Option<Vector3<f32>>
 });
 
@@ -426,8 +430,8 @@ codec_struct!(BattleLimits {
 codec_struct!(BattleInviteMessage {
     available_rank: bool
     available_slot: bool
-    battle_id: Option<String>
-    map_name: Option<String>
+    battle_id: String
+    map_name: String
     mode: BattleMode
     no_supplies_battle: bool
     private_battle: bool
@@ -441,12 +445,12 @@ codec_struct!(BattleInfoUser {
     kills: i32
     score: i32
     suspicious: bool
-    user: Option<String>
+    user: String
 });
 
 codec_struct!(BattleInfoData {
-    battle_id: Option<String>
-    map_name: Option<String>
+    battle_id: String
+    map_name: String
     mode: BattleMode
     private_battle: bool
     pro_battle: bool
@@ -460,9 +464,9 @@ codec_struct!(BattleCreateParameters {
     equipment_constraints_mode: EquipmentConstraintsMode
     friendly_fire: bool
     method_1309: BattleLimits
-    map_id: Option<String>
+    map_id: String
     max_people_count: i32
-    name: Option<String>
+    name: String
     parkour_mode: bool
     private_battle: bool
     pro_battle: bool

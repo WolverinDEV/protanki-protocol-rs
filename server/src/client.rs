@@ -1,15 +1,15 @@
 use std::{any::{Any, TypeId}, collections::BTreeMap, task::{self, Poll, Waker}, net::{TcpStream, SocketAddr}, sync::{Weak, Mutex, Arc}, time::Duration, cell::{RefCell, Ref, RefMut}, rc::Rc};
 use futures::{Future, StreamExt};
-use tokio::time;
+use tokio::{time, sync::mpsc};
 use tracing::{ error, debug };
 use fost_protocol::{Connection, packets::{Packet, PacketDowncast, self}, Socket, SimplePacketDebugFilter, ProtocolError};
 
-use crate::{server::Server, client_components::{ConnectionPing}, Tasks};
+use crate::{server::{Server, ServerEvent}, client_components::{ConnectionPing}, Tasks};
 
-enum AuthenticationState {
+pub enum AuthenticationState {
     /* InviteCode, */
     Unauthenticated,
-    Authenticated
+    Authenticated{ user_id: String }
 }
 
 pub enum ClientEvent {
@@ -63,6 +63,7 @@ impl<T: ClientComponent + 'static> RegisteredClientComponent for RegisteredClien
 pub type ClientId = u32;
 pub struct Client {
     client_id: ClientId,
+    server_events: Option<mpsc::UnboundedSender<ServerEvent>>,
 
     connection: Connection,
     components: BTreeMap<TypeId, Arc<RefCell<dyn RegisteredClientComponent>>>,
@@ -71,6 +72,9 @@ pub struct Client {
 
     tasks: Rc<Tasks>,
     waker: Option<Waker>,
+
+    authentication_state: AuthenticationState,
+    /* TODO: Use active screen */
 }
 
 unsafe impl Send for Client {}
@@ -104,6 +108,7 @@ impl Client {
 
         let mut client = Self {
             client_id: 0,
+            server_events: None,
 
             connection,
             components: Default::default(),
@@ -112,6 +117,8 @@ impl Client {
 
             waker: None,
             tasks: Rc::new(Tasks::new()),
+
+            authentication_state: AuthenticationState::Unauthenticated,
         };
 
         client.register_component(ConnectionPing::new(Duration::from_millis(2_500)));
@@ -123,9 +130,10 @@ impl Client {
         self.client_id
     }
 
-    pub fn setup_client_id(&mut self, client_id: ClientId) {
+    pub fn setup_client(&mut self, client_id: ClientId, server_events: mpsc::UnboundedSender<ServerEvent>) {
         assert_eq!(self.client_id, 0);
         self.client_id = client_id;
+        self.server_events = Some(server_events);
     }
 
     pub fn language(&self) -> &str {
@@ -134,6 +142,20 @@ impl Client {
 
     pub fn peer_address(&self) -> &SocketAddr {
         &self.connection.address
+    }
+
+    pub fn authentication_state(&self) -> &AuthenticationState {
+        &self.authentication_state
+    }
+
+    pub fn authentication_state_mut(&mut self) -> &mut AuthenticationState {
+        &mut self.authentication_state
+    }
+
+    pub fn issue_server_event(&self, event: ServerEvent) {
+        if let Some(sender) = &self.server_events {
+            let _ = sender.send(event);
+        }
     }
 
     pub fn register_component<T: ClientComponent + 'static>(&mut self, component: T) {
@@ -155,6 +177,17 @@ impl Client {
                 })
             })
     }  
+
+    pub fn with_component_mut<T: ClientComponent + 'static, R>(&mut self, callback: impl FnOnce(&mut Client, &mut T) -> R) -> Option<R> {
+        let component = self.components.get(&TypeId::of::<T>())
+            .cloned();
+
+        component.map(move |component| {
+            let mut component = component.borrow_mut();
+            let mut component = component.as_any_mut().downcast_mut::<T>().expect("to be of type T");
+            callback(self, component)
+        })
+    }
 
     pub fn get_component_mut<T: ClientComponent + 'static>(&mut self) -> Option<RefMut<'_, T>> {
         self.components.get(&TypeId::of::<T>())

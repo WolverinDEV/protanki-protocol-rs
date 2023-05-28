@@ -78,7 +78,7 @@ impl Tasks {
                 }
             });
             
-            let mut new_tasks = self.tasks.borrow_mut();
+            let mut new_tasks = self.new_tasks.borrow_mut();
             if new_tasks.is_empty() {
                 return Ok(());
             }

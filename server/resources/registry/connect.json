@@ -1,0 +1,16 @@
+[
+    {
+        "idhigh": "0",
+        "idlow": 1395310,
+        "versionhigh": "0",
+        "versionlow": 1,
+        "lazy": false,
+        "fileNames": [
+            "en.jpg",
+            "ru.jpg",
+            "pt_br.jpg"
+        ],
+        "alpha": false,
+        "type": 13
+    }
+]

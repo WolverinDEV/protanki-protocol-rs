@@ -3,9 +3,9 @@ use std::sync::{Arc, Mutex, RwLock};
 use anyhow::Context;
 use fost_protocol::{packets::{Packet, PacketDowncast, c2s, s2c}, codec::{CaptchaLocation, ResourceReference}};
 
-use crate::{client::{ClientComponent, Client}, users::UserRegistry};
+use crate::{client::{ClientComponent, Client, AuthenticationState}, users::UserRegistry};
 
-use super::CaptchaProvider;
+use super::{CaptchaProvider, UserAuthentication};
 
 pub struct UserRegister {
     client_initialized: bool,
@@ -24,9 +24,13 @@ impl UserRegister {
 impl ClientComponent for UserRegister {
     fn on_packet(&mut self, client: &mut Client, packet: &dyn Packet) -> anyhow::Result<()> {
         if let Some(packet) = packet.downcast_ref::<c2s::AccountRegisterValidateUid>() {
+            if !matches!(client.authentication_state(), AuthenticationState::Unauthenticated) {
+                anyhow::bail!("client is not supposed to register")
+            }
+
             let user_registry = self.user_registry.read()
                 .ok()
-                .context("failed to aquite the user registry")?;
+                .context("failed to accquire the user registry")?;
 
             client.run_async(
                 user_registry.validate_username(packet.uid.clone()),
@@ -39,6 +43,10 @@ impl ClientComponent for UserRegister {
                 }
             );
         } else if let Some(packet) = packet.downcast_ref::<c2s::AccountRegisterSubmit>() {
+            if !matches!(client.authentication_state(), AuthenticationState::Unauthenticated) {
+                anyhow::bail!("client is not supposed to register")
+            }
+            
             let captcha_valid = {
                 let mut captcha_service = client.get_component_mut::<CaptchaProvider>()
                     .context("missing captcha service")?;
@@ -55,12 +63,19 @@ impl ClientComponent for UserRegister {
                 .ok()
                 .context("failed to aquite the user registry")?;
 
+            let username = packet.uid.to_string();
+            let remember = packet.remember_me;
             client.run_async(
                 user_registry.register_user(packet.uid.to_string(), packet.password.to_string()), 
-                |client, result| {
+                move |client, result| {
                     if result {
                         /* TODO! */
                         client.send_packet(&s2c::AlertShow{ text: "Registered! Next step is TODO!".to_string() });
+                        client.with_component_mut::<UserAuthentication, _>(
+                            |client, authentication| {
+                                authentication.handle_user_authenticated(client, &username, remember);
+                            }
+                        );
                     } else {
                         client.send_packet(&s2c::AccountRegisterUidIncorrect{});
                     }
