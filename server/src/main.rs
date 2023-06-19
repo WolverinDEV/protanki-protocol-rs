@@ -110,7 +110,7 @@ async fn main() -> anyhow::Result<()> {
         });
     }
 
-    tracing::info!("Server shutdown-");
+    tracing::info!("Server shutdown");
     drop(socket); /* close the server socket */
 
     let server_shutdown = {

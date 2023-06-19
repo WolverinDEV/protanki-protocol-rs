@@ -14,9 +14,6 @@ pub enum ConnectionClosedError {
     
     #[error("write failed: {0}")]
     WriteError(io::Error),
-    
-    #[error("an error occurred: {0}")]
-    ProtocolError(Box<ProtocolError>),
 }
 
 #[derive(Error, Debug)]

@@ -37,10 +37,16 @@ struct BattleInfo {
 
 lazy_static::lazy_static!{
     static ref DUMMY_BATTLE: BattleInfo = BattleInfo{
-        battle_id: "__dummy_battle".into(),
-        battle_mode: "ctf".into(),
+        battle_id: "0000000000000000".into(),
+        battle_mode: "TDM".into(),
 
         name: "Dummy Battle".into(),
+        map: "map_silence_moon".into(),
+
+        preview: 952789,
+
+        equipment_constraints_mode: "NONE".into(),
+        suspicion_level: "NONE".into(),
 
         max_people: 4,
         min_rank: 0,
@@ -84,5 +90,26 @@ impl ClientComponent for ClientBattleList {
 /// Client handler for subscribing a battle
 pub struct ClientBattleInfo {}
 
+static MAPS_JSON: &'static str = include_str!("../../resources/maps.json");
+
 /// Client handler for creating new battles
-pub struct ClientBattleCreate {}
+pub struct ClientBattleCreate {
+    battle_provider: Arc<RwLock<BattleProvider>>
+}
+
+impl ClientBattleCreate {
+    pub fn new(battle_provider: Arc<RwLock<BattleProvider>>) -> Self {
+        Self {
+            battle_provider
+        }
+    }
+}
+
+impl ClientComponent for ClientBattleCreate {
+    fn initialize(&mut self, client: &mut crate::client::Client) -> anyhow::Result<()> {
+        client.send_packet(&s2c::BattleCreateParameters{
+            json: MAPS_JSON.to_string()
+        });
+        Ok(())
+    }
+}

@@ -285,6 +285,12 @@ impl Client {
     }
 
     fn handle_protocol_error(&mut self, error: ProtocolError) {
+        if matches!(error, ProtocolError::ConnectionClosed(_)) {
+            /* the client has closed the connection abruptly */
+            self.do_connection_close();
+            return;
+        }
+
         error!("protocol error (disconnecting client): {}", error);
         self.send_packet(&s2c::AlertShow{ text: "Protocol error. Closing connection.".to_string() });
         let _ = self.disconnect(true);

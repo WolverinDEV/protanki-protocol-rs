@@ -1,13 +1,14 @@
 use std::{collections::{BTreeMap}, sync::{Arc, Mutex, RwLock}, future::poll_fn, task::Poll, time::Duration, pin::Pin};
 
 use anyhow::Context;
+use chrono::Utc;
 use fost_protocol::{packets::s2c, codec::{LayoutState, UserPropertyCC}};
 use futures::{FutureExt, Future, stream::FuturesUnordered, StreamExt};
 use sqlx::SqliteConnection;
 use tokio::{sync::mpsc, time};
 use tracing::{warn, info};
 
-use crate::{client::{Client, ClientId}, client_components::{UserAuthentication, UserRegister, CaptchaProvider, ClientResources, SettingsDialog, LoginKickoff, ClientBattleList}, users::UserRegistry, ServerResource, ServerResources, ServerChat, ServerChatComponent, ResourceStage, BattleProvider};
+use crate::{client::{Client, ClientId}, client_components::{UserAuthentication, UserRegister, CaptchaProvider, ClientResources, SettingsDialog, LoginKickoff, ClientBattleList, ClientBattleCreate}, users::UserRegistry, ServerResource, ServerResources, ServerChat, ServerChatComponent, ResourceStage, BattleProvider, Rank};
 
 pub type DatabaseConnection = SqliteConnection;
 pub type DatabaseHandle = Arc<tokio::sync::Mutex<DatabaseConnection>>;
@@ -18,6 +19,8 @@ pub enum ServerEvent {
 }
 
 pub struct Server {
+    server_id: i32,
+
     clients: BTreeMap<ClientId, Arc<Mutex<Client>>>,
     client_id_index: ClientId,
 
@@ -40,6 +43,9 @@ impl Server {
         let resources = ServerResources::new()?;
 
         Ok(Self {
+            /* we currently have only one server */
+            server_id: 1,
+
             clients: Default::default(),
             client_id_index: 0,
 
@@ -161,36 +167,44 @@ impl Server {
         client.send_packet(&s2c::LobbyLayoutSwitchStart{ state: LayoutState::BattleSelect });
 
         let user_id = client.user_id().context("missing client user id")?.to_string();
+        let server_id = self.server_id;
         {
             let user_query = self.user_registry.read()
                 .expect("to lock the user registry")
                 .find_user(user_id.clone());
 
-            client.run_async(user_query, |client, user_info| {
+            client.run_async(user_query, move |client, user_info| {
                 let user_info = match user_info {
                     Some(info) => info,
                     /* should not occur and if so just do nothing and bug out the client */
                     None => return,
                 };
 
+                let double_crystals = if let Some(double_crystals) = user_info.double_crystals {
+                    (double_crystals - Utc::now()).num_seconds().min(0)
+                } else {
+                    0
+                };
+
+                let rank = Rank::from_score(user_info.experience);
                 client.send_packet(&s2c::AccountInfoProperties {
                     user_property_cc: UserPropertyCC {
                         id: user_id,
                         user_profile_url: "https://did.science/".to_string(),
         
-                        server_number: 1,
+                        server_number: server_id,
         
-                        rank: 2, // FIXME: TODO!
+                        rank: rank.value() as i8,
                         score: user_info.experience as i32,
-                        current_rank_score: 100, // FIXME: TODO!
-                        next_rank_score: 200, // FIXME: TODO!
+                        current_rank_score: rank.score() as i32,
+                        next_rank_score: rank.next_rank().map_or(0, |rank| rank.score() as i32),
 
-                        rating: 1337f32,
-                        place: 3,
+                        rating: 0f32,
+                        place: 1337,
         
                         crystals: user_info.crystals as i32,
-                        duration_crystal_abonement: 8000,
-                        has_double_crystal: true,
+                        duration_crystal_abonement: double_crystals as i32,
+                        has_double_crystal: double_crystals > 0,
                     }
                 });
                 
@@ -227,6 +241,7 @@ impl Server {
                 client.send_packet(&s2c::LobbyLayoutSwitchEnd{ state: LayoutState::BattleSelect, origin: LayoutState::BattleSelect });
                 client.register_component(ServerChatComponent::new(server_chat));
                 client.register_component(ClientBattleList::new(battles.clone()));
+                client.register_component(ClientBattleCreate::new(battles.clone()));
             }
         );
 
@@ -236,6 +251,7 @@ impl Server {
     fn handle_event(&mut self, event: ServerEvent) -> anyhow::Result<()> {
         match event {
             ServerEvent::ClientDisconnected(client_id) => {
+                /* TODO: Cleanup from everything else */
                 info!("Client {} disconnected.", client_id);
                 self.clients.remove(&client_id);
             },

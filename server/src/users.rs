@@ -18,11 +18,13 @@ pub mod database {
 
         pub email: Option<String>,
         pub email_confirmed: bool,
-        
+
         pub timestamp_register: chrono::DateTime<chrono::Utc>,
         pub timestamp_active: chrono::DateTime<chrono::Utc>,
 
         pub crystals: u32,
+        pub double_crystals: Option<chrono::DateTime<chrono::Utc>>,
+
         pub experience: u32,
         pub premium: Option<chrono::DateTime<chrono::Utc>>,
     }

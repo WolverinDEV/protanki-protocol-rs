@@ -76,6 +76,7 @@ impl ServerResources {
             None => return vec![],
         };
 
+        return vec![]; // For testing do not load any resources
         resource_ids.iter()
             .filter_map(|res_id| self.resources.get(&res_id))
             .cloned()

@@ -1108,6 +1108,12 @@ AccountRank:
 BattleCreate:
   model_id: 30
   packets:
+    Parameters:
+      direction: S2C
+      packet_id: -838186985
+      model_id: 30
+      fields:
+        json: scpacker.networking.protocol.codec.primitive.StringCodec
     Unknown566338297:
       direction: X2X
       packet_id: 566338297
@@ -1124,12 +1130,6 @@ BattleCreate:
       model_id: 30
       fields:
         name: scpacker.networking.protocol.codec.primitive.StringCodec
-    BattleCreateParameters:
-      direction: S2C
-      packet_id: -838186985
-      model_id: 30
-      fields:
-        json: scpacker.networking.protocol.codec.primitive.StringCodec
     UnknownN614313838:
       direction: X2X
       packet_id: -614313838

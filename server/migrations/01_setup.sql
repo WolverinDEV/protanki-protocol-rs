@@ -7,6 +7,8 @@ CREATE TABLE `user`(
         `timestamp_active` DATETIME NOT NULL,
 
         `crystals` INT NOT NULL,
+        `double_crystals` DATETIME DEFAULT NULL,
+
         `experience` INT NOT NULL,
         `premium` DATETIME DEFAULT NULL
 );
