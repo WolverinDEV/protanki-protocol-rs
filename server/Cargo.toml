@@ -22,3 +22,7 @@ tokio-stream = "0.1.14"
 tracing = "0.1.37"
 tracing-subscriber = { version = "0.3.17", features = ["env-filter"] }
 fost-protocol = { path = "../protocol" }
+sqlx = { version = "0.6.3", features = ["runtime-tokio-rustls", "sqlite", "chrono"] }
+chrono = "0.4.26"
+sha2 = "0.10.7"
+hex = "0.4.3"

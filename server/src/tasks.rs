@@ -70,11 +70,11 @@ impl Tasks {
         *self.waker.borrow_mut() = Some(cx.waker().clone());
         
         loop {
-            self.tasks.borrow_mut().drain_filter(|task| {
+            self.tasks.borrow_mut().retain_mut(|task| {
                 if let Poll::Ready(_) = task.poll(client, cx) {
-                    true
-                } else {
                     false
+                } else {
+                    true
                 }
             });
             

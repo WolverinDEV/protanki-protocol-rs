@@ -19,6 +19,11 @@ pub struct ServerChat {
     message_history: VecDeque<ChatMessage>,
 }
 
+static DEVELOPMENT_WARNING: &'static str = r#"The fost-server is under development.
+Do not expect all features to work properly.
+
+Report bugs: https://github.com/WolverinDEV/protanki-protocol-rs"#;
+
 impl ServerChat {
     pub fn new() -> Self {
         let mut result = Self {
@@ -27,9 +32,6 @@ impl ServerChat {
             message_history_length: 100,
             message_history: VecDeque::with_capacity(100),
         };
-
-        result.register_system_message("Hello world".to_string(), false);
-        result.register_system_message("This server is currently under development and might not be fully functional!".to_string(), true);
 
         result
     }
@@ -84,11 +86,23 @@ impl ServerChat {
                     .collect()
             )
         );
+
+        let _ = subscriber.send(
+            ServerChatEvent::Message(
+                ChatMessage { 
+                    source_user_status: None, 
+                    target_user_status: None,
+                    system: true, 
+                    warning: true,
+                    text: DEVELOPMENT_WARNING.to_string(), 
+                }
+            )
+        );
     }
 
     fn dispatch_server_event(&mut self, event: &ServerChatEvent) {
-        self.subscriber.drain_filter(|_, subscriber| {
-            subscriber.send(event.clone()).is_err()
+        self.subscriber.retain(|_, subscriber| {
+            subscriber.send(event.clone()).is_ok()
         });
     }
 }
@@ -98,7 +112,6 @@ pub struct ServerChatComponent {
     subscriber: Option<mpsc::UnboundedReceiver<ServerChatEvent>>,
     waker: Option<task::Waker>,
 
-    chat_initialized: bool,
     chat_messages_shown: bool,
 }
 
@@ -109,7 +122,6 @@ impl ServerChatComponent {
             subscriber: None,
             waker: None,
 
-            chat_initialized: false,
             chat_messages_shown: false
         }
     }
@@ -165,6 +177,35 @@ impl ServerChatComponent {
 }
 
 impl ClientComponent for ServerChatComponent {
+    fn initialize(&mut self, client: &mut Client) -> anyhow::Result<()> {
+        let user_id = client.user_id().context("missing client user id")?.to_string();
+        client.send_packet(&s2c::GlobalChatInitParameters{
+            init_params: ChatCC {
+                admin: false,
+                antiflood_enabled: true,
+                buffer_size: 128,
+                chat_enabled: true,
+                chat_moderator_level: ChatModeratorLevel::None,
+                links_white_list: None,
+                min_char: 1,
+                min_word: 1,
+                self_name: user_id,
+                show_links: true,
+                typing_speed_antiflood_enabled: true,
+            }
+        });
+
+        client.send_packet(&s2c::GlobalChatAntifloodParameters{
+            enter_cost: 880,
+            symbol_cost: 176
+        });
+
+        /* subscribe to the server chat by default */
+        self.subscribe(client);
+
+        Ok(())
+    }
+
     fn on_packet(&mut self, client: &mut Client, packet: &dyn fost_protocol::packets::Packet) -> anyhow::Result<()> {
         let user_id = if let AuthenticationState::Authenticated { user_id } = client.authentication_state() {
             user_id.clone()
@@ -190,37 +231,6 @@ impl ClientComponent for ServerChatComponent {
 
     fn poll(&mut self, client: &mut Client, cx: &mut task::Context) -> anyhow::Result<()> {
         self.waker = Some(cx.waker().clone());
-
-        if !self.chat_initialized {
-            if let AuthenticationState::Authenticated { user_id } = client.authentication_state() {
-                self.chat_initialized = true;
-            
-                client.send_packet(&s2c::GlobalChatInitParameters{
-                    init_params: ChatCC {
-                        admin: false,
-                        antiflood_enabled: true,
-                        buffer_size: 128,
-                        chat_enabled: true,
-                        chat_moderator_level: ChatModeratorLevel::None,
-                        links_white_list: None,
-                        min_char: 1,
-                        min_word: 1,
-                        self_name: user_id.clone(),
-                        show_links: true,
-                        typing_speed_antiflood_enabled: true,
-                    }
-                });
-    
-                client.send_packet(&s2c::GlobalChatAntifloodParameters{
-                    enter_cost: 880,
-                    symbol_cost: 176
-                });
-    
-                /* subscribe to the server chat by default */
-                self.subscribe(client);
-            }
-        }
-
         loop {
             let rx = match &mut self.subscriber {
                 Some(rx) => rx,

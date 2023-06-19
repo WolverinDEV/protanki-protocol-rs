@@ -198,8 +198,8 @@ impl Connection {
         let mut packet_reader = Cursor::new(packet_payload);
         let packet = self.packet_registry.decode(&mut packet_reader, packet_id)?;
 
-        if !packet_reader.is_empty() {
-            warn!("Packet decoder did not read whole packet of id {} ({} out of {} bytes left).", packet_id as i32, packet_reader.remaining_slice().len(), packet_length - 8);
+        if !packet_reader.position() < packet_reader.get_ref().len() as u64 {
+            warn!("Packet decoder did not read whole packet of id {} ({} out of {} bytes left).", packet_id as i32, packet_reader.get_ref().len() as u64 - packet_reader.position(), packet_length - 8);
         }
 
         if self.log_filter.should_log(false, Box::as_ref(&packet)) {

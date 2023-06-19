@@ -6,8 +6,8 @@ use crate::server::Server;
 
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Copy)]
 pub enum ResourceStage {
-    Auth,
     Connect,
+    Auth,
     Lobby,
 }
 

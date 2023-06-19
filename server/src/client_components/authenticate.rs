@@ -11,9 +11,37 @@ use crate::{client::{ClientComponent, Client, AuthenticationState}, users::{User
 
 use super::{CaptchaProvider, ClientResources};
 
-pub struct UserAuthentication {
-    initialized: bool,
+/// Request the client to load all required auth resources
+/// and fire ResourceLoaderFinished when done.
+pub struct LoginKickoff;
+impl LoginKickoff {
+    pub fn new() -> Self {
+        Self { }
+    }
+}
+impl ClientComponent for LoginKickoff {
+    fn initialize(&mut self, client: &mut Client) -> anyhow::Result<()> {
+        client.with_component_mut::<ClientResources, _>(
+            |client, resources| {
+                let resources_auth = resources.await_resources_loaded(client, ResourceStage::Auth)?;
 
+                client.run_async(
+                    resources_auth, 
+                    |client, _| {
+                        /* Resources loaded. Show the login screen. */        
+                        client.send_packet(&packets::s2c::ResourceLoaderFinished{});
+                    }
+                );
+
+                anyhow::Ok(())
+            }
+        ).context("failed to find client resources")??;
+
+        Ok(())
+    }
+}
+
+pub struct UserAuthentication {
     user_registry: Arc<RwLock<UserRegistry>>,
     login_pending: Arc<AtomicBool>,
 }
@@ -21,8 +49,6 @@ pub struct UserAuthentication {
 impl UserAuthentication {
     pub fn new(user_registry: Arc<RwLock<UserRegistry>>) -> Self {
         Self {
-            initialized: false,
-
             user_registry,
             login_pending: Arc::new(AtomicBool::new(false)),
         }
@@ -55,48 +81,6 @@ impl UserAuthentication {
         }
         
         client.issue_server_event(ServerEvent::ClientAuthenticated(client.client_id()));
-        /* this only toggles the load screen */
-        client.send_packet(&s2c::LobbyLayoutSwitchStart{ state: LayoutState::BattleSelect });
-
-        // Starts the user account bar
-        client.send_packet(&s2c::AccountInfoProperties {
-            user_property_cc: UserPropertyCC {
-                id: user_id.to_string(),
-                user_profile_url: "https://did.science/".to_string(),
-
-                server_number: 1,
-
-                score: 133,
-                current_rank_score: 100,
-                next_rank_score: 200,
-                
-                rank: 2,
-                rating: 1337f32,
-                place: 3,
-
-                crystals: 123,
-                duration_crystal_abonement: 8000,
-                has_double_crystal: true,
-            }
-        });
-
-        // TODO: Notify premium data
-
-        // TODO: Notify EMail
-        client.send_packet(&s2c::AccountCredentialsInit{
-            email: "dev@did.science".to_string(),
-            email_confirmed: true
-        });
-
-        
-        client.run_async(
-            async {
-                time::sleep(Duration::from_secs(1)).await
-            }, 
-            |client, _| {
-                client.send_packet(&s2c::LobbyLayoutSwitchEnd{ state: LayoutState::BattleSelect, origin: LayoutState::BattleSelect });
-            }
-        );
     }
 
     pub fn send_login_token(&mut self, client: &mut Client) -> anyhow::Result<()> {
@@ -112,27 +96,13 @@ impl UserAuthentication {
         client.run_async(
             user_registry.create_authentication_token(user_id), 
             |client, token| {
-                client.send_packet(&s2c::AccountLoginHashUpdate{ hash: token });
+                if let Some(token) = token {
+                    client.send_packet(&s2c::AccountLoginHashUpdate{ hash: token });
+                } else {
+                    /* Failed to create a token. Just don't send anything to the client. */
+                }
             }
         );
-        Ok(())
-    }
-
-    fn initialize_resources(&mut self, client: &mut Client, resources: &mut ClientResources) -> anyhow::Result<()> {
-        let resources_connect = resources.await_resources_loaded(client, ResourceStage::Connect)?;
-        //let resources_auth = resources.await_resources_loaded(client, ResourceStage::Auth)?;
-
-        client.run_async(
-            async move {
-                resources_connect.await;
-                //resources_auth.await;
-            }, 
-            |client, _| {
-                /* Resources loaded. Show the login screen. */        
-                client.send_packet(&packets::s2c::ResourceLoaderFinished{});
-            }
-        );
-
         Ok(())
     }
 }
@@ -184,22 +154,6 @@ impl ClientComponent for UserAuthentication {
             );
         }
 
-        Ok(())
-    }
-
-    fn poll(&mut self, client: &mut Client, cx: &mut task::Context) -> anyhow::Result<()> {
-        if self.initialized {
-            return Ok(());
-        }
-        self.initialized = true;
-
-        client.with_component_mut::<ClientResources, _>(
-            |client, resources| {
-                self.initialize_resources(client, resources)
-            }
-        )
-        .context("failed to find client resources")??;
-        
         Ok(())
     }
 }

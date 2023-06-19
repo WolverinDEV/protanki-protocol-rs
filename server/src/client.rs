@@ -19,6 +19,10 @@ pub enum ClientEvent {
 /// A basic component performing one single purpose.
 /// An example would be the battle list manager or chat handler.
 pub trait ClientComponent : Send {
+    fn initialize(&mut self, client: &mut Client) -> anyhow::Result<()> {
+        Ok(())
+    }
+
     fn on_packet(&mut self, client: &mut Client, packet: &dyn Packet) -> anyhow::Result<()> {
         Ok(())
     }
@@ -41,6 +45,10 @@ struct RegisteredClientComponentImpl<T> {
 }
 
 impl<T: ClientComponent> ClientComponent for RegisteredClientComponentImpl<T> {
+    fn initialize(&mut self, client: &mut Client) -> anyhow::Result<()> {
+        self.component.initialize(client)
+    }
+
     fn on_packet(&mut self, client: &mut Client, packet: &dyn Packet) -> anyhow::Result<()> {
         self.component.on_packet(client, packet)
     }
@@ -152,20 +160,35 @@ impl Client {
         &mut self.authentication_state
     }
 
+    /// Get the clients authenticated user id
+    /// The client user id is only available when the client is authenticated
+    pub fn user_id(&mut self) -> Option<&str> {
+        match &self.authentication_state {
+            AuthenticationState::Authenticated { user_id } => Some(&user_id),
+            AuthenticationState::Unauthenticated => None
+        }
+    }
+
     pub fn issue_server_event(&self, event: ServerEvent) {
         if let Some(sender) = &self.server_events {
             let _ = sender.send(event);
         }
     }
 
-    pub fn register_component<T: ClientComponent + 'static>(&mut self, component: T) {
+    pub fn register_component<T: ClientComponent + 'static>(&mut self, component: T) -> anyhow::Result<()> {
+        let mut component = RegisteredClientComponentImpl{ component };
+        component.initialize(self)?;
+
         self.components.insert(TypeId::of::<T>(), 
-            Arc::new(RefCell::new(RegisteredClientComponentImpl{ component }))
+            Arc::new(RefCell::new(component))
         );
+
 
         if let Some(waker) = self.waker.take() {
             waker.wake();
         }
+
+        Ok(())
     }
 
     pub fn get_component<T: ClientComponent + 'static>(&self) -> Option<Ref<'_, T>> {

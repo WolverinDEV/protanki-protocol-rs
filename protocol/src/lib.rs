@@ -1,6 +1,6 @@
-#![feature(type_name_of_val)]
 #![allow(dead_code)]
-#![feature(cursor_remaining)]
+// #![feature(type_name_of_val)]
+// #![feature(cursor_remaining)]
 
 mod socket;
 pub use socket::*;

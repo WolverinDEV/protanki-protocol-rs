@@ -8,20 +8,29 @@ use crate::{client::{ClientComponent, Client, AuthenticationState}, users::UserR
 use super::{CaptchaProvider, UserAuthentication};
 
 pub struct UserRegister {
-    client_initialized: bool,
     user_registry: Arc<RwLock<UserRegistry>>,
 }
 
 impl UserRegister {
     pub fn new(user_registry: Arc<RwLock<UserRegistry>>) -> Self {
         Self {
-            client_initialized: false,
             user_registry,
         }
     }
 }
 
 impl ClientComponent for UserRegister {
+    fn initialize(&mut self, client: &mut Client) -> anyhow::Result<()> {
+        client.send_packet(&s2c::AccountRegisterParameters{
+            bg_resource: ResourceReference{ resource_id: 122842 },
+            enable_required_email: false,
+            max_password_length: 100,
+            min_password_length: 5
+        });
+
+        Ok(())
+    }
+
     fn on_packet(&mut self, client: &mut Client, packet: &dyn Packet) -> anyhow::Result<()> {
         if let Some(packet) = packet.downcast_ref::<c2s::AccountRegisterValidateUid>() {
             if !matches!(client.authentication_state(), AuthenticationState::Unauthenticated) {
@@ -33,12 +42,12 @@ impl ClientComponent for UserRegister {
                 .context("failed to accquire the user registry")?;
 
             client.run_async(
-                user_registry.validate_username(packet.uid.clone()),
+                user_registry.is_username_free(packet.uid.clone()),
                 |client, result| {
                     if result {
                         client.send_packet(&s2c::AccountRegisterUidFree{ });
                     } else {
-                        client.send_packet(&s2c::AccountRegisterUidIncorrect{ });
+                        client.send_packet(&s2c::AccountRegisterUidBusy{ adviced_uids: vec![] });
                     }
                 }
             );
@@ -69,8 +78,7 @@ impl ClientComponent for UserRegister {
                 user_registry.register_user(packet.uid.to_string(), packet.password.to_string()), 
                 move |client, result| {
                     if result {
-                        /* TODO! */
-                        client.send_packet(&s2c::AlertShow{ text: "Registered! Next step is TODO!".to_string() });
+                        client.send_packet(&s2c::AccountLoginSuccess{});
                         client.with_component_mut::<UserAuthentication, _>(
                             |client, authentication| {
                                 authentication.handle_user_authenticated(client, &username, remember);
@@ -82,21 +90,6 @@ impl ClientComponent for UserRegister {
                 }
             );
         }
-        Ok(())
-    }
-
-    fn poll(&mut self, client: &mut crate::client::Client, _cx: &mut std::task::Context) -> anyhow::Result<()> {
-        if self.client_initialized {
-            return Ok(())
-        }
-
-        self.client_initialized = true;
-        client.send_packet(&s2c::AccountRegisterParameters{
-            bg_resource: ResourceReference{ resource_id: 122842 },
-            enable_required_email: false,
-            max_password_length: 100,
-            min_password_length: 5
-        });
         Ok(())
     }
 }

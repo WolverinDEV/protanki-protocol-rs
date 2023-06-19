@@ -14,14 +14,12 @@ enum SolveState {
 }
 
 pub struct CaptchaProvider {
-    client_initialized: bool,
     solve_states: BTreeMap<CaptchaLocation, SolveState>
 }
 
 impl CaptchaProvider {
     pub fn new() -> Self {
         let mut provider = Self {
-            client_initialized: false,
             solve_states: Default::default(),
         };
 
@@ -84,6 +82,14 @@ impl CaptchaProvider {
 }
 
 impl ClientComponent for CaptchaProvider {
+    fn initialize(&mut self, client: &mut crate::client::Client) -> anyhow::Result<()> {
+        client.send_packet(&packets::s2c::CaptchaParameters{
+            init_params: self.solve_states.keys().cloned().collect::<Vec<_>>()
+        });
+
+        Ok(())
+    }
+
     fn on_packet(&mut self, client: &mut crate::client::Client, packet: &dyn packets::Packet) -> anyhow::Result<()> {
         if let Some(packet) = packet.downcast_ref::<c2s::CaptchaRequestLocation>() {
             self.send_new_captcha(client, packet.location, true);
@@ -115,20 +121,6 @@ impl ClientComponent for CaptchaProvider {
                 }
             }
         }
-        Ok(())
-    }
-
-    fn poll(&mut self, client: &mut crate::client::Client, _cx: &mut std::task::Context) -> anyhow::Result<()> {
-        if self.client_initialized {
-            return Ok(());
-        }
-
-        self.client_initialized = true;
-        
-        client.send_packet(&packets::s2c::CaptchaParameters{
-            init_params: self.solve_states.keys().cloned().collect::<Vec<_>>()
-        });
-
         Ok(())
     }
 }

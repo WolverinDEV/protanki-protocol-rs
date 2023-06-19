@@ -1,14 +1,14 @@
-#![feature(drain_filter)]
 #![feature(iterator_try_collect)]
-#![feature(btree_drain_filter)]
+#![feature(trait_alias)]
 #![allow(unused)]
-use std::{net::SocketAddr, sync::{Arc, Mutex}, task::Poll, future::poll_fn};
+use std::{net::SocketAddr, sync::{Arc, Mutex, RwLock}, task::Poll, future::poll_fn};
 
 use futures::FutureExt;
 use tokio::net::TcpSocket;
 use tracing::{Level, info, debug, warn};
 use tracing_subscriber::EnvFilter;
 use tracing::{ error };
+use sqlx::{SqliteConnection, Connection, ConnectOptions, sqlite::{SqliteConnectOptions, SqliteJournalMode}};
 
 use crate::{client::Client, server::Server};
 
@@ -16,6 +16,8 @@ mod client;
 mod server;
 mod client_components;
 mod users;
+mod rank;
+pub use rank::*;
 
 mod tasks;
 pub use tasks::*;
@@ -41,7 +43,19 @@ async fn main() -> anyhow::Result<()> {
     let socket = socket.listen(5)?;
     info!("Server started on {}", addr);
 
-    let server = Server::new()?;
+    let mut database = SqliteConnectOptions::default()
+        .filename("database.sqlite")
+        .create_if_missing(true)
+        .journal_mode(SqliteJournalMode::Wal)
+        .connect().await?;
+
+    sqlx::migrate!("./migrations")
+        .run(&mut database)
+        .await?;
+
+    let database = Arc::new(tokio::sync::Mutex::new(database));
+
+    let server = Server::new(database)?;
     let server = Arc::new(Mutex::new(server));
 
     {
@@ -57,7 +71,11 @@ async fn main() -> anyhow::Result<()> {
     }
 
     loop {
-        let (stream, socket_address) = match socket.accept().await {
+        let accept_event = tokio::select! {
+            event = socket.accept() => event,
+            _ = tokio::signal::ctrl_c() => break,
+        };
+        let (stream, socket_address) = match accept_event {
             Ok(client) => client,
             Err(error) => {
                 error!("failed to accept client: {}", error);
@@ -84,5 +102,9 @@ async fn main() -> anyhow::Result<()> {
             server.register_client(client);
         });
     }
+
+    tracing::info!("Server shutdown");
+    /* TODO :) */
+
     Ok(())
 }
