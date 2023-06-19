@@ -1,8 +1,8 @@
-use std::{any::{Any, TypeId}, collections::BTreeMap, task::{self, Poll, Waker}, net::{TcpStream, SocketAddr}, sync::{Weak, Mutex, Arc}, time::Duration, cell::{RefCell, Ref, RefMut}, rc::Rc};
-use futures::{Future, StreamExt};
+use std::{any::{Any, TypeId}, collections::BTreeMap, task::{self, Poll, Waker}, net::{TcpStream, SocketAddr}, sync::{Weak, Mutex, Arc}, time::Duration, cell::{RefCell, Ref, RefMut}, rc::Rc, pin::Pin};
+use futures::{Future, StreamExt, channel::oneshot};
 use tokio::{time, sync::mpsc};
 use tracing::{ error, debug };
-use fost_protocol::{Connection, packets::{Packet, PacketDowncast, self}, Socket, SimplePacketDebugFilter, ProtocolError};
+use fost_protocol::{Connection, packets::{Packet, PacketDowncast, self, s2c}, Socket, SimplePacketDebugFilter, ProtocolError};
 
 use crate::{server::{Server, ServerEvent}, client_components::{ConnectionPing}, Tasks};
 
@@ -68,12 +68,24 @@ impl<T: ClientComponent + 'static> RegisteredClientComponent for RegisteredClien
     }
 }
 
+enum ConnectionState {
+    /// We have an open connection
+    Open,
+    /// The connection will be closed as soon all packets
+    /// have successfully been written.
+    Closing { callbacks: Vec<oneshot::Sender<()>> },
+    /// The connection has been closed.
+    Closed
+}
+
 pub type ClientId = u32;
 pub struct Client {
     client_id: ClientId,
     server_events: Option<mpsc::UnboundedSender<ServerEvent>>,
 
     connection: Connection,
+    connection_state: ConnectionState,
+
     components: BTreeMap<TypeId, Arc<RefCell<dyn RegisteredClientComponent>>>,
 
     language: String,
@@ -82,7 +94,6 @@ pub struct Client {
     waker: Option<Waker>,
 
     authentication_state: AuthenticationState,
-    /* TODO: Use active screen */
 }
 
 unsafe impl Send for Client {}
@@ -119,6 +130,8 @@ impl Client {
             server_events: None,
 
             connection,
+            connection_state: ConnectionState::Open,
+
             components: Default::default(),
 
             language: init_packet.lang.to_string(),
@@ -224,9 +237,13 @@ impl Client {
 
     
     pub fn send_packet(&mut self, packet: &dyn Packet) {
+        if !matches!(self.connection_state, ConnectionState::Open) {
+            /* connection is closing */
+            return;
+        }
+
         if let Err(error) = self.connection.send_packet(packet) {
-            /* TODO: handle this error */
-            error!("failed to send packet: {}", error);
+            self.handle_protocol_error(error);
         }
     }
 
@@ -234,16 +251,49 @@ impl Client {
         self.tasks.enqueue(task, callback)
     }
 
-    pub fn disconnect(&mut self) {
-        /* TODO! */
+    pub fn disconnect(&mut self, flush: bool) -> Pin<Box<dyn Future<Output = ()> + Send>> {
+        if !flush {
+            self.connection_state = ConnectionState::Closed;
+            if let Some(waker) = self.waker.take() {
+                waker.wake();
+            }
+            return Box::pin(async {});
+        }
+
+        let (tx, rx) = oneshot::channel();
+        match &mut self.connection_state {
+            /* Change the connection state to closing. */
+            ConnectionState::Open => {
+                self.connection_state = ConnectionState::Closing { 
+                    callbacks: vec![ tx ]
+                };
+                if let Some(waker) = self.waker.take() {
+                    waker.wake();
+                }
+            }
+
+            /* Connection is already closing. Just register the new listener. */
+            ConnectionState::Closing { callbacks } => {
+                callbacks.push(tx);
+            }
+
+            /* connection has already been closed */
+            ConnectionState::Closed => return Box::pin(async {})
+        };
+        
+        Box::pin(async {})
     }
 
     fn handle_protocol_error(&mut self, error: ProtocolError) {
-        error!("protocol error: {}", error);
+        error!("protocol error (disconnecting client): {}", error);
+        self.send_packet(&s2c::AlertShow{ text: "Protocol error. Closing connection.".to_string() });
+        let _ = self.disconnect(true);
     }
 
     fn handle_handle_error(&mut self, error: anyhow::Error) {
-        error!("handle error: {}", error);
+        error!("handler error (disconnecting client): {}", error);
+        self.send_packet(&s2c::AlertShow{ text: "Handling error. Closing connection.".to_string() });
+        let _ = self.disconnect(true);
     }
 
     fn handle_packet(&mut self, packet: Box<dyn Packet>) {
@@ -256,6 +306,21 @@ impl Client {
             if let Err(error) = component.on_packet(self, Box::as_ref(&packet)) {
                 self.handle_handle_error(error);
             }
+        }
+    }
+
+    fn do_connection_close(&mut self) {
+        match std::mem::replace(&mut self.connection_state, ConnectionState::Closed) {
+            ConnectionState::Closed => {
+                /* nothing changed */
+                return;
+            },
+            ConnectionState::Closing { callbacks } => {
+                for callback in callbacks {
+                    let _ = callback.send(());
+                }
+            },
+            ConnectionState::Open => { }
         }
     }
 }
@@ -282,6 +347,11 @@ impl Future for Client {
             }
         }
 
+        if matches!(self.connection_state, ConnectionState::Closed) {
+            /* No imidiate tasks or components pending. Signalling client closed. */
+            return Poll::Ready(());
+        }
+
         loop {
             match self.connection.poll_next_unpin(cx) {
                 Poll::Ready(Some(Ok(item))) => {
@@ -292,12 +362,17 @@ impl Future for Client {
                     self.handle_protocol_error(err);
                 },
                 Poll::Ready(None) => {
+                    self.do_connection_close();
                     return Poll::Ready(());
                 },
                 Poll::Pending => break,
             }
         }
         
+        if matches!(self.connection_state, ConnectionState::Closing { .. }) && self.connection.is_send_buffer_clear() {
+            self.do_connection_close();
+        }
+
         Poll::Pending
     }
 }

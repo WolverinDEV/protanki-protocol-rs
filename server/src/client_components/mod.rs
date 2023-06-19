@@ -15,3 +15,6 @@ pub use resources::*;
 
 mod settings;
 pub use settings::*;
+
+mod battles;
+pub use battles::*;

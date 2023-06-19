@@ -22,7 +22,7 @@ pub enum ConnectionClosedError {
 #[derive(Error, Debug)]
 pub enum ProtocolError {
     #[error("crypto operation failed")]
-    GenericError,
+    CryptoError,
 
     #[error("packet id {0} is unknown")]
     PacketUnknownId(i32),
@@ -56,4 +56,7 @@ pub enum ProtocolError {
     
     #[error("unexpected packet")]
     UnexpectedPacket,
+
+    #[error("{0}")]
+    GenericError(String),
 }

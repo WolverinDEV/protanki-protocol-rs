@@ -3,6 +3,7 @@
 #![allow(unused)]
 use std::{net::SocketAddr, sync::{Arc, Mutex, RwLock}, task::Poll, future::poll_fn};
 
+use anyhow::Context;
 use futures::FutureExt;
 use tokio::net::TcpSocket;
 use tracing::{Level, info, debug, warn};
@@ -27,6 +28,12 @@ pub use resources::*;
 
 mod chat;
 pub use chat::*;
+
+mod battle;
+pub use battle::*;
+
+mod battles;
+pub use battles::*;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
@@ -103,8 +110,16 @@ async fn main() -> anyhow::Result<()> {
         });
     }
 
-    tracing::info!("Server shutdown");
-    /* TODO :) */
+    tracing::info!("Server shutdown-");
+    drop(socket); /* close the server socket */
 
+    let server_shutdown = {
+        let mut server = server.lock().unwrap();
+        server.shutdown()
+    };
+    if !server_shutdown.await {
+        tracing::warn!("Server already stopping. We can not wait for the server to stop and exit process anyway.");
+    }
+    tracing::info!("Server stopped.");
     Ok(())
 }

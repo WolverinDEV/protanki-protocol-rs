@@ -1,13 +1,13 @@
-use std::{collections::{BTreeMap}, sync::{Arc, Mutex, RwLock}, future::poll_fn, task::Poll, time::Duration};
+use std::{collections::{BTreeMap}, sync::{Arc, Mutex, RwLock}, future::poll_fn, task::Poll, time::Duration, pin::Pin};
 
 use anyhow::Context;
 use fost_protocol::{packets::s2c, codec::{LayoutState, UserPropertyCC}};
-use futures::{FutureExt, Future};
+use futures::{FutureExt, Future, stream::FuturesUnordered, StreamExt};
 use sqlx::SqliteConnection;
 use tokio::{sync::mpsc, time};
 use tracing::{warn, info};
 
-use crate::{client::{Client, ClientId}, client_components::{UserAuthentication, UserRegister, CaptchaProvider, ClientResources, SettingsDialog, LoginKickoff}, users::UserRegistry, ServerResource, ServerResources, ServerChat, ServerChatComponent, ResourceStage};
+use crate::{client::{Client, ClientId}, client_components::{UserAuthentication, UserRegister, CaptchaProvider, ClientResources, SettingsDialog, LoginKickoff, ClientBattleList}, users::UserRegistry, ServerResource, ServerResources, ServerChat, ServerChatComponent, ResourceStage, BattleProvider};
 
 pub type DatabaseConnection = SqliteConnection;
 pub type DatabaseHandle = Arc<tokio::sync::Mutex<DatabaseConnection>>;
@@ -27,8 +27,11 @@ pub struct Server {
     user_registry: Arc<RwLock<UserRegistry>>,
     server_resources: Arc<RwLock<ServerResources>>,
     chat: Arc<RwLock<ServerChat>>,
+    battles: Arc<RwLock<BattleProvider>>,
 
     database: DatabaseHandle,
+
+    is_shutdown: bool,
 }
 
 impl Server {
@@ -40,17 +43,68 @@ impl Server {
             clients: Default::default(),
             client_id_index: 0,
 
+            is_shutdown: false,
+
             events_rx,
             events_tx,
 
             user_registry: Arc::new(RwLock::new(UserRegistry::new(database.clone()))),
             server_resources: Arc::new(RwLock::new(resources)),
             chat: Arc::new(RwLock::new(ServerChat::new())),
-            database
+            battles: Arc::new(RwLock::new(BattleProvider::new())),
+
+            database,
+        })
+    }
+
+    pub fn shutdown(&mut self) -> Pin<Box<dyn Future<Output = bool>>> {
+        if std::mem::replace(&mut self.is_shutdown, true) {
+            /* server already in shut down */
+            return Box::pin(async { false });
+        }
+        /* firstly shutdown battles & emit funds */
+
+        /* disconnect all clients */
+        let mut client_disconnects = FuturesUnordered::default();
+        for client in self.clients.values() {
+            let mut client = match client.lock() {
+                Ok(client) => client,
+                Err(_) => continue,
+            };
+
+            client.send_packet(&s2c::AlertShow{ text: "server stopped".to_string() });
+            client.send_packet(&s2c::ServerHaltNotify{ });
+            client_disconnects.push(client.disconnect(true));
+        }
+
+        Box::pin(async move {
+            /* await all clients beeing disconnected */
+            tokio::select! {
+                _ = client_disconnects.count() => {},
+                _ = tokio::time::sleep(Duration::from_millis(50_000)) => {
+                    tracing::warn!("Failed to properly disconnect all clients. Forcefully terminating their connection.");
+                }
+            };
+
+            true
         })
     }
 
     pub fn register_client(&mut self, mut client: Client) -> anyhow::Result<()> {
+        if self.is_shutdown {
+            client.send_packet(&s2c::ServerHaltNotify { });
+            
+            tokio::task::spawn(async move {
+                let mut flush_future = client.disconnect(true);
+                tokio::select! {
+                    _ = poll_fn(move |cx| client.poll_unpin(cx)) => {}
+                    _ = flush_future => {},
+                    _ = tokio::time::sleep(Duration::from_secs(5)) => {}
+                };
+            });
+            return anyhow::Ok(());
+        }
+
         self.client_id_index += 1;
         let client_id = self.client_id_index;
 
@@ -166,11 +220,13 @@ impl Server {
         }).context("missing client resources")??;
 
         let server_chat = self.chat.clone();
+        let battles = self.battles.clone();
         client.run_async(
             resource_task, 
             move |client, _| {
                 client.send_packet(&s2c::LobbyLayoutSwitchEnd{ state: LayoutState::BattleSelect, origin: LayoutState::BattleSelect });
                 client.register_component(ServerChatComponent::new(server_chat));
+                client.register_component(ClientBattleList::new(battles.clone()));
             }
         );
 

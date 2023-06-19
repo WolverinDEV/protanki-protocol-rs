@@ -168,6 +168,10 @@ impl Connection {
         }
     }
 
+    pub fn is_send_buffer_clear(&self) -> bool {
+        self.send_buffer.is_empty()
+    }
+
     fn try_parse_read_buffer(&mut self) -> Poll<ProtocolResult<Box<dyn Packet>>> {
         if self.recv_buffer_index < 8 {
             return Poll::Pending
