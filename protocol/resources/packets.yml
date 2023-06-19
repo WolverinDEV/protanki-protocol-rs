@@ -819,7 +819,8 @@ UnknownM21:
       direction: X2X
       packet_id: -875418096
       model_id: 21
-      description: "Triggeres the x2 card (image contains the image resource and topText the card text)"
+      description: Triggeres the x2 card (image contains the image resource and topText
+        the card text)
       fields:
         image: scpacker.networking.protocol.codec.custom.ResourceGetterCodec
         bottomText: scpacker.networking.protocol.codec.primitive.StringCodec
@@ -999,7 +1000,7 @@ Alert:
       direction: S2C
       packet_id: -322235316
       model_id: 25
-      description: "Show a general alert message to the client"
+      description: Show a general alert message to the client
       fields:
         text: scpacker.networking.protocol.codec.primitive.StringCodec
 AlertServer:
@@ -1009,7 +1010,7 @@ AlertServer:
       direction: S2C
       packet_id: -1712113407
       model_id: 26
-      description: "Show the server will shutdown error message"
+      description: Show the server will shutdown error message
       fields:
         timeLeftInSec: scpacker.networking.protocol.codec.primitive.IntCodec
 UnknownM27:
@@ -1212,7 +1213,7 @@ BattleUserList:
       model_id: 32
       fields:
         battleId: scpacker.networking.protocol.codec.primitive.StringCodec
-    UserJoinBattle: 
+    UserJoinBattle:
       direction: S2C
       packet_id: -169305322
       model_id: 32
@@ -1639,12 +1640,11 @@ Tank:
   model_id: 39
   packets:
     MoveCommand:
-      direction: C2S
-      packet_id: 329279865
+      direction: S2C
+      packet_id: -64696933
       model_id: 39
       fields:
-        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
-        specificationId: scpacker.networking.protocol.codec.primitive.ShortCodec
+        tankId: scpacker.networking.protocol.codec.primitive.StringCodec
         moveCommand: scpacker.networking.protocol.codec.custom.CodecMoveCommand
     Kill:
       direction: S2C
@@ -1655,32 +1655,31 @@ Tank:
         killerTankId: scpacker.networking.protocol.codec.primitive.StringCodec
         respawnDelay: scpacker.networking.protocol.codec.primitive.IntCodec
     MoveControlFlags:
-      direction: C2S
-      packet_id: -1749108178
-      model_id: 39
-      fields:
-        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
-        specificationId: scpacker.networking.protocol.codec.primitive.ShortCodec
-        control: scpacker.networking.protocol.codec.primitive.ByteCodec
-    TurretCommand:
       direction: S2C
-      packet_id: 1927704181
+      packet_id: -301298508
       model_id: 39
       fields:
         tankId: scpacker.networking.protocol.codec.primitive.StringCodec
+        control: scpacker.networking.protocol.codec.primitive.ByteCodec
+    TurretCommand:
+      direction: C2S
+      packet_id: -114968993
+      model_id: 39
+      fields:
+        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
         rotateTurretCommand: scpacker.networking.protocol.codec.custom.CodecRotateTurretCommand
+        incarnationId: scpacker.networking.protocol.codec.primitive.ShortCodec
     Init:
       direction: C2S
       packet_id: 268832557
       model_id: 39
       fields: {}
     MoveTurretCommand:
-      direction: C2S
-      packet_id: -1683279062
+      direction: S2C
+      packet_id: 1516578027
       model_id: 39
       fields:
-        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
-        specificationId: scpacker.networking.protocol.codec.primitive.ShortCodec
+        tankId: scpacker.networking.protocol.codec.primitive.StringCodec
         moveCommand: scpacker.networking.protocol.codec.custom.CodecMoveCommand
         turretDirection: scpacker.networking.protocol.codec.primitive.FloatCodec
     Ready2Place:
@@ -1765,36 +1764,38 @@ Tank:
       model_id: 39
       fields:
         tank: scpacker.networking.protocol.codec.primitive.StringCodec
-    MoveControlFlags:
-      direction: S2C
-      packet_id: -301298508
+    Unknown329279865:
+      direction: X2X
+      packet_id: 329279865
       model_id: 39
       fields:
-        tankId: scpacker.networking.protocol.codec.primitive.StringCodec
-        control: scpacker.networking.protocol.codec.primitive.ByteCodec
-    MoveCommand:
-      direction: S2C
-      packet_id: -64696933
-      model_id: 39
-      fields:
-        tankId: scpacker.networking.protocol.codec.primitive.StringCodec
+        name_50: scpacker.networking.protocol.codec.primitive.IntCodec
+        specificationId: scpacker.networking.protocol.codec.primitive.ShortCodec
         moveCommand: scpacker.networking.protocol.codec.custom.CodecMoveCommand
-    MoveTurretCommand:
-      direction: S2C
-      packet_id: 1516578027
+    UnknownN1683279062:
+      direction: X2X
+      packet_id: -1683279062
       model_id: 39
       fields:
-        tankId: scpacker.networking.protocol.codec.primitive.StringCodec
+        name_50: scpacker.networking.protocol.codec.primitive.IntCodec
+        specificationId: scpacker.networking.protocol.codec.primitive.ShortCodec
         moveCommand: scpacker.networking.protocol.codec.custom.CodecMoveCommand
         turretDirection: scpacker.networking.protocol.codec.primitive.FloatCodec
-    TurretCommand:
-      direction: C2S
-      packet_id: -114968993
+    Unknown1927704181:
+      direction: X2X
+      packet_id: 1927704181
       model_id: 39
       fields:
-        clientSessionTime: scpacker.networking.protocol.codec.primitive.IntCodec
+        tankId: scpacker.networking.protocol.codec.primitive.StringCodec
         rotateTurretCommand: scpacker.networking.protocol.codec.custom.CodecRotateTurretCommand
-        incarnationId: scpacker.networking.protocol.codec.primitive.ShortCodec
+    UnknownN1749108178:
+      direction: X2X
+      packet_id: -1749108178
+      model_id: 39
+      fields:
+        name_50: scpacker.networking.protocol.codec.primitive.IntCodec
+        specificationId: scpacker.networking.protocol.codec.primitive.ShortCodec
+        control: scpacker.networking.protocol.codec.primitive.ByteCodec
 UnknownM40:
   model_id: 40
   packets:
